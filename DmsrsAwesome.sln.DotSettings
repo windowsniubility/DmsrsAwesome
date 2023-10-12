@@ -554,6 +554,11 @@
 	
 	<s:Boolean x:Key="/Default/Debugger/DataTipsEnabled/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/Editor/QuickInfo/EnableQuickInfo/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=363ED61CC50CC049BD41C5AB379A7CC0/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=363ED61CC50CC049BD41C5AB379A7CC0/AbsolutePath/@EntryValue">E:\code\DmsrsAwesome\DmsrsAwesome.sln.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=363ED61CC50CC049BD41C5AB379A7CC0/RelativePath/@EntryValue"></s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File363ED61CC50CC049BD41C5AB379A7CC0/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File363ED61CC50CC049BD41C5AB379A7CC0/RelativePriority/@EntryValue">1</s:Double>
 	<s:String x:Key="/Default/Environment/InlayHints/CSharpOtherInlayHintsOptions/ShowResourcesDisposePoints/@EntryValue">Never</s:String>
 	
 	

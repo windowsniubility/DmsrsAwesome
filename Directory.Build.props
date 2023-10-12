@@ -6,11 +6,11 @@
 	<!--<Import  Project="$([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..))"
 			 Condition ="Exists($([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..)))" />-->
 
-	<Import  Project="$([MSBuild]::GetPathOfFileAbove(Directory.Debug.props, $(MSBuildThisFileDirectory)))"
-			 Condition ="Exists($([MSBuild]::GetPathOfFileAbove(Directory.Debug.props, $(MSBuildThisFileDirectory))))" />
+	<Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Debug.props, $(MSBuildThisFileDirectory)))"
+	        Condition="Exists($([MSBuild]::GetPathOfFileAbove(Directory.Debug.props, $(MSBuildThisFileDirectory))))" />
 
-	<Import  Project="$([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory)))"
-		 Condition ="Exists($([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory))))" />
+	<Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory)))"
+	        Condition="Exists($([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory))))" />
 
 	<PropertyGroup Label="RootPath">
 		<PropsDir>$([MSBuild]::NormalizeDirectory($(MSBuildThisFileDirectory)))</PropsDir>
@@ -167,7 +167,8 @@
 
 	<!--PackageReleaseNotes $(ChangeLogFileName)-->
 	<Choose>
-		<When Condition="'$(ChangeLogFileName)'!=''  And $([System.IO.Path]::IsPathRooted($(ChangeLogFileName))) and Exists('$(ChangeLogFileName)')">
+		<When
+			Condition="'$(ChangeLogFileName)'!=''  And $([System.IO.Path]::IsPathRooted($(ChangeLogFileName))) and Exists('$(ChangeLogFileName)')">
 			<PropertyGroup>
 				<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(ChangeLogFileName)"))</PackageReleaseNotes>
 				<ChangeLogFinalPath>$(ChangeLogFileName)</ChangeLogFinalPath>
@@ -190,7 +191,8 @@
 	<!-- Description and PackageDescription-->
 	<!--A long description for the assembly. If PackageDescription is not specified, then this property is also used as the description of the package.-->
 	<Choose>
-		<When Condition="'$(ProjectDescriptionFileName)'!='' And $([System.IO.Path]::IsPathRooted($(ProjectDescriptionFileName))) AND Exists('$(ProjectDescriptionFileName)')">
+		<When
+			Condition="'$(ProjectDescriptionFileName)'!='' And $([System.IO.Path]::IsPathRooted($(ProjectDescriptionFileName))) AND Exists('$(ProjectDescriptionFileName)')">
 			<PropertyGroup>
 				<DescriptionFinalContent>$([System.IO.File]::ReadAllText("$(ProjectDescriptionFileName)"))</DescriptionFinalContent>
 				<DescriptionFinalPath>$(ProjectDescriptionFileName)</DescriptionFinalPath>
@@ -248,7 +250,8 @@
 				<SignAssembly>false</SignAssembly>
 			</PropertyGroup>
 		</When>
-		<When Condition="'$(CertificateFileName)'!='' And $([System.IO.Path]::IsPathRooted($(CertificateFileName))) and Exists('$(CertificateFileName)')">
+		<When
+			Condition="'$(CertificateFileName)'!='' And $([System.IO.Path]::IsPathRooted($(CertificateFileName))) and Exists('$(CertificateFileName)')">
 			<PropertyGroup>
 				<SignAssembly>true</SignAssembly>
 				<AssemblyOriginatorKeyFile>$(CertificateFileName)</AssemblyOriginatorKeyFile>
