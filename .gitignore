@@ -1,0 +1,11 @@
+bin/
+obj/
+.vs/
+artifacts/
+.idea/
+*.user
+launchSettings.json
+.dotnet/
+TestResults/
+/samples/aspnetcore/WebAppPlugin1/plugins/*
+/samples/aspnetcore/WebAppPlugin2/plugins/*
