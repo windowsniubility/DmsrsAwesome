@@ -1,6 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:Boolean x:Key="/Default/CodeEditing/ContextActionTable/DisabledContextActions/=JetBrains_002EReSharper_002EIntentions_002ECSharp_002EContextActions_002EConvertToBlockScopedNamespaceAction/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/CodeEditing/ContextActionTable/DisabledContextActions/=JetBrains_002EReSharper_002EIntentions_002ECSharp_002EContextActions_002EConvertToFileScopedNamespaceAction/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeEditing/ContextActionTable/DisabledContextActions/=JetBrains_002EReSharper_002EIntentions_002ECSharp_002EContextActions_002EConvertToFileScopedNamespaceAction/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeEditing/ContextActionTable/DisabledContextActions/=JetBrains_002EReSharper_002EIntentions_002ECSharp_002EContextActions_002EQualifyReferenceAction/@EntryIndexedValue">True</s:Boolean>
 	<s:String x:Key="/Default/CodeEditing/Intellisense/CodeCompletion/IntellisenseGloballyEnabled/IntellisenseEnabled/@EntryValue">Disabled</s:String>
 	<s:Boolean x:Key="/Default/CodeEditing/Intellisense/LookupWindow/NarrowList/@EntryValue">False</s:Boolean>
@@ -554,6 +554,7 @@
 	
 	<s:Boolean x:Key="/Default/Debugger/DataTipsEnabled/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/Editor/QuickInfo/EnableQuickInfo/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/EntityFramework/EntityFrameworkAnalysisEnabled/@EntryValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=363ED61CC50CC049BD41C5AB379A7CC0/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=363ED61CC50CC049BD41C5AB379A7CC0/AbsolutePath/@EntryValue">E:\code\DmsrsAwesome\DmsrsAwesome.sln.DotSettings</s:String>
 	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=363ED61CC50CC049BD41C5AB379A7CC0/RelativePath/@EntryValue"></s:String>
