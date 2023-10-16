@@ -34,8 +34,8 @@ partial class Form1
     folderBrowserDialog1 = new FolderBrowserDialog();
     textBox2 = new TextBox();
     button2 = new Button();
-    listView1 = new ListView();
     button3 = new Button();
+    textBox3 = new TextBox();
     SuspendLayout();
     // 
     // openFileDialog1
@@ -44,16 +44,16 @@ partial class Form1
     // 
     // textBox1
     // 
-    textBox1.Location = new Point(94, 53);
+    textBox1.Location = new Point(94, 60);
     textBox1.Name = "textBox1";
     textBox1.Size = new Size(609, 23);
     textBox1.TabIndex = 0;
     // 
     // button1
     // 
-    button1.Location = new Point(731, 53);
+    button1.Location = new Point(731, 60);
     button1.Name = "button1";
-    button1.Size = new Size(75, 23);
+    button1.Size = new Size(75, 26);
     button1.TabIndex = 1;
     button1.Text = "button1";
     button1.UseVisualStyleBackColor = true;
@@ -61,45 +61,47 @@ partial class Form1
     // 
     // textBox2
     // 
-    textBox2.Location = new Point(94, 97);
+    textBox2.Location = new Point(94, 110);
     textBox2.Name = "textBox2";
     textBox2.Size = new Size(609, 23);
     textBox2.TabIndex = 2;
     // 
     // button2
     // 
-    button2.Location = new Point(731, 97);
+    button2.Location = new Point(731, 110);
     button2.Name = "button2";
-    button2.Size = new Size(75, 23);
+    button2.Size = new Size(75, 26);
     button2.TabIndex = 3;
     button2.Text = "button2";
     button2.UseVisualStyleBackColor = true;
     button2.Click += button2_Click;
     // 
-    // listView1
-    // 
-    listView1.Location = new Point(94, 220);
-    listView1.Name = "listView1";
-    listView1.Size = new Size(609, 236);
-    listView1.TabIndex = 4;
-    listView1.UseCompatibleStateImageBehavior = false;
-    // 
     // button3
     // 
-    button3.Location = new Point(731, 159);
+    button3.Location = new Point(731, 180);
     button3.Name = "button3";
-    button3.Size = new Size(75, 23);
+    button3.Size = new Size(75, 26);
     button3.TabIndex = 5;
     button3.Text = "button3";
     button3.UseVisualStyleBackColor = true;
+    button3.Click += button3_Click;
+    // 
+    // textBox3
+    // 
+    textBox3.Location = new Point(94, 249);
+    textBox3.Multiline = true;
+    textBox3.Name = "textBox3";
+    textBox3.ScrollBars = ScrollBars.Both;
+    textBox3.Size = new Size(609, 267);
+    textBox3.TabIndex = 6;
     // 
     // Form1
     // 
-    AutoScaleDimensions = new SizeF(7F, 15F);
+    AutoScaleDimensions = new SizeF(7F, 17F);
     AutoScaleMode = AutoScaleMode.Font;
-    ClientSize = new Size(955, 603);
+    ClientSize = new Size(955, 683);
+    Controls.Add(textBox3);
     Controls.Add(button3);
-    Controls.Add(listView1);
     Controls.Add(button2);
     Controls.Add(textBox2);
     Controls.Add(button1);
@@ -118,6 +120,6 @@ partial class Form1
   private FolderBrowserDialog folderBrowserDialog1;
   private TextBox textBox2;
   private Button button2;
-  private ListView listView1;
   private Button button3;
+  private TextBox textBox3;
 }
