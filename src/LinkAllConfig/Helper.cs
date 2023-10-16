@@ -10,12 +10,22 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.LinkLabel;
-
+using CliWrap;
+using CliWrap.Buffered;
 namespace LinkAllConfig;
 
 internal class Helper
 {
   public static async Task<string> ListLinks(string target, Action<string> callback)
+  {
+    StringBuilder result = new StringBuilder();
+    await Cli.Wrap("cmd.exe")
+    .WithArguments($"/c fsutil hardlink list \"{target}\"")
+    .WithStandardOutputPipe(PipeTarget.ToStringBuilder(result))
+    .ExecuteAsync();
+    return await Task.FromResult(result.ToString());
+  }
+  public static async Task<string> ListLinks1(string target, Action<string> callback)
   {
     try
     {
@@ -24,6 +34,7 @@ internal class Helper
       process.StartInfo = new ProcessStartInfo
       {
         FileName = "cmd",
+
         UseShellExecute = false,
         CreateNoWindow = true,
         RedirectStandardError = true,
@@ -60,14 +71,36 @@ internal class Helper
       return await Task.FromResult(ex.Message);
     }
   }
+  public static async Task<string> MakeFileHardLinks(IEnumerable<string> links, string target)
+  {
+    var cmd = links.Aggregate(new StringBuilder(), (ret, link) =>
+    {
+      if (!File.Exists(link))
+        return ret.AppendLine($"fsutil hardlink create \"{link}\" \"{target}\"");
+      else
+        return ret.AppendLine($"echo \"文件已存在：{link}\"");
+    });
+    cmd.Replace("\r\n", " && ");
+    if (cmd.Length > 4) { cmd.Length -= 4; }
 
+    StringBuilder result = new StringBuilder();
+    //await Cli.Wrap("cmd.exe")
+    //  .WithArguments($"/c")
+    //  .WithStandardInputPipe(PipeSource.FromString(cmd.ToString()))
+    //  .WithStandardOutputPipe(PipeTarget.ToStringBuilder(result))
+    //  .WithStandardErrorPipe(PipeTarget.ToStringBuilder(result))
+    //  .ExecuteAsync();
+    var cli = cmd.ToString() | Cli.Wrap("cmd.exe") | result;
+    await cli.ExecuteAsync();
+    return await Task.FromResult(result.ToString());
+  }
   /// <summary>
   /// Makes the file hard links.
   /// </summary>
   /// <param name="links">The links.</param>
   /// <param name="target">The target.</param>
   /// <returns>A Task.</returns>
-  public static async Task<string> MakeFileHardLinks(IEnumerable<string> links, string target)
+  public static async Task<string> MakeFileHardLinks1(IEnumerable<string> links, string target)
   {
     try
     {
