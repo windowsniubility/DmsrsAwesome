@@ -48,6 +48,7 @@ partial class Form1
     // 
     textBox1.Location = new Point(3, 3);
     textBox1.Name = "textBox1";
+    textBox1.PlaceholderText = "选择配置目录";
     textBox1.Size = new Size(757, 23);
     textBox1.TabIndex = 0;
     // 
@@ -65,6 +66,7 @@ partial class Form1
     // 
     textBox2.Location = new Point(3, 32);
     textBox2.Name = "textBox2";
+    textBox2.PlaceholderText = "选择分发目录";
     textBox2.Size = new Size(757, 23);
     textBox2.TabIndex = 2;
     // 
@@ -97,6 +99,7 @@ partial class Form1
     textBox3.ScrollBars = ScrollBars.Both;
     textBox3.Size = new Size(931, 465);
     textBox3.TabIndex = 6;
+    textBox3.WordWrap = false;
     // 
     // panel1
     // 
