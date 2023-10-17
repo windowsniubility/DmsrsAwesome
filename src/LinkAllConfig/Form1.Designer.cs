@@ -46,16 +46,16 @@ partial class Form1
     // 
     // textBox1
     // 
-    textBox1.Location = new Point(73, 28);
+    textBox1.Location = new Point(3, 3);
     textBox1.Name = "textBox1";
-    textBox1.Size = new Size(703, 23);
+    textBox1.Size = new Size(757, 23);
     textBox1.TabIndex = 0;
     // 
     // button1
     // 
-    button1.Location = new Point(782, 27);
+    button1.Location = new Point(766, 3);
     button1.Name = "button1";
-    button1.Size = new Size(75, 23);
+    button1.Size = new Size(75, 26);
     button1.TabIndex = 1;
     button1.Text = "选择";
     button1.UseVisualStyleBackColor = true;
@@ -63,16 +63,16 @@ partial class Form1
     // 
     // textBox2
     // 
-    textBox2.Location = new Point(73, 72);
+    textBox2.Location = new Point(3, 32);
     textBox2.Name = "textBox2";
-    textBox2.Size = new Size(703, 23);
+    textBox2.Size = new Size(757, 23);
     textBox2.TabIndex = 2;
     // 
     // button2
     // 
-    button2.Location = new Point(782, 72);
+    button2.Location = new Point(766, 29);
     button2.Name = "button2";
-    button2.Size = new Size(75, 23);
+    button2.Size = new Size(75, 26);
     button2.TabIndex = 3;
     button2.Text = "选择";
     button2.UseVisualStyleBackColor = true;
@@ -80,9 +80,9 @@ partial class Form1
     // 
     // button3
     // 
-    button3.Location = new Point(782, 120);
+    button3.Location = new Point(782, 136);
     button3.Name = "button3";
-    button3.Size = new Size(75, 23);
+    button3.Size = new Size(75, 26);
     button3.TabIndex = 5;
     button3.Text = "button3";
     button3.UseVisualStyleBackColor = true;
@@ -91,11 +91,11 @@ partial class Form1
     // textBox3
     // 
     textBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-    textBox3.Location = new Point(12, 180);
+    textBox3.Location = new Point(12, 204);
     textBox3.Multiline = true;
     textBox3.Name = "textBox3";
     textBox3.ScrollBars = ScrollBars.Both;
-    textBox3.Size = new Size(931, 411);
+    textBox3.Size = new Size(931, 465);
     textBox3.TabIndex = 6;
     // 
     // panel1
@@ -106,16 +106,16 @@ partial class Form1
     panel1.Controls.Add(button3);
     panel1.Controls.Add(button1);
     panel1.Controls.Add(button2);
-    panel1.Location = new Point(12, 12);
+    panel1.Location = new Point(12, 14);
     panel1.Name = "panel1";
-    panel1.Size = new Size(931, 162);
+    panel1.Size = new Size(931, 184);
     panel1.TabIndex = 7;
     // 
     // Form1
     // 
-    AutoScaleDimensions = new SizeF(7F, 15F);
+    AutoScaleDimensions = new SizeF(7F, 17F);
     AutoScaleMode = AutoScaleMode.Font;
-    ClientSize = new Size(955, 603);
+    ClientSize = new Size(955, 683);
     Controls.Add(panel1);
     Controls.Add(textBox3);
     Name = "Form1";
