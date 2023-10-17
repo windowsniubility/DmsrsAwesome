@@ -36,6 +36,8 @@ partial class Form1
     button2 = new Button();
     button3 = new Button();
     textBox3 = new TextBox();
+    panel1 = new Panel();
+    panel1.SuspendLayout();
     SuspendLayout();
     // 
     // openFileDialog1
@@ -44,43 +46,43 @@ partial class Form1
     // 
     // textBox1
     // 
-    textBox1.Location = new Point(94, 60);
+    textBox1.Location = new Point(73, 28);
     textBox1.Name = "textBox1";
-    textBox1.Size = new Size(609, 23);
+    textBox1.Size = new Size(703, 23);
     textBox1.TabIndex = 0;
     // 
     // button1
     // 
-    button1.Location = new Point(731, 60);
+    button1.Location = new Point(782, 27);
     button1.Name = "button1";
-    button1.Size = new Size(75, 26);
+    button1.Size = new Size(75, 23);
     button1.TabIndex = 1;
-    button1.Text = "button1";
+    button1.Text = "选择";
     button1.UseVisualStyleBackColor = true;
     button1.Click += button1_Click;
     // 
     // textBox2
     // 
-    textBox2.Location = new Point(94, 110);
+    textBox2.Location = new Point(73, 72);
     textBox2.Name = "textBox2";
-    textBox2.Size = new Size(609, 23);
+    textBox2.Size = new Size(703, 23);
     textBox2.TabIndex = 2;
     // 
     // button2
     // 
-    button2.Location = new Point(731, 110);
+    button2.Location = new Point(782, 72);
     button2.Name = "button2";
-    button2.Size = new Size(75, 26);
+    button2.Size = new Size(75, 23);
     button2.TabIndex = 3;
-    button2.Text = "button2";
+    button2.Text = "选择";
     button2.UseVisualStyleBackColor = true;
     button2.Click += button2_Click;
     // 
     // button3
     // 
-    button3.Location = new Point(731, 180);
+    button3.Location = new Point(782, 120);
     button3.Name = "button3";
-    button3.Size = new Size(75, 26);
+    button3.Size = new Size(75, 23);
     button3.TabIndex = 5;
     button3.Text = "button3";
     button3.UseVisualStyleBackColor = true;
@@ -88,26 +90,38 @@ partial class Form1
     // 
     // textBox3
     // 
-    textBox3.Location = new Point(94, 249);
+    textBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+    textBox3.Location = new Point(12, 180);
     textBox3.Multiline = true;
     textBox3.Name = "textBox3";
     textBox3.ScrollBars = ScrollBars.Both;
-    textBox3.Size = new Size(609, 267);
+    textBox3.Size = new Size(931, 411);
     textBox3.TabIndex = 6;
+    // 
+    // panel1
+    // 
+    panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+    panel1.Controls.Add(textBox1);
+    panel1.Controls.Add(textBox2);
+    panel1.Controls.Add(button3);
+    panel1.Controls.Add(button1);
+    panel1.Controls.Add(button2);
+    panel1.Location = new Point(12, 12);
+    panel1.Name = "panel1";
+    panel1.Size = new Size(931, 162);
+    panel1.TabIndex = 7;
     // 
     // Form1
     // 
-    AutoScaleDimensions = new SizeF(7F, 17F);
+    AutoScaleDimensions = new SizeF(7F, 15F);
     AutoScaleMode = AutoScaleMode.Font;
-    ClientSize = new Size(955, 683);
+    ClientSize = new Size(955, 603);
+    Controls.Add(panel1);
     Controls.Add(textBox3);
-    Controls.Add(button3);
-    Controls.Add(button2);
-    Controls.Add(textBox2);
-    Controls.Add(button1);
-    Controls.Add(textBox1);
     Name = "Form1";
     Text = "Form1";
+    panel1.ResumeLayout(false);
+    panel1.PerformLayout();
     ResumeLayout(false);
     PerformLayout();
   }
@@ -122,4 +136,5 @@ partial class Form1
   private Button button2;
   private Button button3;
   private TextBox textBox3;
+  private Panel panel1;
 }
