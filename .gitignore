@@ -27,12 +27,17 @@ TestResults/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
-bld/
 [Bb]in/
 [Oo]bj/
+[Pp]ackages/*
 [Ll]og/
+x86/
+x64/
+build/
+bld/
+
+
+
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -296,3 +301,31 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# =========================
+# Windows detritus
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+*/[Aa]pp_[Dd]ata/*
+!*/[Aa]pp_[Dd]ata/[Ww]eb.config
+!*/[Aa]pp_[Dd]ata/Git/
+!*/[Aa]pp_[Dd]ata/note.txt
+!*/[Aa]pp_[Dd]ata/Repositories/note.txt
+
+*/[Bb]in/*
+!*/[Bb]in/[Ww]eb.config
+.vs
+
+
+nupkgs
+nupkgs/*
