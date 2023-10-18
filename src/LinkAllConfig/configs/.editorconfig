@@ -67,7 +67,12 @@ csharp_style_expression_bodied_local_functions = false:silent
 csharp_style_prefer_top_level_statements = true:silent
 csharp_style_prefer_primary_constructors = true:suggestion
 dotnet_diagnostic.IDE0063.severity = suggestion
-dotnet_diagnostic.IDE0161.severity = error
+dotnet_diagnostic.IDE0161.severity = warning
+csharp_style_throw_expression = true:suggestion
+csharp_style_prefer_null_check_over_type_check = true:suggestion
+csharp_prefer_simple_default_expression = true:suggestion
+csharp_style_prefer_local_over_anonymous_function = true:suggestion
+csharp_style_prefer_index_operator = true:suggestion
 
 [*.{cs,vb}]
 #### Naming styles ####

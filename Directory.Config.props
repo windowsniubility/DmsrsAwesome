@@ -22,7 +22,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Label="Packages">
-		<PackageId>DMSRS.$(AssemblyName)</PackageId>
+		<PackageId>$(AssemblyName)</PackageId>
 		<Title>$(AssemblyName)</Title>
 		<PackageTags>EmitMapper;Mapper;POCO;Object Mapping</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
