@@ -34,7 +34,7 @@
 		<Message Text="SemVerBuildSuffix :  $(SemVerBuildSuffix)" Importance="high" />
 		<Message Text="Version :  $(Version)" Importance="high" />
 	</Target>
-	
+
 	<Target Name="MyOptimize" BeforeTargets="Build" Condition="false">
 		<Message
 			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) ======="
