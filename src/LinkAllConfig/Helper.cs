@@ -1,34 +1,32 @@
 ﻿namespace LinkAllConfig;
 
-/// <summary>
-/// The helper.
-/// </summary>
+/// <summary> The helper. </summary>
 internal static class Helper
 {
-  /// <summary>
-  /// The target file path.
-  /// </summary>
+  /// <summary> The target file path. </summary>
   private const string TargetFilePath = @"C:\Windows\System32\fsutil.exe";
 
-  /// <summary>
-  /// Lists the links.
-  /// </summary>
-  /// <param name="target">   The target. </param>
-  /// <param name="callback"> The callback. </param>
+  /// <summary> Lists the links. </summary>
+  /// <param name="target"> The target. </param>
+  /// <param name="result"> The result. </param>
   /// <returns> A Task. </returns>
-  public static async Task<string> ListLinks(string target, Action<string> callback)
+  public static async Task ListLinks(string target, StringBuilder result)
   {
-    var result = new StringBuilder();
-    _ = await Cli.Wrap(TargetFilePath)
-    .WithArguments(args => args.Add("hardlink").Add("list").Add(target))
-    .WithStandardOutputPipe(PipeTarget.ToStringBuilder(result))
-    .ExecuteAsync();
-    return await Task.FromResult(result.ToString());
+    try
+    {
+      _ = await Cli.Wrap(TargetFilePath)
+      .WithArguments(args => args.Add("hardlink").Add("list").Add(target))
+      .WithStandardOutputPipe(PipeTarget.ToStringBuilder(result))
+      .ExecuteAsync();
+      _ = await Task.FromResult(result.ToString());
+    }
+    catch (Exception ex)
+    {
+      _ = result.AppendLine(ex.ToString());
+    }
   }
 
-  /// <summary>
-  /// Makes the file hard links.
-  /// </summary>
+  /// <summary> Makes the file hard links. </summary>
   /// <param name="links">  The links. </param>
   /// <param name="target"> The target. </param>
   /// <param name="result"> The result. </param>
