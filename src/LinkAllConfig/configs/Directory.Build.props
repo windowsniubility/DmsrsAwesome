@@ -32,7 +32,7 @@
 		<GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
 		<GenerateDependencyFile>true</GenerateDependencyFile>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<GeneratePackageOnBuild Condition="'$(IsTestProject)' != 'true'">false</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild Condition="'$(IsTestProject)' != 'true'">true</GeneratePackageOnBuild>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<GenerateFullPaths Condition="'$(TERM_PROGRAM)' == 'vscode'">true</GenerateFullPaths>
 		<!--如果将 GenerateAssemblyInfo 设置为 false，xunit 无法执行，因为 xunit 需要使用程序集信息来查找测试。-->
