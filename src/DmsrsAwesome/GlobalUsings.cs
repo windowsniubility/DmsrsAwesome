@@ -1,21 +1,2 @@
-global // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="ShiftMe, Inc.">
-//     2010-2013
-// </copyright>
-// <summary>
-// AssemblyInfo.cs
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-using System.Reflection;
-global // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="ShiftMe, Inc.">
-//     2010-2013
-// </copyright>
-// <summary>
-// AssemblyInfo.cs
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-using System.Runtime.InteropServices;
+global using System.Reflection;
+global using System.Runtime.InteropServices;

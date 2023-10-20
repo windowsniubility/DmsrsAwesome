@@ -235,7 +235,7 @@
 		<TFMS_NORMAL>net7.0</TFMS_NORMAL>
 		<TFMS_TEST>net7.0</TFMS_TEST>
 		<TFMS_SINGLE>net7.0</TFMS_SINGLE>
-		<TFMS_WINDOWS>net7.0-windows;</TFMS_WINDOWS>
+		<TFMS_WINDOWS>net7.0-windows</TFMS_WINDOWS>
 	</PropertyGroup>
 	<PropertyGroup Label="Versions" Condition="!Exists($([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory))))">
 		<Version>0.0.1</Version>

@@ -27,10 +27,10 @@
 	</PropertyGroup>
 
 	<PropertyGroup Label="TFM">
-		<TFMS_LIB>net6.0;net7.0</TFMS_LIB>
-		<TFMS_NORMAL>net6.0;net7.0</TFMS_NORMAL>
-		<TFMS_TEST>net6.0;net7.0</TFMS_TEST>
+		<TFMS_LIB>net7.0</TFMS_LIB>
+		<TFMS_NORMAL>net7.0</TFMS_NORMAL>
+		<TFMS_TEST>net7.0</TFMS_TEST>
 		<TFMS_SINGLE>net7.0</TFMS_SINGLE>
-		<TFMS_WINDOWS>net6.0-windows;net7.0-windows;</TFMS_WINDOWS>
+		<TFMS_WINDOWS>net7.0-windows;</TFMS_WINDOWS>
 	</PropertyGroup>
 </Project>
