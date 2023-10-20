@@ -10,11 +10,14 @@ public class UnitTest1
   {
     var cmd = new Command("fsutil");
     cmd.AddCommand(new Command("hardlink"));
-    cmd.AddArgument(new Argument<string>()
-    {
-      Name = "f1"
-    });
-    cmd.AddArgument(new Argument<string> { Description = "f2" });
+    var argument = new Argument<string>();
+
+    argument.Name = "f1";
+
+    cmd.AddArgument(argument);
+    var argument1 = new Argument<string>();
+    argument1.Description = "f2";
+    cmd.AddArgument(argument1);
 
     Console.WriteLine(cmd);
   }

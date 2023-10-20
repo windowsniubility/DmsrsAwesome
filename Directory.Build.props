@@ -77,21 +77,39 @@
 		<None Include="$(AssertDir)**/*.*" Condition="Exists('$(AssertDir)')">
 			<Link> Solution Items/%(RecursiveDir)/%(Filename)%(Extension)</Link>
 		</None>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Condition="'$(GITHUB_ACTIONS)' == 'true' and '$(IsTestProject)' != 'true'">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-		</PackageReference>
+	
 	</ItemGroup>
+	<ItemDefinitionGroup>
+		<!-- We always want MSBuild properties generated that point at the restored location of each package. -->
+		<PackageReference GeneratePathProperty="true" />
+	</ItemDefinitionGroup>
+	
 	<PropertyGroup>
 		<GitVersionBaseDirectory>$(MSBuildThisFileDirectory)</GitVersionBaseDirectory>
 	</PropertyGroup>
+	<ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)stylecop.json')">
+		<AdditionalFiles  Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />
+	</ItemGroup>
 	<ItemGroup>
+		<None Condition="Exists('$(MSBuildThisFileDirectory)3rdPartyNotices.txt')" Include="$(MSBuildThisFileDirectory)3rdPartyNotices.txt" Pack="true" PackagePath="" />		
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Condition="'$(GITHUB_ACTIONS)' == 'true' and '$(IsTestProject)' != 'true'">			
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
 		<PackageReference Include="Nerdbank.GitVersioning" Condition="!Exists('packages.config')">
 			<PrivateAssets>all</PrivateAssets>
 			<Version>3.6.133</Version>
 		</PackageReference>
+		<PackageReference Include="CSharpIsNullAnalyzer" Version="0.1.495" />
+		<PackageReference Include="DotNetAnalyzers.DocumentationAnalyzers" Version="1.0.0-beta.59" />
+		<PackageReference Include="Nullable" Version="1.3.1" />
+		<PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.507" />
 	</ItemGroup>
-
+	<Target Name="PrepareReleaseNotes" BeforeTargets="GenerateNuspec" DependsOnTargets="GetBuildVersion">
+		<PropertyGroup>
+			<PackageReleaseNotes Condition="'$(PackageProjectUrl)'!=''">$(PackageProjectUrl)/releases/tag/v$(Version)</PackageReleaseNotes>
+		</PropertyGroup>
+	</Target>
 	<PropertyGroup>
 		<ReadmeInTree>$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove(README.md,$(ProjDir)))','$(AssertDir)README.md'))))</ReadmeInTree>
 		<IconPngInTree>$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove(icon.png,$(ProjDir)))','$(AssertDir)icon.png'))))</IconPngInTree>

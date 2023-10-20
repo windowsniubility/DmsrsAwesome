@@ -7,11 +7,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using DmsrsAwesome.Properties;
-using System.Diagnostics;
-using System.Globalization;
-using System.Reflection;
-
 namespace DmsrsAwesome;
 
 /// <summary>
@@ -274,17 +269,18 @@ public partial class MainWindow : Form
           link,
           target);
 
-      var processStartInfo = new ProcessStartInfo
-      {
-        FileName = "cmd",
-        Arguments = stringCommand,
-        UseShellExecute = false,
-        CreateNoWindow = true,
-        RedirectStandardError = true,
-        RedirectStandardOutput = true
-      };
+      var processStartInfo = new ProcessStartInfo();
 
-      var process = new Process { StartInfo = processStartInfo, EnableRaisingEvents = true };
+      processStartInfo.FileName = "cmd";
+      processStartInfo.Arguments = stringCommand;
+      processStartInfo.UseShellExecute = false;
+      processStartInfo.CreateNoWindow = true;
+      processStartInfo.RedirectStandardError = true;
+      processStartInfo.RedirectStandardOutput = true;
+
+      var process = new Process();
+      process.StartInfo = processStartInfo;
+      process.EnableRaisingEvents = true;
       process.ErrorDataReceived += process_ErrorDataReceived;
       process.OutputDataReceived += process_OutputDataReceived;
       _ = process.Start();
