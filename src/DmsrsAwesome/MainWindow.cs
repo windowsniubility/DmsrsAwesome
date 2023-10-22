@@ -1,7 +1,20 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainWindow.cs" company="ShiftMe, Inc.">
-//   2010-2013
-// </copyright>
+﻿// Copyright (c) .NET Foundation and Contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) .NET Foundation and Contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) .NET Foundation and Contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) .NET Foundation and Contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) .NET Foundation and Contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) .NET Foundation and Contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// Copyright (c) .NET Foundation and Contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// --------------------------------------------------------------------------------------------------------------------
+// Copyright (c) .NET Foundation and Contributors. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // <summary>
 //   This class manages the window
 // </summary>
@@ -10,7 +23,7 @@
 namespace DmsrsAwesome;
 
 /// <summary>
-///   This class manages the window
+///   This class manages the window.
 /// </summary>
 public partial class MainWindow : Form
 {
@@ -21,7 +34,8 @@ public partial class MainWindow : Form
   private bool folder;
 
   /// <summary>
-  ///   The constructor
+  /// Initializes a new instance of the <see cref="MainWindow"/> class.
+  ///   The constructor.
   /// </summary>
   public MainWindow()
   {
@@ -48,21 +62,21 @@ public partial class MainWindow : Form
   }
 
   /// <summary>
-  ///   This Method lets you select the type of link you want to create
+  ///   This Method lets you select the type of link you want to create.
   /// </summary>
-  /// <returns>String with the type of link to create</returns>
+  /// <returns>String with the type of link to create.</returns>
   private string ComboBoxSelection()
   {
     return linkTypeComboBox.SelectedIndex switch
     {
       1 => "/H ",
       2 => "/J ",
-      _ => string.Empty
+      _ => string.Empty,
     };
   }
 
   /// <summary>
-  ///   Creates the link if the conditions are met
+  ///   Creates the link if the conditions are met.
   /// </summary>
   private void CreateLink()
   {
@@ -213,17 +227,17 @@ public partial class MainWindow : Form
     var assembly = Assembly.GetExecutingAssembly();
     var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
     version = fvi.FileVersion;
-    //try
-    //{
+
+    // try
+    // {
     //  version = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString();
-    //}
-    //catch
-    //{
+    // }
+    // catch
+    // {
     //  var assembly = Assembly.GetExecutingAssembly();
     //  var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
     //  version = fvi.FileVersion;
-    //}
-
+    // }
     _ = MessageBox.Show(
         string.Format(CultureInfo.CurrentCulture, Resources.AboutDescription, version),
         Resources.MessageBoxAboutTitle,
@@ -231,7 +245,7 @@ public partial class MainWindow : Form
         MessageBoxIcon.Information);
   }
 
-  private void process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+  private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
   {
     if (!string.IsNullOrEmpty(e.Data))
     {
@@ -239,7 +253,7 @@ public partial class MainWindow : Form
     }
   }
 
-  private void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
+  private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
   {
     if (!string.IsNullOrEmpty(e.Data))
     {
@@ -251,12 +265,13 @@ public partial class MainWindow : Form
   ///   This method build a string using the paramethers provided by the user, after that, it start a new
   ///   cmd.exe process with the string just built.
   /// </summary>
-  /// <param name="link">Path to the place you want your symlink</param>
+  /// <param name="link">Path to the place you want your symlink.</param>
   private void SendCommand(string link)
   {
     try
     {
       var target = string.Format(CultureInfo.InvariantCulture, "\"{0}\"", destinationLocationTextBox.Text);
+
       // concatenates a pair of "", this is to make folders with spaces to work
       var typeLink = ComboBoxSelection();
       var directory = folder ? "/D " : string.Empty;
@@ -269,20 +284,23 @@ public partial class MainWindow : Form
           link,
           target);
 
-      var processStartInfo = new ProcessStartInfo();
+      var processStartInfo = new ProcessStartInfo
+      {
+        FileName = "cmd",
+        Arguments = stringCommand,
+        UseShellExecute = false,
+        CreateNoWindow = true,
+        RedirectStandardError = true,
+        RedirectStandardOutput = true,
+      };
 
-      processStartInfo.FileName = "cmd";
-      processStartInfo.Arguments = stringCommand;
-      processStartInfo.UseShellExecute = false;
-      processStartInfo.CreateNoWindow = true;
-      processStartInfo.RedirectStandardError = true;
-      processStartInfo.RedirectStandardOutput = true;
-
-      var process = new Process();
-      process.StartInfo = processStartInfo;
-      process.EnableRaisingEvents = true;
-      process.ErrorDataReceived += process_ErrorDataReceived;
-      process.OutputDataReceived += process_OutputDataReceived;
+      var process = new Process
+      {
+        StartInfo = processStartInfo,
+        EnableRaisingEvents = true,
+      };
+      process.ErrorDataReceived += Process_ErrorDataReceived;
+      process.OutputDataReceived += Process_OutputDataReceived;
       _ = process.Start();
       process.BeginOutputReadLine();
       process.BeginErrorReadLine();
@@ -301,7 +319,7 @@ public partial class MainWindow : Form
   }
 
   /// <summary>
-  ///   This method allows to switch modes between file or folder symlinks
+  ///   This method allows to switch modes between file or folder symlinks.
   /// </summary>
   private void Switcher()
   {
