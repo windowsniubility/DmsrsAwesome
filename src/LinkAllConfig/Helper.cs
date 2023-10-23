@@ -28,9 +28,9 @@ internal class Helper
     try
     {
       _ = await Cli.Wrap(targetFilePath)
-  .WithArguments(args => args.Add("hardlink").Add("list").Add(target))
-  .WithStandardOutputPipe(PipeTarget.ToDelegate(Output))
-  .ExecuteAsync();
+.WithArguments(args => args.Add("hardlink").Add("list").Add(target))
+.WithStandardOutputPipe(PipeTarget.ToDelegate(Output))
+.ExecuteAsync();
     }
     catch (Exception ex)
     {
@@ -43,11 +43,11 @@ internal class Helper
   /// </summary>
   /// <param name="linkFolder">The link folder.</param>
   /// <param name="targetsParent">The targets parent.</param>
-  /// <param name="signal"></param>
+  /// <param name="signal">The signal.</param>
   /// <returns>A Task.</returns>
   public async Task MakeFileHardLinks(string linkFolder, string targetsParent, CancellationToken signal = default)
   {
-    var outpipe = PipeTarget.ToDelegate(Output);
+    var outputPipe = PipeTarget.ToDelegate(Output);
     foreach (var target in Directory.EnumerateFiles(targetsParent))
     {
       if (signal.IsCancellationRequested)
@@ -71,8 +71,8 @@ internal class Helper
         {
           var cmd = Cli.Wrap(targetFilePath)
               .WithArguments(args => args.Add("hardlink").Add("create").Add(link).Add(target))
-              .WithStandardOutputPipe(outpipe)
-              .WithStandardErrorPipe(outpipe)
+              .WithStandardOutputPipe(outputPipe)
+              .WithStandardErrorPipe(outputPipe)
 
       // .WithValidation(CommandResultValidation.None)
       ;
