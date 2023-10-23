@@ -3,42 +3,39 @@ namespace LinkAllConfig;
 /// <summary> The form1. </summary>
 public partial class Form1 : Form
 {
+  private Helper helper;
+  private readonly Action<string> output = s =>
+  {
+    Debug.WriteLine(s);
+   // this
+  };
   /// <summary> Initializes a new instance of the <see cref="Form1"/> class. </summary>
   public Form1()
   {
     InitializeComponent();
+    this.txtFsutilPath.Text = @"C:\Windows\System32\fsutil.exe";
+    this.helper = new Helper(this.txtFsutilPath.Text, output);
   }
 
   private async void btnCreateLinks_Click(object sender, EventArgs e)
   {
-    var result = new StringBuilder();
-    foreach (var target in Directory.EnumerateFiles(textBox1.Text))
-    {
-      var folders = Directory.EnumerateDirectories(textBox2.Text);
-
-      var links = from folder in folders select Path.Combine(folder, Path.GetFileName(target));
-      await Helper.MakeFileHardLinks(links, target, result);
-    }
-
-    textBox3.Text = result.ToString();
+    await helper.MakeFileHardLinks(txtLIinks.Text,txtTargets.Text);
   }
 
   private void btnSelectLinkFolder_Click(object sender, EventArgs e)
   {
     _ = folderBrowserDialog1.ShowDialog(this);
-    textBox2.Text = folderBrowserDialog1.SelectedPath;
+    txtLIinks.Text = folderBrowserDialog1.SelectedPath;
   }
 
   /// <summary> btns the sel targets_ click. </summary>
   private async void BtnSelTargets_ClickAsync(object sender, EventArgs e)
   {
-    var result = new StringBuilder();
     switch (folderBrowserDialog1.ShowDialog(this))
     {
       case DialogResult.OK:
-        textBox1.Text = folderBrowserDialog1.SelectedPath;
-        await Helper.ListLinks(textBox1.Text, result);
-        textBox3.Text = result.ToString();
+        txtTargets.Text = folderBrowserDialog1.SelectedPath;
+        await helper.ListLinks(txtTargets.Text);
         break;
       case DialogResult.Abort:
 
@@ -46,6 +43,22 @@ public partial class Form1 : Form
         break;
     }
 
+
+  }
+
+  private void btnSelectTool_Click(object sender, EventArgs e)
+  {
+    switch (this.openFileDialog1.ShowDialog(this))
+    {
+      case DialogResult.OK:
+        txtFsutilPath.Text = openFileDialog1.FileName;
+        helper = new Helper(txtFsutilPath.Text, output);
+        break;
+      case DialogResult.Abort:
+
+      case DialogResult.Cancel:
+        break;
+    }
 
   }
 }
