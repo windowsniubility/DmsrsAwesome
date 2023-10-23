@@ -9,31 +9,7 @@ public partial class Form1 : Form
     InitializeComponent();
   }
 
-  /// <summary> button1_S the click. </summary>
-  /// <param name="sender"> The sender. </param>
-  /// <param name="e">      The e. </param>
-  private async void button1_Click(object sender, EventArgs e)
-  {
-    _ = folderBrowserDialog1.ShowDialog(this);
-    textBox1.Text = folderBrowserDialog1.SelectedPath;
-    var result = new StringBuilder();
-    await Helper.ListLinks(textBox1.Text, result);
-    textBox3.Text = result.ToString();
-  }
-
-  /// <summary> button2_S the click. </summary>
-  /// <param name="sender"> The sender. </param>
-  /// <param name="e">      The e. </param>
-  private void button2_Click(object sender, EventArgs e)
-  {
-    _ = folderBrowserDialog1.ShowDialog(this);
-    textBox2.Text = folderBrowserDialog1.SelectedPath;
-  }
-
-  /// <summary> button3_S the click. </summary>
-  /// <param name="sender"> The sender. </param>
-  /// <param name="e">      The e. </param>
-  private async void button3_Click(object sender, EventArgs e)
+  private async void btnCreateLinks_Click(object sender, EventArgs e)
   {
     var result = new StringBuilder();
     foreach (var target in Directory.EnumerateFiles(textBox1.Text))
@@ -45,5 +21,31 @@ public partial class Form1 : Form
     }
 
     textBox3.Text = result.ToString();
+  }
+
+  private void btnSelectLinkFolder_Click(object sender, EventArgs e)
+  {
+    _ = folderBrowserDialog1.ShowDialog(this);
+    textBox2.Text = folderBrowserDialog1.SelectedPath;
+  }
+
+  /// <summary> btns the sel targets_ click. </summary>
+  private async void BtnSelTargets_ClickAsync(object sender, EventArgs e)
+  {
+    var result = new StringBuilder();
+    switch (folderBrowserDialog1.ShowDialog(this))
+    {
+      case DialogResult.OK:
+        textBox1.Text = folderBrowserDialog1.SelectedPath;
+        await Helper.ListLinks(textBox1.Text, result);
+        textBox3.Text = result.ToString();
+        break;
+      case DialogResult.Abort:
+
+      case DialogResult.Cancel:
+        break;
+    }
+
+
   }
 }

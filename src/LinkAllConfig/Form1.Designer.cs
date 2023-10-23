@@ -30,13 +30,14 @@ partial class Form1
   {
     openFileDialog1 = new OpenFileDialog();
     textBox1 = new TextBox();
-    button1 = new Button();
+    btnSelTargets = new Button();
     folderBrowserDialog1 = new FolderBrowserDialog();
     textBox2 = new TextBox();
-    button2 = new Button();
-    button3 = new Button();
+    btnSelectLinkFolder = new Button();
+    btnCreateLinks = new Button();
     textBox3 = new TextBox();
     panel1 = new Panel();
+    ListTargetFiles = new ListView();
     panel1.SuspendLayout();
     SuspendLayout();
     // 
@@ -52,52 +53,52 @@ partial class Form1
     textBox1.Size = new Size(757, 23);
     textBox1.TabIndex = 0;
     // 
-    // button1
+    // btnSelTargets
     // 
-    button1.Location = new Point(766, 3);
-    button1.Name = "button1";
-    button1.Size = new Size(75, 26);
-    button1.TabIndex = 1;
-    button1.Text = "选择";
-    button1.UseVisualStyleBackColor = true;
-    button1.Click += button1_Click;
+    btnSelTargets.Location = new Point(766, 3);
+    btnSelTargets.Name = "btnSelTargets";
+    btnSelTargets.Size = new Size(75, 23);
+    btnSelTargets.TabIndex = 1;
+    btnSelTargets.Text = "选择";
+    btnSelTargets.UseVisualStyleBackColor = true;
+    btnSelTargets.Click += BtnSelTargets_ClickAsync;
     // 
     // textBox2
     // 
-    textBox2.Location = new Point(3, 32);
+    textBox2.Location = new Point(3, 28);
     textBox2.Name = "textBox2";
     textBox2.PlaceholderText = "选择分发目录";
     textBox2.Size = new Size(757, 23);
     textBox2.TabIndex = 2;
     // 
-    // button2
+    // btnSelectLinkFolder
     // 
-    button2.Location = new Point(766, 29);
-    button2.Name = "button2";
-    button2.Size = new Size(75, 26);
-    button2.TabIndex = 3;
-    button2.Text = "选择";
-    button2.UseVisualStyleBackColor = true;
-    button2.Click += button2_Click;
+    btnSelectLinkFolder.Location = new Point(766, 26);
+    btnSelectLinkFolder.Name = "btnSelectLinkFolder";
+    btnSelectLinkFolder.Size = new Size(75, 23);
+    btnSelectLinkFolder.TabIndex = 3;
+    btnSelectLinkFolder.Text = "选择";
+    btnSelectLinkFolder.UseVisualStyleBackColor = true;
+    btnSelectLinkFolder.Click += btnSelectLinkFolder_Click;
     // 
-    // button3
+    // btnCreateLinks
     // 
-    button3.Location = new Point(782, 136);
-    button3.Name = "button3";
-    button3.Size = new Size(75, 26);
-    button3.TabIndex = 5;
-    button3.Text = "button3";
-    button3.UseVisualStyleBackColor = true;
-    button3.Click += button3_Click;
+    btnCreateLinks.Location = new Point(847, 26);
+    btnCreateLinks.Name = "btnCreateLinks";
+    btnCreateLinks.Size = new Size(75, 23);
+    btnCreateLinks.TabIndex = 5;
+    btnCreateLinks.Text = "Create";
+    btnCreateLinks.UseVisualStyleBackColor = true;
+    btnCreateLinks.Click += btnCreateLinks_Click;
     // 
     // textBox3
     // 
     textBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-    textBox3.Location = new Point(12, 204);
+    textBox3.Location = new Point(12, 396);
     textBox3.Multiline = true;
     textBox3.Name = "textBox3";
     textBox3.ScrollBars = ScrollBars.Both;
-    textBox3.Size = new Size(931, 465);
+    textBox3.Size = new Size(931, 195);
     textBox3.TabIndex = 6;
     textBox3.WordWrap = false;
     // 
@@ -106,19 +107,28 @@ partial class Form1
     panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
     panel1.Controls.Add(textBox1);
     panel1.Controls.Add(textBox2);
-    panel1.Controls.Add(button3);
-    panel1.Controls.Add(button1);
-    panel1.Controls.Add(button2);
-    panel1.Location = new Point(12, 14);
+    panel1.Controls.Add(btnCreateLinks);
+    panel1.Controls.Add(btnSelTargets);
+    panel1.Controls.Add(btnSelectLinkFolder);
+    panel1.Location = new Point(12, 12);
     panel1.Name = "panel1";
-    panel1.Size = new Size(931, 184);
+    panel1.Size = new Size(931, 106);
     panel1.TabIndex = 7;
+    // 
+    // ListTargetFiles
+    // 
+    ListTargetFiles.Location = new Point(12, 145);
+    ListTargetFiles.Name = "ListTargetFiles";
+    ListTargetFiles.Size = new Size(927, 97);
+    ListTargetFiles.TabIndex = 8;
+    ListTargetFiles.UseCompatibleStateImageBehavior = false;
     // 
     // Form1
     // 
-    AutoScaleDimensions = new SizeF(7F, 17F);
+    AutoScaleDimensions = new SizeF(7F, 15F);
     AutoScaleMode = AutoScaleMode.Font;
-    ClientSize = new Size(955, 683);
+    ClientSize = new Size(955, 603);
+    Controls.Add(ListTargetFiles);
     Controls.Add(panel1);
     Controls.Add(textBox3);
     Name = "Form1";
@@ -133,11 +143,12 @@ partial class Form1
 
   private OpenFileDialog openFileDialog1;
   private TextBox textBox1;
-  private Button button1;
+  private Button btnSelTargets;
   private FolderBrowserDialog folderBrowserDialog1;
   private TextBox textBox2;
-  private Button button2;
-  private Button button3;
+  private Button btnSelectLinkFolder;
+  private Button btnCreateLinks;
   private TextBox textBox3;
   private Panel panel1;
+  private ListView ListTargetFiles;
 }
