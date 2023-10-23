@@ -43,18 +43,25 @@ internal class Helper
   /// </summary>
   /// <param name="linkFolder">The link folder.</param>
   /// <param name="targetsParent">The targets parent.</param>
+  /// <param name="signal"></param>
   /// <returns>A Task.</returns>
-  public async Task MakeFileHardLinks(string linkFolder, string targetsParent)
+  public async Task MakeFileHardLinks(string linkFolder, string targetsParent, CancellationToken signal = default)
   {
     var outpipe = PipeTarget.ToDelegate(Output);
     foreach (var target in Directory.EnumerateFiles(targetsParent))
     {
-      var folders = Directory.EnumerateDirectories(linkFolder);
-
-      var links = from folder in folders select Path.Combine(folder, Path.GetFileName(target));
-
-      foreach (var link in links)
+      if (signal.IsCancellationRequested)
       {
+        break;
+      }
+
+      foreach (var link in from folder in Directory.EnumerateDirectories(linkFolder) select Path.Combine(folder, Path.GetFileName(target)))
+      {
+        if (signal.IsCancellationRequested)
+        {
+          break;
+        }
+
         if (File.Exists(link))
         {
           File.Delete(link);

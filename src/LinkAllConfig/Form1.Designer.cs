@@ -35,7 +35,7 @@ partial class Form1
     txtLIinks = new TextBox();
     btnSelectLinkFolder = new Button();
     btnCreateLinks = new Button();
-    textBox3 = new TextBox();
+    txtOutput = new TextBox();
     panel1 = new Panel();
     txtFsutilPath = new TextBox();
     btnSelectTool = new Button();
@@ -81,7 +81,7 @@ partial class Form1
     btnSelectLinkFolder.TabIndex = 3;
     btnSelectLinkFolder.Text = "选择";
     btnSelectLinkFolder.UseVisualStyleBackColor = true;
-    btnSelectLinkFolder.Click += btnSelectLinkFolder_Click;
+    btnSelectLinkFolder.Click += BtnSelectLinkFolder_Click;
     // 
     // btnCreateLinks
     // 
@@ -91,18 +91,18 @@ partial class Form1
     btnCreateLinks.TabIndex = 5;
     btnCreateLinks.Text = "Create";
     btnCreateLinks.UseVisualStyleBackColor = true;
-    btnCreateLinks.Click += btnCreateLinks_Click;
+    btnCreateLinks.Click += BtnCreateLinks_Click;
     // 
-    // textBox3
+    // txtOutput
     // 
-    textBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-    textBox3.Location = new Point(12, 396);
-    textBox3.Multiline = true;
-    textBox3.Name = "textBox3";
-    textBox3.ScrollBars = ScrollBars.Both;
-    textBox3.Size = new Size(931, 195);
-    textBox3.TabIndex = 6;
-    textBox3.WordWrap = false;
+    txtOutput.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+    txtOutput.Location = new Point(12, 396);
+    txtOutput.Multiline = true;
+    txtOutput.Name = "txtOutput";
+    txtOutput.ScrollBars = ScrollBars.Both;
+    txtOutput.Size = new Size(931, 195);
+    txtOutput.TabIndex = 6;
+    txtOutput.WordWrap = false;
     // 
     // panel1
     // 
@@ -135,7 +135,7 @@ partial class Form1
     btnSelectTool.TabIndex = 1;
     btnSelectTool.Text = "选择";
     btnSelectTool.UseVisualStyleBackColor = true;
-    btnSelectTool.Click += btnSelectTool_Click;
+    btnSelectTool.Click += BtnSelectTool_Click;
     // 
     // ListTargetFiles
     // 
@@ -152,7 +152,7 @@ partial class Form1
     ClientSize = new Size(955, 603);
     Controls.Add(ListTargetFiles);
     Controls.Add(panel1);
-    Controls.Add(textBox3);
+    Controls.Add(txtOutput);
     Name = "Form1";
     Text = "Form1";
     panel1.ResumeLayout(false);
@@ -170,7 +170,7 @@ partial class Form1
   private TextBox txtLIinks;
   private Button btnSelectLinkFolder;
   private Button btnCreateLinks;
-  private TextBox textBox3;
+  private TextBox txtOutput;
   private Panel panel1;
   private ListView ListTargetFiles;
   private TextBox txtFsutilPath;

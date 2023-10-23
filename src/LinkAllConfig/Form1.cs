@@ -4,25 +4,42 @@ namespace LinkAllConfig;
 public partial class Form1 : Form
 {
   private Helper helper;
-  private readonly Action<string> output = s =>
-  {
-    Debug.WriteLine(s);
-   // this
-  };
+  private readonly Action<string> output;
+
   /// <summary> Initializes a new instance of the <see cref="Form1"/> class. </summary>
   public Form1()
   {
     InitializeComponent();
-    this.txtFsutilPath.Text = @"C:\Windows\System32\fsutil.exe";
-    this.helper = new Helper(this.txtFsutilPath.Text, output);
+    txtFsutilPath.Text = @"C:\Windows\System32\fsutil.exe";
+    output = s =>
+    {
+      Debug.WriteLine(s);
+
+      Invoke(() =>
+      {
+        txtOutput.AppendText(s);
+        txtOutput.AppendText(Environment.NewLine);
+      });
+    };
+    helper = new Helper(txtFsutilPath.Text, output);
   }
 
-  private async void btnCreateLinks_Click(object sender, EventArgs e)
+  /// <summary>
+  /// btns the create links_ click.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
+  private async void BtnCreateLinks_Click(object sender, EventArgs e)
   {
-    await helper.MakeFileHardLinks(txtLIinks.Text,txtTargets.Text);
+    await helper.MakeFileHardLinks(txtLIinks.Text, txtTargets.Text);
   }
 
-  private void btnSelectLinkFolder_Click(object sender, EventArgs e)
+  /// <summary>
+  /// btns the select link folder_ click.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
+  private void BtnSelectLinkFolder_Click(object sender, EventArgs e)
   {
     _ = folderBrowserDialog1.ShowDialog(this);
     txtLIinks.Text = folderBrowserDialog1.SelectedPath;
@@ -42,13 +59,16 @@ public partial class Form1 : Form
       case DialogResult.Cancel:
         break;
     }
-
-
   }
 
-  private void btnSelectTool_Click(object sender, EventArgs e)
+  /// <summary>
+  /// btns the select tool_ click.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
+  private void BtnSelectTool_Click(object sender, EventArgs e)
   {
-    switch (this.openFileDialog1.ShowDialog(this))
+    switch (openFileDialog1.ShowDialog(this))
     {
       case DialogResult.OK:
         txtFsutilPath.Text = openFileDialog1.FileName;
@@ -59,6 +79,5 @@ public partial class Form1 : Form
       case DialogResult.Cancel:
         break;
     }
-
   }
 }
