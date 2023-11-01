@@ -55,27 +55,18 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 	<ItemGroup>
-		<None Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BaseOutputPath)**/***.props;$(BaseIntermediateOutputPath)**/***.props">
+		<None LinkBase="_Solution Items/Directory.Build" Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BaseOutputPath)**/***.props;$(BaseIntermediateOutputPath)**/***.props" />
+		<None LinkBase="_Solution Items/Directory.Build"  Include="$(PropsDir)**/*.targets" Exclude="$(PropsDir)**/*.g.targets" />
+		<None LinkBase="_Solution Items"  Include="$(PropsDir)*.*" Exclude="$(PropsDir)**/*.props;$(PropsDir)**/*.targets"/>
+		<None LinkBase="_Solution Items/.github" Include="$(PropsDir).github/**/*.*"			/>
+		<None LinkBase="_Solution Items/.gitee" Include="$(PropsDir).gitee/**/*.*"/>
+		<None LinkBase="_Solution Items" Include="$(AssertDir)**/*.*" Condition="Exists('$(AssertDir)')"/>
+		
+		<!--
+		<None LinkBase="_Solution Items/Directory.Build" Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BaseOutputPath)**/***.props;$(BaseIntermediateOutputPath)**/***.props">
 			<Link> Solution Items/Directory.Build/%(RecursiveDir)/%(Filename)%(Extension)</Link>
-		</None>
-		<None Include="$(PropsDir)**/*.targets" Exclude="$(PropsDir)**/*.g.targets">
-			<Link> Solution Items/Directory.Build/%(RecursiveDir)/%(Filename)%(Extension)</Link>
-		</None>
-		<None Include="$(PropsDir)*.*" Exclude="$(PropsDir)**/*.props;$(PropsDir)**/*.targets">
-			<Link> Solution Items/%(Filename)%(Extension)</Link>
-		</None>
-		<None Include="$(PropsDir).github/**/*.*">
-			<Link> Solution Items/.github/%(RecursiveDir)/%(Filename)%(Extension)</Link>
-		</None>
-		<None Include="$(PropsDir).gitee/**/*.*">
-			<Link> Solution Items/.gitee/%(RecursiveDir)/%(Filename)%(Extension)</Link>
-		</None>
-		<!--<None Include="$(PropsDir)**/*.csproj" Condition="Exists('$(PropsDir)')">
-            <Link> Solution Items/.csproj/%(Filename)%(Extension)</Link>
-        </None>-->
-		<None Include="$(AssertDir)**/*.*" Condition="Exists('$(AssertDir)')">
-			<Link> Solution Items/%(RecursiveDir)/%(Filename)%(Extension)</Link>
-		</None>
+		</None
+		-->
 	</ItemGroup>
 	<ItemDefinitionGroup>
 		<!-- We always want MSBuild properties generated that point at the restored location of each package. -->
