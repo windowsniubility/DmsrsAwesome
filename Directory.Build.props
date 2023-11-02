@@ -3,12 +3,17 @@
 	please provide your good idea if you change this file content	-->
 	<Import  Project="$([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..))"
 			 Condition ="Exists($([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..)))" />
-	<Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Debug.props, $(MSBuildThisFileDirectory)))" Condition="Exists($([MSBuild]::GetPathOfFileAbove(Directory.Debug.props, $(MSBuildThisFileDirectory))))" />
-	<Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory)))" Condition="Exists($([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory))))" />
 	<PropertyGroup Label="RootPath">
 		<PropsDir>$([MSBuild]::NormalizeDirectory($(MSBuildThisFileDirectory)))</PropsDir>
 		<ProjDir>$([MSBuild]::NormalizeDirectory($(MSBuildProjectDirectory)))</ProjDir>
 		<AssertDir>$([MSBuild]::NormalizeDirectory("$(PropsDir)","solution"))</AssertDir>
+
+		<ReadmeInTree>$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove(README.md,$(ProjDir)))','$(AssertDir)README.md'))))</ReadmeInTree>
+		<IconPngInTree>$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove(icon.png,$(ProjDir)))','$(AssertDir)icon.png'))))</IconPngInTree>
+		<AppIcoInTree>$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove(app.ico,$(ProjDir)))','$(AssertDir)app.ico'))))</AppIcoInTree>
+		<ChangeLogInTree Condition="'$(ChangeLogFileName)'!=''">$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove($([System.IO.Path]::GetFileName('$(ChangeLogFileName)')),$(ProjDir)))','$(AssertDir)$([System.IO.Path]::GetFileName('$(ChangeLogFileName)'))'))))</ChangeLogInTree>
+		<DescriptionInTree Condition="'$(ProjectDescriptionFileName)'!=''">$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove($([System.IO.Path]::GetFileName('$(ProjectDescriptionFileName)')),$(ProjDir)))','$(AssertDir)$([System.IO.Path]::GetFileName('$(ProjectDescriptionFileName)'))'))))</DescriptionInTree>
+		<CertificateFileInTree Condition="'$(CertificateFileName)'!=''">$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove($([System.IO.Path]::GetFileName('$(CertificateFileName)')),$(ProjDir)))','$(AssertDir)$([System.IO.Path]::GetFileName('$(CertificateFileName)'))'))))</CertificateFileInTree>
 	</PropertyGroup>
 	<PropertyGroup Label="Project">
 		<BuildInParallel Condition="'$(BuildInParallel)' ==''">true</BuildInParallel>
@@ -57,27 +62,17 @@
 	<ItemGroup>
 		<None LinkBase="_Solution Items/Directory.Build" Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BaseOutputPath)**/***.props;$(BaseIntermediateOutputPath)**/***.props" />
 		<None LinkBase="_Solution Items/Directory.Build"  Include="$(PropsDir)**/*.targets" Exclude="$(PropsDir)**/*.g.targets" />
-		<None LinkBase="_Solution Items"  Include="$(PropsDir)*.*" Exclude="$(PropsDir)**/*.props;$(PropsDir)**/*.targets"/>
-		<None LinkBase="_Solution Items/.github" Include="$(PropsDir).github/**/*.*"			/>
-		<None LinkBase="_Solution Items/.gitee" Include="$(PropsDir).gitee/**/*.*"/>
-		<None LinkBase="_Solution Items" Include="$(AssertDir)**/*.*" Condition="Exists('$(AssertDir)')"/>
-		
+		<None LinkBase="_Solution Items"  Include="$(PropsDir)*.*" Exclude="$(PropsDir)**/*.props;$(PropsDir)**/*.targets" />
+		<None LinkBase="_Solution Items/.github" Include="$(PropsDir).github/**/*.*" />
+		<None LinkBase="_Solution Items/.gitee" Include="$(PropsDir).gitee/**/*.*" />
+		<None LinkBase="_Solution Items" Include="$(AssertDir)**/*.*" Condition="Exists('$(AssertDir)')" />
 		<!--
 		<None LinkBase="_Solution Items/Directory.Build" Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BaseOutputPath)**/***.props;$(BaseIntermediateOutputPath)**/***.props">
 			<Link> Solution Items/Directory.Build/%(RecursiveDir)/%(Filename)%(Extension)</Link>
 		</None
 		-->
-	</ItemGroup>
-	<ItemDefinitionGroup>
-		<!-- We always want MSBuild properties generated that point at the restored location of each package. -->
-		<PackageReference GeneratePathProperty="true" />
-	</ItemDefinitionGroup>
-
-	<ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)stylecop.json')">
-		<AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />
-	</ItemGroup>
-	<ItemGroup>
-		<None Condition="Exists('$(MSBuildThisFileDirectory)3rdPartyNotices.txt')" Include="$(MSBuildThisFileDirectory)3rdPartyNotices.txt" Pack="true" PackagePath="" />
+		<AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="%(Filename)%(Extension)"  Condition="Exists('$(MSBuildThisFileDirectory)stylecop.json')" />
+		<None Condition="Exists('$(MSBuildThisFileDirectory)3rdPartyNotices.txt')" Include="$(MSBuildThisFileDirectory)3rdPartyNotices.txt" Pack="true" PackagePath="/" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Condition="'$(GITHUB_ACTIONS)' == 'true' and '$(IsTestProject)' != 'true'">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -88,19 +83,16 @@
 		<PackageReference Include="Nullable" Version="1.3.1" />
 		<PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.507" />
 	</ItemGroup>
+	<ItemDefinitionGroup>
+		<!-- We always want MSBuild properties generated that point at the restored location of each package. -->
+		<PackageReference GeneratePathProperty="true" />
+	</ItemDefinitionGroup>
+
 	<Target Name="PrepareReleaseNotes" BeforeTargets="GenerateNuspec" DependsOnTargets="GetBuildVersion">
 		<PropertyGroup>
 			<PackageReleaseNotes Condition="'$(PackageProjectUrl)'!=''">$(PackageProjectUrl)/releases/tag/v$(Version)</PackageReleaseNotes>
 		</PropertyGroup>
 	</Target>
-	<PropertyGroup>
-		<ReadmeInTree>$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove(README.md,$(ProjDir)))','$(AssertDir)README.md'))))</ReadmeInTree>
-		<IconPngInTree>$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove(icon.png,$(ProjDir)))','$(AssertDir)icon.png'))))</IconPngInTree>
-		<AppIcoInTree>$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove(app.ico,$(ProjDir)))','$(AssertDir)app.ico'))))</AppIcoInTree>
-		<ChangeLogInTree Condition="'$(ChangeLogFileName)'!=''">$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove($([System.IO.Path]::GetFileName('$(ChangeLogFileName)')),$(ProjDir)))','$(AssertDir)$([System.IO.Path]::GetFileName('$(ChangeLogFileName)'))'))))</ChangeLogInTree>
-		<DescriptionInTree Condition="'$(ProjectDescriptionFileName)'!=''">$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove($([System.IO.Path]::GetFileName('$(ProjectDescriptionFileName)')),$(ProjDir)))','$(AssertDir)$([System.IO.Path]::GetFileName('$(ProjectDescriptionFileName)'))'))))</DescriptionInTree>
-		<CertificateFileInTree Condition="'$(CertificateFileName)'!=''">$([MSBuild]::NormalizePath($([MSBuild]::ValueOrDefault('$([MSBuild]::GetPathOfFileAbove($([System.IO.Path]::GetFileName('$(CertificateFileName)')),$(ProjDir)))','$(AssertDir)$([System.IO.Path]::GetFileName('$(CertificateFileName)'))'))))</CertificateFileInTree>
-	</PropertyGroup>
 	<!-- PackageReadmeFile -->
 	<Choose>
 		<When Condition="Exists('$(ReadmeInTree)')">
@@ -248,6 +240,8 @@
 		<!--产品版本 如果不指定，将会由 VersionPrefix.VersionSuffix 强签名组成-->
 		<!--<InformationalVersion>This is a prerelease package</InformationalVersion>-->
 	</PropertyGroup>
+	<Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Debug.props, $(MSBuildThisFileDirectory)))" Condition="Exists($([MSBuild]::GetPathOfFileAbove(Directory.Debug.props, $(MSBuildThisFileDirectory))))" />
+	<Import Project="$([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory)))" Condition="Exists($([MSBuild]::GetPathOfFileAbove(Directory.Config.props, $(MSBuildThisFileDirectory))))" />
 
 	<Import Project="$(MSBuildProjectDirectory)\releasenotes.props" Condition="Exists('$(MSBuildProjectDirectory)\releasenotes.props')" />
 	<!--
