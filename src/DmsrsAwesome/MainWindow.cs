@@ -195,17 +195,32 @@ public partial class MainWindow : Form
     }
   }
 
+  /// <summary>
+  /// Creates the link click.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void CreateLinkClick(object sender, EventArgs e)
   {
     CreateLink();
   }
 
+  /// <summary>
+  /// Explores the button1 click.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void ExploreButton1Click(object sender, EventArgs e)
   {
     _ = folderBrowser.ShowDialog();
     linkLocationTextBox.Text = folderBrowser.SelectedPath;
   }
 
+  /// <summary>
+  /// Explorebutton2S the click.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void Explorebutton2Click(object sender, EventArgs e)
   {
     // if folder is true the folder browser will be shown
@@ -221,6 +236,11 @@ public partial class MainWindow : Form
     }
   }
 
+  /// <summary>
+  /// Helps the image click.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void HelpImageClick(object sender, EventArgs e)
   {
     string? version;
@@ -245,6 +265,11 @@ public partial class MainWindow : Form
         MessageBoxIcon.Information);
   }
 
+  /// <summary>
+  /// Process_S the error data received.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
   {
     if (!string.IsNullOrEmpty(e.Data))
@@ -253,6 +278,11 @@ public partial class MainWindow : Form
     }
   }
 
+  /// <summary>
+  /// Process_S the output data received.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
   {
     if (!string.IsNullOrEmpty(e.Data))
@@ -341,6 +371,11 @@ public partial class MainWindow : Form
     }
   }
 
+  /// <summary>
+  /// Texts the box_ drag drop.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void TextBox_DragDrop(object sender, DragEventArgs e)
   {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
@@ -351,6 +386,11 @@ public partial class MainWindow : Form
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
   }
 
+  /// <summary>
+  /// Texts the box_ drag enter.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void TextBox_DragEnter(object sender, DragEventArgs e)
   {
     var textBox = (TextBox)sender;
@@ -363,6 +403,11 @@ public partial class MainWindow : Form
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
   }
 
+  /// <summary>
+  /// Texts the box_ drag over.
+  /// </summary>
+  /// <param name="sender">The sender.</param>
+  /// <param name="e">The e.</param>
   private void TextBox_DragOver(object sender, DragEventArgs e)
   {
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
