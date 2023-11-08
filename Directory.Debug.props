@@ -3,7 +3,10 @@
 	<Import Project="$([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..))"
 	        Condition="Exists($([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..)))" />
 
-	<Target Name="NerdbankGitVersioning" BeforeTargets="Build" Condition="true">
+	<Import Project="Directory.Debug.Sys.props"
+	        Condition="Exists('Directory.Debug.Sys.props')" />
+
+	<Target Name="NerdbankGitVersioning" BeforeTargets="Build" Condition="false">
 		<Message
 			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) ======="
 			Importance="high" />

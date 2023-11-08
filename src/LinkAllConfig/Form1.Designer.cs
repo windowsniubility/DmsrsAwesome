@@ -1,4 +1,4 @@
-﻿namespace LinkAllConfig;
+namespace LinkAllConfig;
 
 partial class Form1
 {
@@ -28,6 +28,7 @@ partial class Form1
   /// </summary>
   private void InitializeComponent()
   {
+    components = new System.ComponentModel.Container();
     openFileDialog1 = new OpenFileDialog();
     txtTargets = new TextBox();
     btnSelTargets = new Button();
@@ -40,7 +41,9 @@ partial class Form1
     txtFsutilPath = new TextBox();
     btnSelectTool = new Button();
     ListTargetFiles = new ListView();
+    errorProvider1 = new ErrorProvider(components);
     panel1.SuspendLayout();
+    ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
     SuspendLayout();
     // 
     // openFileDialog1
@@ -126,6 +129,7 @@ partial class Form1
     txtFsutilPath.PlaceholderText = "fsutil路径";
     txtFsutilPath.Size = new Size(757, 23);
     txtFsutilPath.TabIndex = 0;
+    txtFsutilPath.Validated += txtFsutilPath_Validated;
     // 
     // btnSelectTool
     // 
@@ -145,6 +149,10 @@ partial class Form1
     ListTargetFiles.TabIndex = 8;
     ListTargetFiles.UseCompatibleStateImageBehavior = false;
     // 
+    // errorProvider1
+    // 
+    errorProvider1.ContainerControl = this;
+    // 
     // Form1
     // 
     AutoScaleDimensions = new SizeF(7F, 15F);
@@ -157,6 +165,7 @@ partial class Form1
     Text = "Form1";
     panel1.ResumeLayout(false);
     panel1.PerformLayout();
+    ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
     ResumeLayout(false);
     PerformLayout();
   }
@@ -175,4 +184,5 @@ partial class Form1
   private ListView ListTargetFiles;
   private TextBox txtFsutilPath;
   private Button btnSelectTool;
+  private ErrorProvider errorProvider1;
 }

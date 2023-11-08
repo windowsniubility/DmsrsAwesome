@@ -3,7 +3,7 @@
 	<Import Project="$([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..))"
 	        Condition="Exists($([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..)))" />
 
-	<Target Name="NerdbankGitVersioning" BeforeTargets="Build" Condition="true">
+	<Target Name="NerdbankGitVersioning" BeforeTargets="Build" Condition="false">
 		<Message
 			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) ======="
 			Importance="high" />
@@ -82,25 +82,9 @@
 
 		<!--<Message Text="$(ProjDir)" Importance="high" />
 	<Message Text="$(AssertDir)" Importance="high" />
-	<Message Text="$(PropsDir)" Importance="high" />
+	<Message Text="$(SolutionDir)" Importance="high" />
 	<Message Text="$(Description)" Importance="high" />-->
 	</Target>
 
-	<Target Name="MyNameValues" BeforeTargets="Build" Condition="false">
 
-		<!-- Use $(Property Name) to reference a property -->
-		<Message Text="$(ProjDir)" Importance="high" />
-		<Message Text="$(AssertDir)" Importance="high" />
-		<Message Text="$(PropsDir)" Importance="high" />
-		<Message Text="$(Description)" Importance="high" />
-
-		<!-- Use @(Item Name) to output a semi-colon
-		 separated list of items on one line      -->
-		<Message Text="@(SolutionReadme)" Importance="high" />
-
-		<!-- Use %(Item Name.Metadata Property Name) to
-		 call the Message task once for each item.   -->
-		<!-- This will output each item on a separate line -->
-		<Message Text="%(None.Identity)" Importance="high" />
-	</Target>
 </Project>

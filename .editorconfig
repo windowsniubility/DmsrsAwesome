@@ -85,6 +85,17 @@ csharp_style_allow_blank_line_after_token_in_arrow_expression_clause_experimenta
 dotnet_diagnostic.IDE2000.severity = suggestion
 csharp_style_unused_value_assignment_preference = discard_variable:suggestion
 csharp_style_unused_value_expression_statement_preference = discard_variable:silent
+csharp_style_prefer_utf8_string_literals = true:error
+dotnet_diagnostic.IDE0230.severity = error
+dotnet_diagnostic.SA1412.severity = silent
+dotnet_diagnostic.SA1300.severity = silent
+csharp_style_prefer_tuple_swap = true:suggestion
+csharp_style_implicit_object_creation_when_type_is_apparent = true:suggestion
+csharp_style_prefer_range_operator = true:suggestion
+csharp_prefer_static_local_function = true:suggestion
+csharp_style_prefer_readonly_struct = true:suggestion
+csharp_style_prefer_readonly_struct_member = true:suggestion
+csharp_style_conditional_delegate_call = true:suggestion
 
 [*.{cs,vb}]
 #### Naming styles ####
@@ -154,3 +165,5 @@ dotnet_style_namespace_match_folder = true:suggestion
 dotnet_style_allow_multiple_blank_lines_experimental = false:error
 dotnet_style_allow_statement_immediately_after_block_experimental = true:silent
 dotnet_code_quality_unused_parameters = all:suggestion
+indent_style = space
+dotnet_style_readonly_field = true:suggestion
