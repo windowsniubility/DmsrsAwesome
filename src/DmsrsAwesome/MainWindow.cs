@@ -68,23 +68,19 @@ public partial class MainWindow : Form
 	{
 		try
 		{
-			if (linkLocationTextBox.Text != string.Empty && linkNameComboBox.Text != string.Empty &&
-			destinationLocationTextBox.Text != string.Empty)
+			if (!string.IsNullOrEmpty(linkLocationTextBox.Text) && !string.IsNullOrEmpty(linkNameComboBox.Text) && !string.IsNullOrEmpty(destinationLocationTextBox.Text))
 			{
 				// Everything needs to be filled...
 				if (folder && Directory.Exists(linkLocationTextBox.Text) && Directory.Exists(destinationLocationTextBox.Text))
 				{
 					// Ask if the folders exist
-					var link = string.Format(
-						"\"{0}\\{1}\" ",
-						linkLocationTextBox.Text,
-						linkNameComboBox.Text);
+					var link = $"\"{linkLocationTextBox.Text}\\{linkNameComboBox.Text}\" ";
 
 					// concatenates the link name with the folder name and then it adds a pair of ", to allow using directories with spaces..
 					var directories = Directory.GetDirectories(linkLocationTextBox.Text);
 
 					// gets the folders in the selected directory
-					if (directories.Any(e => e.Split('\\').Last().Equals(linkNameComboBox.Text)))
+					if (directories.Any(e => e.Split('\\').Last().Equals(linkNameComboBox.Text, StringComparison.Ordinal)))
 					{
 						// looks for folders with the same name of the link name
 						// if found the program ask the user if he wants to delete the folder that is already there
@@ -97,7 +93,7 @@ public partial class MainWindow : Form
 						if (answer == DialogResult.Yes)
 						{
 							// if the answer is yes, the folder is deleted in order to create a new one
-							var dir2Delete = directories.First(e => e.Split('\\').Last().Equals(linkNameComboBox.Text));
+							var dir2Delete = directories.First(e => e.Split('\\').Last().Equals(linkNameComboBox.Text, StringComparison.Ordinal));
 							Directory.Delete(dir2Delete);
 							SendCommand(link);
 
@@ -118,14 +114,11 @@ public partial class MainWindow : Form
 				else if (Directory.Exists(linkLocationTextBox.Text) && File.Exists(destinationLocationTextBox.Text))
 				{
 					// same thing as above... it just deletes files instead of folders
-					var link = string.Format(
-						"\"{0}\\{1}\" ",
-						linkLocationTextBox.Text,
-						linkNameComboBox.Text);
+					var link = $"\"{linkLocationTextBox.Text}\\{linkNameComboBox.Text}\" ";
 
 					var files = Directory.GetFiles(linkLocationTextBox.Text);
 
-					if (files.Any(e => e.Split('\\').Last().Equals(linkNameComboBox.Text)))
+					if (files.Any(e => e.Split('\\').Last().Equals(linkNameComboBox.Text, StringComparison.Ordinal)))
 					{
 						var answer = MessageBox.Show(
 							Resources.DialogDeleteFile,
@@ -135,7 +128,7 @@ public partial class MainWindow : Form
 
 						if (answer == DialogResult.Yes)
 						{
-							var file2Delete = files.First(e => e.Split('\\').Last().Equals(linkNameComboBox.Text));
+							var file2Delete = files.First(e => e.Split('\\').Last().Equals(linkNameComboBox.Text, StringComparison.Ordinal));
 							File.Delete(file2Delete);
 							SendCommand(link);
 
