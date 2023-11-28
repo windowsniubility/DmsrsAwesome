@@ -9,10 +9,6 @@
 		<EnablePreviewFeatures>true</EnablePreviewFeatures>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<None Remove="icon.ico" />
-		<None Remove="info.png" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="icon.ico" />
