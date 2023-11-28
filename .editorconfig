@@ -1,3 +1,27 @@
+# 表明是最顶层配置文件，发现设为 true 时，才会停止查找 .editorconfig 文件
+root = true
+[*]
+
+# 缩进样式，可以设置为 tab 或 space 两个值
+indent_style = tab
+
+# 当缩进样式设置为 space 时，用来设置每次缩进相当于多少列
+indent_size = tab
+
+# 当缩进设置为 tab 时，用来设置每次缩进相当于多少列代码
+tab_width = 4
+
+# 定义行末采用什么符号来进行换行，可以选择包括：lf、cr 和 crlf
+end_of_line = crlf
+
+# 编码格式，支持： latin1、utf-8、utf-8-bom、utf-16be 和 utf-16le，不建议使用 utf-8-bom
+charset = utf-8
+
+# 是否除去代码行末的任意空白字符，true 或 false
+trim_trailing_whitespace = true
+
+# 是否以一个空白行结尾文件，true 或 false
+#insert_final_newline = true
 
 [*.{appxmanifest,axml,build,config,csproj,dbml,discomap,dtd,jsproj,lsproj,njsproj,nuspec,proj,props,proto,resw,resx,StyleCop,targets,tasks,vbproj,xml,xsd}]
 indent_style = tab
@@ -56,14 +80,14 @@ csharp_prefer_simple_using_statement = true:suggestion
 csharp_prefer_braces = true:silent
 csharp_style_namespace_declarations = file_scoped:error
 csharp_style_prefer_method_group_conversion = true:silent
-csharp_style_expression_bodied_methods = false:silent
-csharp_style_expression_bodied_constructors = false:silent
-csharp_style_expression_bodied_operators = false:silent
+csharp_style_expression_bodied_methods = true:silent
+csharp_style_expression_bodied_constructors = true:silent
+csharp_style_expression_bodied_operators = true:silent
 csharp_style_expression_bodied_properties = true:silent
 csharp_style_expression_bodied_indexers = true:silent
 csharp_style_expression_bodied_accessors = true:silent
 csharp_style_expression_bodied_lambdas = true:silent
-csharp_style_expression_bodied_local_functions = false:silent
+csharp_style_expression_bodied_local_functions = when_on_single_line:silent
 csharp_style_prefer_top_level_statements = true:silent
 csharp_style_prefer_primary_constructors = true:suggestion
 dotnet_diagnostic.IDE0063.severity = suggestion
@@ -95,7 +119,26 @@ csharp_style_prefer_range_operator = true:suggestion
 csharp_prefer_static_local_function = true:suggestion
 csharp_style_prefer_readonly_struct = true:suggestion
 csharp_style_prefer_readonly_struct_member = true:suggestion
-csharp_style_conditional_delegate_call = true:suggestion
+csharp_style_conditional_delegate_call = true:warning
+csharp_space_around_binary_operators = before_and_after
+dotnet_diagnostic.RCS1102.severity = silent
+csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+csharp_style_prefer_switch_expression = true:suggestion
+csharp_style_prefer_pattern_matching = true:silent
+csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+csharp_style_prefer_not_pattern = true:suggestion
+csharp_style_prefer_extended_property_pattern = true:suggestion
+csharp_style_deconstructed_variable_declaration = true:suggestion
+dotnet_diagnostic.RCS1072.severity = silent
+dotnet_diagnostic.RCS0038.severity = warning
+dotnet_diagnostic.SA1623.severity = suggestion
+dotnet_diagnostic.SA1010.severity = silent
+dotnet_diagnostic.SA1629.severity = suggestion
+dotnet_diagnostic.SA1627.severity = silent
+dotnet_diagnostic.SA1604.severity = silent
+csharp_indent_braces = false
+dotnet_diagnostic.SA1649.severity = suggestion
+dotnet_diagnostic.RCS1163.severity = silent
 
 [*.{cs,vb}]
 #### Naming styles ####
@@ -145,8 +188,8 @@ dotnet_naming_style.pascal_case.required_suffix =
 dotnet_naming_style.pascal_case.word_separator = 
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
-tab_width = 2
-indent_size = 2
+tab_width = 4
+indent_size = 4
 dotnet_style_coalesce_expression = true:suggestion
 dotnet_style_null_propagation = true:suggestion
 dotnet_style_prefer_is_null_check_over_reference_equality_method = true:suggestion
@@ -164,6 +207,13 @@ dotnet_style_prefer_simplified_interpolation = true:suggestion
 dotnet_style_namespace_match_folder = true:suggestion
 dotnet_style_allow_multiple_blank_lines_experimental = false:error
 dotnet_style_allow_statement_immediately_after_block_experimental = true:silent
-dotnet_code_quality_unused_parameters = all:suggestion
-indent_style = space
+dotnet_code_quality_unused_parameters = all:silent
+indent_style = tab
 dotnet_style_readonly_field = true:suggestion
+dotnet_diagnostic.CA1822.severity = silent
+dotnet_style_parentheses_in_other_operators = never_if_unnecessary:silent
+dotnet_style_prefer_collection_expression = true:suggestion
+dotnet_diagnostic.RCS1037.severity = warning
+
+# IDE0060: Remove unused parameter
+dotnet_diagnostic.IDE0060.severity = silent

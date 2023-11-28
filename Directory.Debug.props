@@ -1,11 +1,5 @@
 <Project>
 
-	<Import Project="$([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..))"
-	        Condition="Exists($([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..)))" />
-
-	<Import Project="Directory.Debug.Sys.props"
-	        Condition="Exists('Directory.Debug.Sys.props')" />
-
 	<Target Name="NerdbankGitVersioning" BeforeTargets="Build" Condition="false">
 		<Message
 			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) ======="
@@ -89,21 +83,20 @@
 	<Message Text="$(Description)" Importance="high" />-->
 	</Target>
 
-	<Target Name="MyNameValues" BeforeTargets="Build" Condition="false">
+	<Target Name="MyFolder" AfterTargets="Build" Condition="false">
+		<!--<Message Text=" $(DirectoryBuildPropsPath)、$(ImportDirectoryBuildProps)、
+				 $(DirectoryBuildTargetsPath) 和 $(ImportDirectoryBuildTargets)
+				 " Importance="high" />-->
 
-		<!-- Use $(Property Name) to reference a property -->
-		<Message Text="$(ProjDir)" Importance="high" />
-		<Message Text="$(AssertDir)" Importance="high" />
-		<Message Text="$(PropsDir)" Importance="high" />
-		<Message Text="$(Description)" Importance="high" />
+		<Message
+			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =
+				AssertDir - $(AssertDir)
+				PropsDir- $(PropsDir)
+				PropsTopDir-  $(PropsTopDir)
+				PropsDir- $(PropsDir)
 
-		<!-- Use @(Item Name) to output a semi-colon
-		 separated list of items on one line      -->
-		<Message Text="@(SolutionReadme)" Importance="high" />
-
-		<!-- Use %(Item Name.Metadata Property Name) to
-		 call the Message task once for each item.   -->
-		<!-- This will output each item on a separate line -->
-		<Message Text="%(None.Identity)" Importance="high" />
+				CertificateFileInTree - $(CertificateFileInTree)
+				 "
+			Importance="high" />
 	</Target>
 </Project>

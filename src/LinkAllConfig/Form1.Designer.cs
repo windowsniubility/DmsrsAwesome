@@ -129,7 +129,7 @@ partial class Form1
     txtFsutilPath.PlaceholderText = "fsutil路径";
     txtFsutilPath.Size = new Size(757, 23);
     txtFsutilPath.TabIndex = 0;
-    txtFsutilPath.Validated += txtFsutilPath_Validated;
+    txtFsutilPath.Validated += TxtFsutilPath_Validated;
     // 
     // btnSelectTool
     // 

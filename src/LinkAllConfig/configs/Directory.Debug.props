@@ -1,8 +1,5 @@
 <Project>
 
-	<Import Project="$([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..))"
-	        Condition="Exists($([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..)))" />
-
 	<Target Name="NerdbankGitVersioning" BeforeTargets="Build" Condition="false">
 		<Message
 			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) ======="
@@ -82,9 +79,24 @@
 
 		<!--<Message Text="$(ProjDir)" Importance="high" />
 	<Message Text="$(AssertDir)" Importance="high" />
-	<Message Text="$(SolutionDir)" Importance="high" />
+	<Message Text="$(PropsDir)" Importance="high" />
 	<Message Text="$(Description)" Importance="high" />-->
 	</Target>
 
+	<Target Name="MyFolder" AfterTargets="Build" Condition="false">
+		<!--<Message Text=" $(DirectoryBuildPropsPath)、$(ImportDirectoryBuildProps)、
+				 $(DirectoryBuildTargetsPath) 和 $(ImportDirectoryBuildTargets)
+				 " Importance="high" />-->
 
+		<Message
+			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =
+				AssertDir - $(AssertDir)
+				PropsDir- $(PropsDir)
+				PropsTopDir-  $(PropsTopDir)
+				PropsDir- $(PropsDir)
+
+				CertificateFileInTree - $(CertificateFileInTree)
+				 "
+			Importance="high" />
+	</Target>
 </Project>
