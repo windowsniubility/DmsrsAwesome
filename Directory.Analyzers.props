@@ -7,9 +7,9 @@
 		<PackageReference Include="DotNetAnalyzers.DocumentationAnalyzers.Unstable" Version="1.0.0.59" ExcludeAssets="compile" PrivateAssets="all" />
 		<PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507" ExcludeAssets="compile" PrivateAssets="all" />
 		<PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.507" ExcludeAssets="compile" PrivateAssets="all" />
-		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.6.2" ExcludeAssets="compile" PrivateAssets="all" />
-		<PackageReference Include="Roslynator.Analyzers" Version="4.6.2" ExcludeAssets="compile" PrivateAssets="all" />
-		<PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.6.2" ExcludeAssets="compile" PrivateAssets="all" />
+		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.6.4" ExcludeAssets="compile" PrivateAssets="all" />
+		<PackageReference Include="Roslynator.Analyzers" Version="4.6.4" ExcludeAssets="compile" PrivateAssets="all" />
+		<PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.6.4" ExcludeAssets="compile" PrivateAssets="all" />
 	</ItemGroup>
 	<PropertyGroup>
 		<NoWarn>NU1504;NU5105;1701;1702;1591;8002;CA1822;$(NoWarn)</NoWarn>
