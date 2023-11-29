@@ -87,22 +87,22 @@
 		</PropertyGroup>
 	</Target>
 	<PropertyGroup Label="ProjectFilePath">
-		<ReadmeInTree>$([MSBuild]::GetPathOfFileAbove(README.md,$(ProjDir)))</ReadmeInTree>
+		<ReadmeInTree>$([MSBuild]::GetPathOfFileAbove('README.md',$(ProjDir)))</ReadmeInTree>
 		<ReadmeInTree Condition="'$(ReadmeInTree)'==''">$(AssertDir)README.md</ReadmeInTree>
 
-		<IconPngInTree>$([MSBuild]::GetPathOfFileAbove(icon.png,$(ProjDir)))</IconPngInTree>
+		<IconPngInTree>$([MSBuild]::GetPathOfFileAbove('icon.png',$(ProjDir)))</IconPngInTree>
 		<IconPngInTree Condition="'$(IconPngInTree)'==''">$(AssertDir)icon.png</IconPngInTree>
 
-		<AppIcoInTree>$([MSBuild]::GetPathOfFileAbove(app.ico,$(ProjDir)))</AppIcoInTree>
+		<AppIcoInTree>$([MSBuild]::GetPathOfFileAbove('app.ico',$(ProjDir)))</AppIcoInTree>
 		<AppIcoInTree Condition="'$(AppIcoInTree)'==''">$(AssertDir)app.ico</AppIcoInTree>
 
-		<ThirdPartyNoticesInTree>$([MSBuild]::GetPathOfFileAbove(3rdPartyNotices.txt,$(ProjDir)))</ThirdPartyNoticesInTree>
+		<ThirdPartyNoticesInTree>$([MSBuild]::GetPathOfFileAbove('3rdPartyNotices.txt',$(ProjDir)))</ThirdPartyNoticesInTree>
 		<ThirdPartyNoticesInTree Condition="'$(ThirdPartyNoticesInTree)'==''">$(AssertDir)3rdPartyNotices.txt</ThirdPartyNoticesInTree>
 
-		<ChangeLogInTree>$([MSBuild]::GetPathOfFileAbove(changelog.md,$(ProjDir)))</ChangeLogInTree>
+		<ChangeLogInTree>$([MSBuild]::GetPathOfFileAbove('changelog.md',$(ProjDir)))</ChangeLogInTree>
 		<ChangeLogInTree Condition="'$(ChangeLogInTree)'==''">$(AssertDir)changelog.md</ChangeLogInTree>
 
-		<DescriptionInTree>$([MSBuild]::GetPathOfFileAbove(description.md,$(ProjDir)))</DescriptionInTree>
+		<DescriptionInTree>$([MSBuild]::GetPathOfFileAbove('description.md',$(ProjDir)))</DescriptionInTree>
 		<DescriptionInTree Condition="'$(DescriptionInTree)'==''">$(AssertDir)description.md</DescriptionInTree>
 
 		<CertificateFileInTree Condition="'$(CertificateFile)'!='' And $([System.IO.Path]::IsPathRooted($(CertificateFile))) And Exists('$(CertificateFile)')">$(CertificateFile)</CertificateFileInTree>
@@ -117,21 +117,21 @@
 		<PackageCertificateKeyFile>$(CertificateFileInTree)</PackageCertificateKeyFile>
 	</PropertyGroup>
 	<ItemGroup>
-		<ConfigFile Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BuildOutput)/**/*.props;" />
+		<ConfigFile Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BuildOutput)/**/*.props" />
 		<ConfigFile Include="$(PropsDir)**/*.targets" Exclude="$(PropsDir)**/*.g.targets" />
 		<RootFile Include="$(PropsDir)*.*" Exclude="$(PropsDir)**/*.props;$(PropsDir)**/*.targets" />
 		<RootFile Include="$(PropsDir)/.github/**/*.*" Folder=".github" />
 		<RootFile Include="$(PropsDir)/.gitee/**/*.*" Folder=".gitte" />
 		<RootFile Include="$(AssertDir)**/*.*" Folder="$(AssertFolder)" />
-		<None LinkBase="$(ConfigLinkBase)/Directory.Build.x" Include="@(ConfigFile)" KeepDuplicates="false" />
-		<None LinkBase="$(ConfigLinkBase)/%(Folder)" Include="@(RootFile)" KeepDuplicates="false" />
+		<None LinkBase="$(ConfigLinkBase)/Directory.Build" Include="@(ConfigFile)" />
+		<None LinkBase="$(ConfigLinkBase)/%(Folder)" Include="@(RootFile)" />
 		<!--
 		<None LinkBase="$(ConfigLinkBase)/Directory.Build" Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BaseOutputPath)**/***.props;$(BaseIntermediateOutputPath)**/***.props">
 			<Link>$(ConfigLinkBase)/Directory.Build/%(RecursiveDir)/%(Filename)%(Extension)</Link>
 		</None
 		-->
 		<None LinkBase="$(ConfigLinkBase)" Include="$(MSBuildThisFileDirectory)stylecop.json" Condition="Exists('$(MSBuildThisFileDirectory)stylecop.json')" />
-		<None LinkBase="$(ConfigLinkBase)" Condition="Exists('$(ThirdPartyNoticesInTree)')" Include="$(ThirdPartyNoticesInTree)" Pack="true" PackagePath="/" />
+		<None LinkBase="$(ConfigLinkBase)"  Include="$(ThirdPartyNoticesInTree)" Pack="true" PackagePath="/" Condition="Exists('$(ThirdPartyNoticesInTree)')" />
 		<Compile LinkBase="$(ConfigLinkBase)" Include="$(PropsDir)GlobalUsings.cs" Condition="Exists('$(PropsDir)GlobalUsings.cs')" />
 	</ItemGroup>
 	<!-- PackageReadmeFile -->

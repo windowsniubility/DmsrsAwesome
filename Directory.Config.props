@@ -13,25 +13,25 @@
 		<Title>$(AssemblyName)</Title>
 		<PackageTags>EmitMapper;Mapper;POCO;Object Mapping</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/niubilitynetcore/EmitMapper</PackageProjectUrl>
+		<PackageProjectUrl>https://gitee.com/dmsrs/DmsrsAwesome</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/niubilitynetcore/EmitMapper</RepositoryUrl>
+		<RepositoryUrl>https://gitee.com/dmsrs/DmsrsAwesome.git</RepositoryUrl>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-
 		<!--<PackageOutputPath>$(SolutionDir)nupkgs</PackageOutputPath>-->
 	</PropertyGroup>
 
 	<PropertyGroup Label="TFM">
-		<TFMS_LIB>net7.0</TFMS_LIB>
-		<TFMS_NORMAL>net7.0</TFMS_NORMAL>
-		<TFMS_TEST>net7.0</TFMS_TEST>
+		<TFMS_LIB>net6.0;net7.0</TFMS_LIB>
+		<TFMS_Web>net6.0;net7.0</TFMS_Web>
+		<TFMS_NORMAL>net6.0;net7.0</TFMS_NORMAL>
+		<TFMS_TEST>net6.0;net7.0</TFMS_TEST>
 		<TFMS_SINGLE>net7.0</TFMS_SINGLE>
-		<TFMS_WINDOWS>net7.0-windows</TFMS_WINDOWS>
+		<TFMS_WINDOWS>net6.0-windows;net7.0-windows</TFMS_WINDOWS>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<DmsrsPublicKey>0024000004800000940000000602000000240000525341310004000001000100ed93f1964c04a2e52dc5a52d8689b365c29486d4bf4e203a8b9ba1dff8cff0f9df437725b781293211233ff7d68837d2c6cc14abc0e20ee974018bd2bb609c1e8e16ff36a8af3d6fcbd22431fc810495640d9b57cfb513d8270a4c81f1dc87719054c26d9407d81aef5fa17c40a61ada1ab39c18de0b971c947c234c5d288ab1</DmsrsPublicKey>
- 		<ErrorEndLocation>true</ErrorEndLocation>
+		<ErrorEndLocation>true</ErrorEndLocation>
 		<Utf8Output>true</Utf8Output>
 	</PropertyGroup>
 	
