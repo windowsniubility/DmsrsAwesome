@@ -79,7 +79,7 @@
 	<ItemGroup>
 		<PackageReference ExcludeAssets="compile" PrivateAssets="all" Include="Microsoft.SourceLink.GitHub" Condition="'$(GITHUB_ACTIONS)' == 'true' and '$(IsTestProject)' != 'true'" />
 		<PackageReference ExcludeAssets="compile" PrivateAssets="all" Include="Nullable" Version="1.3.1" />
-		<PackageReference ExcludeAssets="compile" PrivateAssets="all" Include="Nerdbank.GitVersioning" Version="3.6.133" Condition="!Exists('packages.config')" />
+		<PackageReference ExcludeAssets="compile" PrivateAssets="all" Include="Nerdbank.GitVersioning" Version="3.7.48-alpha" Condition="!Exists('packages.config')" />
 	</ItemGroup>
 	<Target Name="PrepareReleaseNotes" BeforeTargets="GenerateNuspec" DependsOnTargets="GetBuildVersion">
 		<PropertyGroup>

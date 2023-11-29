@@ -31,7 +31,7 @@ public partial class Form1 : Form
 	/// <param name="e">The e.</param>
 	private async void BtnCreateLinks_Click(object sender, EventArgs e)
 	{
-		await helper.MakeFileHardLinks(txtLIinks.Text, txtTargets.Text);
+		await helper.MakeFileHardLinks(txtLIinks.Text, txtTargets.Text).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -52,7 +52,7 @@ public partial class Form1 : Form
 		{
 			case DialogResult.OK:
 				txtTargets.Text = folderBrowserDialog1.SelectedPath;
-				await helper.ListLinks(txtTargets.Text);
+				await helper.ListLinks(txtTargets.Text).ConfigureAwait(false);
 				break;
 			case DialogResult.Abort:
 

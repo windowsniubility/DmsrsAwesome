@@ -13,9 +13,6 @@ namespace DmsrsAwesome;
 /// </summary>
 public partial class MainWindow : Form
 {
-	/// <summary>The tool tip.</summary>
-	private readonly ToolTip toolTip = new();
-
 	/// <summary>The folder.</summary>
 	private bool folder;
 
