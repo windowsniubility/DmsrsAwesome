@@ -45,22 +45,6 @@ public partial class Form1 : Form
 		txtLIinks.Text = folderBrowserDialog1.SelectedPath;
 	}
 
-	/// <summary> btns the sel targets_ click. </summary>
-	private async void BtnSelTargets_ClickAsync(object sender, EventArgs e)
-	{
-		switch (folderBrowserDialog1.ShowDialog(this))
-		{
-			case DialogResult.OK:
-				txtTargets.Text = folderBrowserDialog1.SelectedPath;
-				await helper.ListLinks(txtTargets.Text).ConfigureAwait(false);
-				break;
-			case DialogResult.Abort:
-
-			case DialogResult.Cancel:
-				break;
-		}
-	}
-
 	/// <summary>
 	/// btns the select tool_ click.
 	/// </summary>
@@ -81,6 +65,21 @@ public partial class Form1 : Form
 		}
 	}
 
+	/// <summary> btns the sel targets_ click. </summary>
+	private async void BtnSelTargets_ClickAsync(object sender, EventArgs e)
+	{
+		switch (folderBrowserDialog1.ShowDialog(this))
+		{
+			case DialogResult.OK:
+				txtTargets.Text = folderBrowserDialog1.SelectedPath;
+				await helper.ListLinks(txtTargets.Text).ConfigureAwait(false);
+				break;
+			case DialogResult.Abort:
+
+			case DialogResult.Cancel:
+				break;
+		}
+	}
 	private void TxtFsutilPath_Validated(object sender, EventArgs e)
 	{
 		if (string.IsNullOrEmpty(txtFsutilPath.Text) || File.Exists(txtFsutilPath.Text))
