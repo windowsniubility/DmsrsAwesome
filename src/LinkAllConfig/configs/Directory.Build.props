@@ -70,10 +70,10 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
-	<ItemDefinitionGroup>
-		<!-- We always want MSBuild properties generated that point at the restored location of each package. -->
+	<!--<ItemDefinitionGroup>
+		--><!-- We always want MSBuild properties generated that point at the restored location of each package. --><!--
 		<PackageReference GeneratePathProperty="true" />
-	</ItemDefinitionGroup>
+	</ItemDefinitionGroup>-->
 
 	<Import Project="Directory.Config.props" Condition="Exists('Directory.Config.props')" />
 	<ItemGroup>

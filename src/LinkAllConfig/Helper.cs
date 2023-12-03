@@ -22,9 +22,9 @@ internal class Helper(string targetPath, Action<string> output)
 		try
 		{
 			_ = await Cli.Wrap(targetFilePath)
-	  .WithArguments(args => args.Add("hardlink").Add("list").Add(target))
-	  .WithStandardOutputPipe(PipeTarget.ToDelegate(Output))
-	  .ExecuteAsync();
+				.WithArguments(args => args.Add("hardlink").Add("list").Add(target))
+				.WithStandardOutputPipe(PipeTarget.ToDelegate(Output))
+				.ExecuteAsync();
 		}
 		catch (Exception ex)
 		{

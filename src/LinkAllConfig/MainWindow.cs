@@ -6,19 +6,26 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Globalization;
+using System.Reflection;
+using LinkAllConfig.Properties;
+
 namespace DmsrsAwesome;
 
 /// <summary>
-///   This class manages the window.
+///     This class manages the window.
 /// </summary>
 public partial class MainWindow : Form
 {
+	/// <summary>The tool tip.</summary>
+	private readonly ToolTip toolTip = new();
+
 	/// <summary>The folder.</summary>
 	private bool folder;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="MainWindow"/> class.
-	///   The constructor.
+	///     Initializes a new instance of the <see cref="MainWindow" /> class.
+	///     The constructor.
 	/// </summary>
 	public MainWindow()
 	{
@@ -39,13 +46,11 @@ public partial class MainWindow : Form
 		toolTip.AutoPopDelay = 5000;
 		toolTip.ToolTipTitle = "Symbolic Link types";
 
-		toolTip.SetToolTip(
-			linkTypeComboBox,
-			"This option allows you to select the style of your symbolic link, either\nyou choose to use symbolic links, hard links or directory junctions.\n use symbolic links as a default");
+		toolTip.SetToolTip(linkTypeComboBox, "This option allows you to select the style of your symbolic link, either\nyou choose to use symbolic links, hard links or directory junctions.\n use symbolic links as a default");
 	}
 
 	/// <summary>
-	///   This Method lets you select the type of link you want to create.
+	///     This Method lets you select the type of link you want to create.
 	/// </summary>
 	/// <returns>String with the type of link to create.</returns>
 	private string ComboBoxSelection()
@@ -54,12 +59,12 @@ public partial class MainWindow : Form
 		{
 			1 => "/H ",
 			2 => "/J ",
-			_ => string.Empty,
+			_ => string.Empty
 		};
 	}
 
 	/// <summary>
-	///   Creates the link if the conditions are met.
+	///     Creates the link if the conditions are met.
 	/// </summary>
 	private void CreateLink()
 	{
@@ -81,27 +86,20 @@ public partial class MainWindow : Form
 					{
 						// looks for folders with the same name of the link name
 						// if found the program ask the user if he wants to delete the folder that is already there
-						var answer = MessageBox.Show(
-							Resources.DialogFolderExists,
-							Resources.DialogFolderExistsDialog,
-							MessageBoxButtons.YesNo,
-							MessageBoxIcon.Warning);
+						var answer = MessageBox.Show(Resources.DialogFolderExists, Resources.DialogFolderExistsDialog, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
 						if (answer == DialogResult.Yes)
 						{
 							// if the answer is yes, the folder is deleted in order to create a new one
 							var dir2Delete = directories.First(e => e.Split('\\').Last().Equals(linkNameComboBox.Text, StringComparison.Ordinal));
+
 							Directory.Delete(dir2Delete);
 							SendCommand(link);
 
 							return;
 						}
 
-						_ = MessageBox.Show(
-							Resources.LinkCreationAborted,
-							Resources.LinkCreationAbortedWarning,
-							MessageBoxButtons.OK,
-							MessageBoxIcon.Stop);
+						_ = MessageBox.Show(Resources.LinkCreationAborted, Resources.LinkCreationAbortedWarning, MessageBoxButtons.OK, MessageBoxIcon.Stop);
 					}
 					else
 					{
@@ -117,26 +115,19 @@ public partial class MainWindow : Form
 
 					if (files.Any(e => e.Split('\\').Last().Equals(linkNameComboBox.Text, StringComparison.Ordinal)))
 					{
-						var answer = MessageBox.Show(
-							Resources.DialogDeleteFile,
-							Resources.DialogDeleteFileWarning,
-							MessageBoxButtons.YesNo,
-							MessageBoxIcon.Warning);
+						var answer = MessageBox.Show(Resources.DialogDeleteFile, Resources.DialogDeleteFileWarning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
 						if (answer == DialogResult.Yes)
 						{
 							var file2Delete = files.First(e => e.Split('\\').Last().Equals(linkNameComboBox.Text, StringComparison.Ordinal));
+
 							File.Delete(file2Delete);
 							SendCommand(link);
 
 							return;
 						}
 
-						_ = MessageBox.Show(
-							Resources.LinkCreationAborted,
-							Resources.LinkCreationAbortedWarning,
-							MessageBoxButtons.OK,
-							MessageBoxIcon.Stop);
+						_ = MessageBox.Show(Resources.LinkCreationAborted, Resources.LinkCreationAbortedWarning, MessageBoxButtons.OK, MessageBoxIcon.Stop);
 					}
 					else
 					{
@@ -145,34 +136,22 @@ public partial class MainWindow : Form
 				}
 				else
 				{
-					_ = MessageBox.Show(
-					Resources.FilesOrFolderNotExists,
-					Resources.MessageBoxErrorTitle,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Warning);
+					_ = MessageBox.Show(Resources.FilesOrFolderNotExists, Resources.MessageBoxErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				}
 			}
 			else
 			{
-				_ = MessageBox.Show(
-					Resources.FillBlanks,
-					Resources.MessageBoxErrorTitle,
-					MessageBoxButtons.OK,
-					MessageBoxIcon.Error);
+				_ = MessageBox.Show(Resources.FillBlanks, Resources.MessageBoxErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 		catch (Exception exception)
 		{
-			_ = MessageBox.Show(
-			Resources.MessageBoxExceptionOcurred + exception.Message,
-			Resources.MessageBoxErrorTitle,
-			MessageBoxButtons.OK,
-			MessageBoxIcon.Error);
+			_ = MessageBox.Show(Resources.MessageBoxExceptionOcurred + exception.Message, Resources.MessageBoxErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 	}
 
 	/// <summary>
-	/// Creates the link click.
+	///     Creates the link click.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
@@ -182,7 +161,7 @@ public partial class MainWindow : Form
 	}
 
 	/// <summary>
-	/// Explores the button1 click.
+	///     Explores the button1 click.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
@@ -193,7 +172,7 @@ public partial class MainWindow : Form
 	}
 
 	/// <summary>
-	/// Explorebutton2S the click.
+	///     Explorebutton2S the click.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
@@ -213,7 +192,7 @@ public partial class MainWindow : Form
 	}
 
 	/// <summary>
-	/// Helps the image click.
+	///     Helps the image click.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
@@ -234,42 +213,33 @@ public partial class MainWindow : Form
 		//  var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
 		//  version = fvi.FileVersion;
 		// }
-		_ = MessageBox.Show(
-			string.Format(CultureInfo.CurrentCulture, Resources.AboutDescription, version),
-			Resources.MessageBoxAboutTitle,
-			MessageBoxButtons.OK,
-			MessageBoxIcon.Information);
+		_ = MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Resources.AboutDescription, version), Resources.MessageBoxAboutTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 	}
 
 	/// <summary>
-	/// Process_S the error data received.
+	///     Process_S the error data received.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
 	private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
 	{
-		if (!string.IsNullOrEmpty(e.Data))
-		{
-			_ = MessageBox.Show(e.Data, Resources.MessageBoxErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
-		}
+		if (!string.IsNullOrEmpty(e.Data)) _ = MessageBox.Show(e.Data, Resources.MessageBoxErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 	}
 
 	/// <summary>
-	/// Process_S the output data received.
+	///     Process_S the output data received.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
 	private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
 	{
 		if (!string.IsNullOrEmpty(e.Data))
-		{
 			_ = MessageBox.Show(e.Data, Resources.MessageBoxSuccessTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
-		}
 	}
 
 	/// <summary>
-	///   This method build a string using the paramethers provided by the user, after that, it start a new
-	///   cmd.exe process with the string just built.
+	///     This method build a string using the paramethers provided by the user, after that, it start a new
+	///     cmd.exe process with the string just built.
 	/// </summary>
 	/// <param name="link">Path to the place you want your symlink.</param>
 	private void SendCommand(string link)
@@ -282,13 +252,7 @@ public partial class MainWindow : Form
 			var typeLink = ComboBoxSelection();
 			var directory = folder ? "/D " : string.Empty;
 
-			var stringCommand = string.Format(
-				CultureInfo.InvariantCulture,
-				"/c mklink {0}{1}{2}{3}",
-				directory,
-				typeLink,
-				link,
-				target);
+			var stringCommand = string.Format(CultureInfo.InvariantCulture, "/c mklink {0}{1}{2}{3}", directory, typeLink, link, target);
 
 			var processStartInfo = new ProcessStartInfo
 			{
@@ -297,14 +261,10 @@ public partial class MainWindow : Form
 				UseShellExecute = false,
 				CreateNoWindow = true,
 				RedirectStandardError = true,
-				RedirectStandardOutput = true,
+				RedirectStandardOutput = true
 			};
 
-			var process = new Process
-			{
-				StartInfo = processStartInfo,
-				EnableRaisingEvents = true,
-			};
+			var process = new Process { StartInfo = processStartInfo, EnableRaisingEvents = true };
 			process.ErrorDataReceived += Process_ErrorDataReceived;
 			process.OutputDataReceived += Process_OutputDataReceived;
 			_ = process.Start();
@@ -316,16 +276,12 @@ public partial class MainWindow : Form
 		}
 		catch (Exception)
 		{
-			_ = MessageBox.Show(
-			Resources.CmdNotFound,
-			Resources.MessageBoxErrorTitle,
-			MessageBoxButtons.OK,
-			MessageBoxIcon.Error);
+			_ = MessageBox.Show(Resources.CmdNotFound, Resources.MessageBoxErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 	}
 
 	/// <summary>
-	///   This method allows to switch modes between file or folder symlinks.
+	///     This method allows to switch modes between file or folder symlinks.
 	/// </summary>
 	private void Switcher()
 	{
@@ -348,22 +304,19 @@ public partial class MainWindow : Form
 	}
 
 	/// <summary>
-	/// Texts the box_ drag drop.
+	///     Texts the box_ drag drop.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
 	private void TextBox_DragDrop(object sender, DragEventArgs e)
 	{
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-		if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
-		{
-			e.Effect = DragDropEffects.All;
-		}
+		if (e.Data.GetDataPresent(DataFormats.FileDrop, false)) e.Effect = DragDropEffects.All;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 	}
 
 	/// <summary>
-	/// Texts the box_ drag enter.
+	///     Texts the box_ drag enter.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
@@ -372,15 +325,12 @@ public partial class MainWindow : Form
 		var textBox = (TextBox)sender;
 
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-		if (e.Data.GetData(DataFormats.FileDrop) is string[] files && files.Length != 0)
-		{
-			textBox.Text = files[0];
-		}
+		if (e.Data.GetData(DataFormats.FileDrop) is string[] files && files.Length != 0) textBox.Text = files[0];
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 	}
 
 	/// <summary>
-	/// Texts the box_ drag over.
+	///     Texts the box_ drag over.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>

@@ -1,30 +1,36 @@
 <Project>
 	<ItemGroup Label="BeBetter" Condition="true">
-		<!--<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0-beta1.23525.2" ExcludeAssets="compile" PrivateAssets="all" />-->
+		<!--<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" ExcludeAssets="compile" PrivateAssets="all" />-->
 		<!--<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4" ExcludeAssets="compile" PrivateAssets="all" />-->
 		<!--<PackageReference Include="UnoptimizedAssemblyDetector" Version="0.1.1" ExcludeAssets="compile" PrivateAssets="all" />-->
-		<PackageReference Include="CSharpIsNullAnalyzer" Version="0.1.495" ExcludeAssets="compile" PrivateAssets="all" />
+	<!--	<PackageReference Include="CSharpIsNullAnalyzer" Version="0.1.495" ExcludeAssets="compile" PrivateAssets="all" />
 		<PackageReference Include="DotNetAnalyzers.DocumentationAnalyzers.Unstable" Version="1.0.0.59" ExcludeAssets="compile" PrivateAssets="all" />
-		<PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507" ExcludeAssets="compile" PrivateAssets="all" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118" ExcludeAssets="compile" PrivateAssets="all" />
 		<PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.507" ExcludeAssets="compile" PrivateAssets="all" />
 		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.6.4" ExcludeAssets="compile" PrivateAssets="all" />
 		<PackageReference Include="Roslynator.Analyzers" Version="4.6.4" ExcludeAssets="compile" PrivateAssets="all" />
 		<PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.6.4" ExcludeAssets="compile" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.CST.DevSkim" ExcludeAssets="compile" Version="1.0.23" />-->
 	</ItemGroup>
 	<PropertyGroup>
-		<NoWarn>NU1504;NU5105;1701;1702;1591;8002;CA1822;$(NoWarn)</NoWarn>
+		<NoWarn>NU1605;NU1504;NU5105;1701;1702;1591;8002;CA1822;$(NoWarn)</NoWarn>
 		<NoWarn>SA1623;SA1028;SA1615;SA1027;SA1037;$(NoWarn)</NoWarn>
 		<!--
 		SA1615 - Element return value should be documented
 		SA1629 - A section of the Xml header documentation for a C# element does not end with a period (also known as a full stop).
 		-->
 		<NoWarn>SA1600;SA1629;CS1591;SA1615;(NoWarn)</NoWarn>
-		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
-		<RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-		<EnableNETAnalyzers>true</EnableNETAnalyzers>
-		<AnalysisLevel>preview-all</AnalysisLevel>
-		<DisablePublicApiAnalyzer>true</DisablePublicApiAnalyzer>
-		<!--Condition="'$(TargetFramework)' == 'net7.0'"-->
-	 </PropertyGroup>
+
+		<!--<DisablePublicApiAnalyzer>true</DisablePublicApiAnalyzer>-->
+
+	 
+		<AnalysisLevel>latest-recommended</AnalysisLevel>
+		
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<EnableNETAnalyzers>True</EnableNETAnalyzers>
+		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+		 
+	</PropertyGroup>
+ 
 </Project>
