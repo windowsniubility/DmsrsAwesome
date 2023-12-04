@@ -59,7 +59,7 @@ public partial class MainWindow : Form
 		{
 			1 => "/H ",
 			2 => "/J ",
-			_ => string.Empty
+			_ => string.Empty,
 		};
 	}
 
@@ -223,7 +223,10 @@ public partial class MainWindow : Form
 	/// <param name="e">The e.</param>
 	private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
 	{
-		if (!string.IsNullOrEmpty(e.Data)) _ = MessageBox.Show(e.Data, Resources.MessageBoxErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+		if (!string.IsNullOrEmpty(e.Data))
+		{
+			_ = MessageBox.Show(e.Data, Resources.MessageBoxErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
 	}
 
 	/// <summary>
@@ -234,7 +237,9 @@ public partial class MainWindow : Form
 	private void Process_OutputDataReceived(object sender, DataReceivedEventArgs e)
 	{
 		if (!string.IsNullOrEmpty(e.Data))
+		{
 			_ = MessageBox.Show(e.Data, Resources.MessageBoxSuccessTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
 	}
 
 	/// <summary>
@@ -261,7 +266,7 @@ public partial class MainWindow : Form
 				UseShellExecute = false,
 				CreateNoWindow = true,
 				RedirectStandardError = true,
-				RedirectStandardOutput = true
+				RedirectStandardOutput = true,
 			};
 
 			var process = new Process { StartInfo = processStartInfo, EnableRaisingEvents = true };
@@ -311,7 +316,10 @@ public partial class MainWindow : Form
 	private void TextBox_DragDrop(object sender, DragEventArgs e)
 	{
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-		if (e.Data.GetDataPresent(DataFormats.FileDrop, false)) e.Effect = DragDropEffects.All;
+		if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
+		{
+			e.Effect = DragDropEffects.All;
+		}
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 	}
 
@@ -325,7 +333,10 @@ public partial class MainWindow : Form
 		var textBox = (TextBox)sender;
 
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
-		if (e.Data.GetData(DataFormats.FileDrop) is string[] files && files.Length != 0) textBox.Text = files[0];
+		if (e.Data.GetData(DataFormats.FileDrop) is string[] files && files.Length != 0)
+		{
+			textBox.Text = files[0];
+		}
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
 	}
 

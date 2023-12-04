@@ -6,7 +6,7 @@ namespace LinkAllConfig;
 /// </remarks>
 /// <param name="targetPath">The target path.</param>
 /// <param name="output">The output.</param>
-internal class Helper(string targetPath, Action<string> output)
+internal sealed class Helper(string targetPath, Action<string> output)
 {
 	/// <summary> The target file path. </summary>
 	private readonly string targetFilePath = targetPath;
@@ -17,7 +17,7 @@ internal class Helper(string targetPath, Action<string> output)
 	/// <summary> Lists the links. </summary>
 	/// <param name="target"> The target. </param>
 	/// <returns> A Task. </returns>
-	public async Task ListLinks(string target)
+	public async Task ListLinksAsync(string target)
 	{
 		try
 		{
@@ -39,7 +39,7 @@ internal class Helper(string targetPath, Action<string> output)
 	/// <param name="targetsParent">The targets parent.</param>
 	/// <param name="signal">The signal.</param>
 	/// <returns>A Task.</returns>
-	public async Task MakeFileHardLinks(string linkFolder, string targetsParent, CancellationToken signal = default)
+	public async Task MakeFileHardLinksAsync(string linkFolder, string targetsParent, CancellationToken signal = default)
 	{
 		var outputPipe = PipeTarget.ToDelegate(Output);
 		foreach (var target in Directory.EnumerateFiles(targetsParent))

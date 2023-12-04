@@ -94,7 +94,7 @@ partial class Form1
     btnCreateLinks.TabIndex = 5;
     btnCreateLinks.Text = "Create";
     btnCreateLinks.UseVisualStyleBackColor = true;
-    btnCreateLinks.Click += BtnCreateLinks_Click;
+    btnCreateLinks.Click += BtnCreateLinks_ClickAsync;
     // 
     // txtOutput
     // 

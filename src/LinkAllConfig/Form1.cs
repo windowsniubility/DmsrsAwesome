@@ -29,9 +29,9 @@ public partial class Form1 : Form
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
-	private async void BtnCreateLinks_Click(object sender, EventArgs e)
+	private async void BtnCreateLinks_ClickAsync(object sender, EventArgs e)
 	{
-		await helper.MakeFileHardLinks(txtLIinks.Text, txtTargets.Text).ConfigureAwait(false);
+		await helper.MakeFileHardLinksAsync(txtLIinks.Text, txtTargets.Text).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -72,7 +72,7 @@ public partial class Form1 : Form
 		{
 			case DialogResult.OK:
 				txtTargets.Text = folderBrowserDialog1.SelectedPath;
-				await helper.ListLinks(txtTargets.Text).ConfigureAwait(false);
+				await helper.ListLinksAsync(txtTargets.Text).ConfigureAwait(false);
 				break;
 			case DialogResult.Abort:
 
@@ -80,6 +80,7 @@ public partial class Form1 : Form
 				break;
 		}
 	}
+
 	private void TxtFsutilPath_Validated(object sender, EventArgs e)
 	{
 		if (string.IsNullOrEmpty(txtFsutilPath.Text) || File.Exists(txtFsutilPath.Text))
