@@ -1,4 +1,4 @@
-namespace LinkAllConfig;
+namespace LinkAllConfig.Utils;
 
 /// <summary> The helper. </summary>
 /// <remarks>

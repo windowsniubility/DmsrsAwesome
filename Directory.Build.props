@@ -2,13 +2,7 @@
 	<!--<Import Project="$([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..))" Condition="Exists($([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..)))" />-->
 	<PropertyGroup Label="Config_Default">
 		<AssertFolder>assert</AssertFolder>
-		<ConfigLinkBase>Properties/root</ConfigLinkBase>
-		<TFMS_LIB>net7.0;netstandard2.1</TFMS_LIB>
-		<TFMS_Web>net6.0;net7.0</TFMS_Web>
-		<TFMS_NORMAL>net6.0;net7.0</TFMS_NORMAL>
-		<TFMS_TEST>net6.0;net7.0</TFMS_TEST>
-		<TFMS_SINGLE>net7.0</TFMS_SINGLE>
-		<TFMS_WINDOWS>net6.0-windows;net7.0-windows;</TFMS_WINDOWS>
+		<ConfigLinkBase>Properties/root</ConfigLinkBase>		   
 		<CertificateFile>StrongName.snk</CertificateFile>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
 		<Authors>Jimbo</Authors>
@@ -19,6 +13,14 @@
 		<RepositoryType>git</RepositoryType>
 		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
+	<PropertyGroup Label="TFM__Default">
+		<TFMS_LIB>netstandard2.1</TFMS_LIB>
+		<TFMS_Web>net8.0</TFMS_Web>
+		<TFMS_NORMAL>net8.0</TFMS_NORMAL>
+		<TFMS_TEST>net8.0</TFMS_TEST>
+		<TFMS_SINGLE>net8.0</TFMS_SINGLE>
+		<TFMS_WINDOWS>net8.0-windows</TFMS_WINDOWS>
+	</PropertyGroup>
 	<PropertyGroup>
 		<PropsDir>$([MSBuild]::NormalizeDirectory($(MSBuildThisFileDirectory)))</PropsDir>
 		<AssertDir>$([MSBuild]::NormalizeDirectory($(PropsDir),$(AssertFolder)))</AssertDir>
@@ -27,8 +29,8 @@
 
 	<PropertyGroup Label="Project">
 		<BuildInParallel Condition="'$(BuildInParallel)' ==''">true</BuildInParallel>
-		<NeutralLanguage>zh-CHS</NeutralLanguage>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<NeutralLanguage>1033</NeutralLanguage>
+		<PublishRepositoryUrl>https://gitee.com/dmsrs/dmsrs.git</PublishRepositoryUrl>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>

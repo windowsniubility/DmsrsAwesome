@@ -139,6 +139,8 @@ dotnet_diagnostic.SA1604.severity = silent
 csharp_indent_braces = false
 dotnet_diagnostic.SA1649.severity = suggestion
 dotnet_diagnostic.RCS1163.severity = silent
+dotnet_diagnostic.CSIsNull001.severity = warning
+dotnet_diagnostic.CSIsNull002.severity = warning
 
 [*.{cs,vb}]
 #### Naming styles ####

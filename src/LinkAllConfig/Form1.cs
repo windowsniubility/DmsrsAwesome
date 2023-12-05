@@ -1,3 +1,5 @@
+using LinkAllConfig.Utils;
+
 namespace LinkAllConfig;
 
 /// <summary> The form1. </summary>
