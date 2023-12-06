@@ -26,21 +26,35 @@ namespace LinkAllConfig.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("sadfasdf")]
-        public string Setting {
+        public string SourceFolder {
             get {
-                return ((string)(this["Setting"]));
+                return ((string)(this["SourceFolder"]));
             }
             set {
-                this["Setting"] = value;
+                this["SourceFolder"] = value;
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ww")]
-        public string Setting1 {
+        public global::System.Collections.Specialized.StringCollection SelectedFiles {
             get {
-                return ((string)(this["Setting1"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["SelectedFiles"]));
+            }
+            set {
+                this["SelectedFiles"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DestinationFolder {
+            get {
+                return ((string)(this["DestinationFolder"]));
+            }
+            set {
+                this["DestinationFolder"] = value;
             }
         }
     }
