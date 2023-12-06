@@ -1,3 +1,4 @@
+using LinkAllConfig.Properties;
 using LinkAllConfig.Utils;
 
 namespace LinkAllConfig;
@@ -93,5 +94,11 @@ public partial class Form1 : Form
 		{
 			errorProvider1.SetError(txtFsutilPath, string.Empty);
 		}
+	}
+
+	private void button1_Click(object sender, EventArgs e)
+	{
+		Settings.Default.SourceFolder = "xxxxx";
+		Settings.Default.Save();
 	}
 }
