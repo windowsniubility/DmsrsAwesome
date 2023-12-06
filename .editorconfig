@@ -219,3 +219,12 @@ dotnet_diagnostic.RCS1037.severity = warning
 
 # IDE0060: Remove unused parameter
 dotnet_diagnostic.IDE0060.severity = silent
+
+# ClassDocumentationHeader: The class must have a documentation header.
+dotnet_diagnostic.ClassDocumentationHeader.severity = silent
+
+# PropertyDocumentationHeader: The property must have a documentation header.
+dotnet_diagnostic.PropertyDocumentationHeader.severity = silent
+dotnet_diagnostic.ConstFieldDocumentationHeader.severity = silent
+dotnet_diagnostic.MethodDocumentationHeader.severity = silent
+dotnet_diagnostic.ConstructorDocumentationHeader.severity = silent
