@@ -43,7 +43,6 @@ partial class Form1
 		btnSelectTool = new Button();
 		ListTargetFiles = new ListView();
 		errorProvider1 = new ErrorProvider(components);
-		button1 = new Button();
 		panel1.SuspendLayout();
 		((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
 		SuspendLayout();
@@ -68,7 +67,7 @@ partial class Form1
 		btnSelTargets.TabIndex = 1;
 		btnSelTargets.Text = "选择";
 		btnSelTargets.UseVisualStyleBackColor = true;
-		btnSelTargets.Click += BtnSelTargets_ClickAsync;
+		btnSelTargets.Click += BtnSelTargets_Click;
 		// 
 		// txtLinks
 		// 
@@ -147,7 +146,7 @@ partial class Form1
 		// 
 		ListTargetFiles.Location = new Point(12, 145);
 		ListTargetFiles.Name = "ListTargetFiles";
-		ListTargetFiles.Size = new Size(927, 97);
+		ListTargetFiles.Size = new Size(953, 135);
 		ListTargetFiles.TabIndex = 8;
 		ListTargetFiles.UseCompatibleStateImageBehavior = false;
 		// 
@@ -155,22 +154,11 @@ partial class Form1
 		// 
 		errorProvider1.ContainerControl = this;
 		// 
-		// button1
-		// 
-		button1.Location = new Point(685, 299);
-		button1.Name = "button1";
-		button1.Size = new Size(75, 23);
-		button1.TabIndex = 9;
-		button1.Text = "button1";
-		button1.UseVisualStyleBackColor = true;
-		button1.Click += button1_Click;
-		// 
 		// Form1
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(955, 603);
-		Controls.Add(button1);
 		Controls.Add(ListTargetFiles);
 		Controls.Add(panel1);
 		Controls.Add(txtOutput);
@@ -201,5 +189,4 @@ partial class Form1
   private TextBox txtFsutilPath;
   private Button btnSelectTool;
   private ErrorProvider errorProvider1;
-	private Button button1;
 }

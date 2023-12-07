@@ -72,19 +72,41 @@ public partial class Form1 : Form
 	}
 
 	/// <summary> btns the sel targets_ click. </summary>
-	private async void BtnSelTargets_ClickAsync(object sender, EventArgs e)
+	private void BtnSelTargets_Click(object sender, EventArgs e)
 	{
 		folderBrowserDialog1.SelectedPath = txtSource.Text;
 		switch (folderBrowserDialog1.ShowDialog(this))
 		{
 			case DialogResult.OK:
 				txtSource.Text = folderBrowserDialog1.SelectedPath;
-				await helper.ListLinksAsync(txtSource.Text).ConfigureAwait(false);
+
+				BindFileList(folderBrowserDialog1.SelectedPath);
+
 				break;
 			case DialogResult.Abort:
 
 			case DialogResult.Cancel:
 				break;
+		}
+	}
+
+	private void BindFileList(string selectedPath)
+	{
+		if (!Directory.Exists(selectedPath))
+		{
+			return;
+		}
+
+		var files = Directory.GetFiles(selectedPath);
+
+		this.ListTargetFiles.Items.Clear();
+		foreach (var file in files)
+		{
+			this.ListTargetFiles.Items.Add(new ListViewItem()
+			{
+				Name = file,
+				Text = Path.GetFileName(file),
+			});
 		}
 	}
 
@@ -108,7 +130,6 @@ public partial class Form1 : Form
 
 	private void Form1_Load(object sender, EventArgs e)
 	{
-
 		txtSource.Text = Settings.Default.SourceFolder;
 		txtLinks.Text = Settings.Default.LinkFolder;
 	}
