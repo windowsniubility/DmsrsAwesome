@@ -9,6 +9,10 @@
 		<EnablePreviewFeatures>true</EnablePreviewFeatures>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <RootFile Remove="Settings.cs" />
+	</ItemGroup>
+
 
 	<ItemGroup>
 		<EmbeddedResource Include="icon.ico" />

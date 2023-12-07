@@ -29,7 +29,7 @@
 
 	<PropertyGroup Label="Project">
 		<BuildInParallel Condition="'$(BuildInParallel)' ==''">true</BuildInParallel>
-		<NeutralLanguage>1033</NeutralLanguage>
+		<NeutralLanguage>zh-cn</NeutralLanguage>
 		<PublishRepositoryUrl>https://gitee.com/dmsrs/dmsrs.git</PublishRepositoryUrl>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<Nullable>enable</Nullable>

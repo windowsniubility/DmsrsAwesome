@@ -29,6 +29,7 @@ partial class Form1
 	private void InitializeComponent()
 	{
 		components = new System.ComponentModel.Container();
+		var resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 		openFileDialog1 = new OpenFileDialog();
 		txtSource = new TextBox();
 		btnSelTargets = new Button();
@@ -56,12 +57,12 @@ partial class Form1
 		txtSource.Location = new Point(3, 32);
 		txtSource.Name = "txtSource";
 		txtSource.PlaceholderText = "选择配置目录";
-		txtSource.Size = new Size(757, 23);
+		txtSource.Size = new Size(840, 23);
 		txtSource.TabIndex = 0;
 		// 
 		// btnSelTargets
 		// 
-		btnSelTargets.Location = new Point(763, 32);
+		btnSelTargets.Location = new Point(849, 32);
 		btnSelTargets.Name = "btnSelTargets";
 		btnSelTargets.Size = new Size(75, 23);
 		btnSelTargets.TabIndex = 1;
@@ -74,12 +75,12 @@ partial class Form1
 		txtLinks.Location = new Point(3, 61);
 		txtLinks.Name = "txtLinks";
 		txtLinks.PlaceholderText = "选择分发目录";
-		txtLinks.Size = new Size(757, 23);
+		txtLinks.Size = new Size(840, 23);
 		txtLinks.TabIndex = 2;
 		// 
 		// btnSelectLinkFolder
 		// 
-		btnSelectLinkFolder.Location = new Point(763, 61);
+		btnSelectLinkFolder.Location = new Point(849, 61);
 		btnSelectLinkFolder.Name = "btnSelectLinkFolder";
 		btnSelectLinkFolder.Size = new Size(75, 23);
 		btnSelectLinkFolder.TabIndex = 3;
@@ -89,7 +90,7 @@ partial class Form1
 		// 
 		// btnCreateLinks
 		// 
-		btnCreateLinks.Location = new Point(844, 61);
+		btnCreateLinks.Location = new Point(849, 90);
 		btnCreateLinks.Name = "btnCreateLinks";
 		btnCreateLinks.Size = new Size(75, 23);
 		btnCreateLinks.TabIndex = 5;
@@ -120,7 +121,7 @@ partial class Form1
 		panel1.Controls.Add(btnSelectLinkFolder);
 		panel1.Location = new Point(12, 12);
 		panel1.Name = "panel1";
-		panel1.Size = new Size(931, 106);
+		panel1.Size = new Size(931, 127);
 		panel1.TabIndex = 7;
 		// 
 		// txtFsutilPath
@@ -128,13 +129,13 @@ partial class Form1
 		txtFsutilPath.Location = new Point(3, 3);
 		txtFsutilPath.Name = "txtFsutilPath";
 		txtFsutilPath.PlaceholderText = "fsutil路径";
-		txtFsutilPath.Size = new Size(757, 23);
+		txtFsutilPath.Size = new Size(840, 23);
 		txtFsutilPath.TabIndex = 0;
 		txtFsutilPath.Validated += TxtFsutilPath_Validated;
 		// 
 		// btnSelectTool
 		// 
-		btnSelectTool.Location = new Point(763, 3);
+		btnSelectTool.Location = new Point(849, 3);
 		btnSelectTool.Name = "btnSelectTool";
 		btnSelectTool.Size = new Size(75, 23);
 		btnSelectTool.TabIndex = 1;
@@ -173,6 +174,7 @@ partial class Form1
 		Controls.Add(ListTargetFiles);
 		Controls.Add(panel1);
 		Controls.Add(txtOutput);
+		Icon = (Icon)resources.GetObject("$this.Icon");
 		Name = "Form1";
 		Text = "Form1";
 		FormClosing += Form1_FormClosing;
