@@ -13,7 +13,6 @@ public partial class Form1 : Form
 	public Form1()
 	{
 		InitializeComponent();
-		txtFsutilPath.Text = @"C:\Windows\System32\fsutil.exe";
 		output = s =>
 		{
 			Debug.WriteLine(s);
@@ -24,6 +23,7 @@ public partial class Form1 : Form
 			txtOutput.AppendText(Environment.NewLine);
 		});
 		};
+		txtFsutilPath.Text = string.IsNullOrWhiteSpace(Settings.Default.FsuitlPath) || !File.Exists(Settings.Default.FsuitlPath) ? @"C:\Windows\System32\fsutil.exe" : Settings.Default.FsuitlPath;
 		helper = new Helper(txtFsutilPath.Text, output);
 	}
 
@@ -34,7 +34,7 @@ public partial class Form1 : Form
 	/// <param name="e">The e.</param>
 	private async void BtnCreateLinks_ClickAsync(object sender, EventArgs e)
 	{
-		await helper.MakeFileHardLinksAsync(txtLIinks.Text, txtTargets.Text).ConfigureAwait(false);
+		await helper.MakeFileHardLinksAsync(txtLinks.Text, txtSource.Text).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -44,8 +44,9 @@ public partial class Form1 : Form
 	/// <param name="e">The e.</param>
 	private void BtnSelectLinkFolder_Click(object sender, EventArgs e)
 	{
+		folderBrowserDialog1.SelectedPath = txtLinks.Text;
 		_ = folderBrowserDialog1.ShowDialog(this);
-		txtLIinks.Text = folderBrowserDialog1.SelectedPath;
+		txtLinks.Text = folderBrowserDialog1.SelectedPath;
 	}
 
 	/// <summary>
@@ -55,6 +56,8 @@ public partial class Form1 : Form
 	/// <param name="e">The e.</param>
 	private void BtnSelectTool_Click(object sender, EventArgs e)
 	{
+		openFileDialog1.InitialDirectory = Path.GetDirectoryName(txtFsutilPath.Text);
+		openFileDialog1.FileName = Path.GetFileName(txtFsutilPath.Text);
 		switch (openFileDialog1.ShowDialog(this))
 		{
 			case DialogResult.OK:
@@ -71,11 +74,12 @@ public partial class Form1 : Form
 	/// <summary> btns the sel targets_ click. </summary>
 	private async void BtnSelTargets_ClickAsync(object sender, EventArgs e)
 	{
+		folderBrowserDialog1.SelectedPath = txtSource.Text;
 		switch (folderBrowserDialog1.ShowDialog(this))
 		{
 			case DialogResult.OK:
-				txtTargets.Text = folderBrowserDialog1.SelectedPath;
-				await helper.ListLinksAsync(txtTargets.Text).ConfigureAwait(false);
+				txtSource.Text = folderBrowserDialog1.SelectedPath;
+				await helper.ListLinksAsync(txtSource.Text).ConfigureAwait(false);
 				break;
 			case DialogResult.Abort:
 
@@ -99,6 +103,21 @@ public partial class Form1 : Form
 	private void button1_Click(object sender, EventArgs e)
 	{
 		Settings.Default.SourceFolder = "xxxxx";
+		Settings.Default.Save();
+	}
+
+	private void Form1_Load(object sender, EventArgs e)
+	{
+
+		txtSource.Text = Settings.Default.SourceFolder;
+		txtLinks.Text = Settings.Default.LinkFolder;
+	}
+
+	private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+	{
+		Settings.Default.FsuitlPath = txtFsutilPath.Text;
+		Settings.Default.SourceFolder = txtSource.Text;
+		Settings.Default.LinkFolder = txtLinks.Text;
 		Settings.Default.Save();
 	}
 }

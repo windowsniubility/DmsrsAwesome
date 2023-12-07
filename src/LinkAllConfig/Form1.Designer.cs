@@ -30,10 +30,10 @@ partial class Form1
 	{
 		components = new System.ComponentModel.Container();
 		openFileDialog1 = new OpenFileDialog();
-		txtTargets = new TextBox();
+		txtSource = new TextBox();
 		btnSelTargets = new Button();
 		folderBrowserDialog1 = new FolderBrowserDialog();
-		txtLIinks = new TextBox();
+		txtLinks = new TextBox();
 		btnSelectLinkFolder = new Button();
 		btnCreateLinks = new Button();
 		txtOutput = new TextBox();
@@ -51,13 +51,13 @@ partial class Form1
 		// 
 		openFileDialog1.FileName = "openFileDialog1";
 		// 
-		// txtTargets
+		// txtSource
 		// 
-		txtTargets.Location = new Point(3, 32);
-		txtTargets.Name = "txtTargets";
-		txtTargets.PlaceholderText = "选择配置目录";
-		txtTargets.Size = new Size(757, 23);
-		txtTargets.TabIndex = 0;
+		txtSource.Location = new Point(3, 32);
+		txtSource.Name = "txtSource";
+		txtSource.PlaceholderText = "选择配置目录";
+		txtSource.Size = new Size(757, 23);
+		txtSource.TabIndex = 0;
 		// 
 		// btnSelTargets
 		// 
@@ -69,13 +69,13 @@ partial class Form1
 		btnSelTargets.UseVisualStyleBackColor = true;
 		btnSelTargets.Click += BtnSelTargets_ClickAsync;
 		// 
-		// txtLIinks
+		// txtLinks
 		// 
-		txtLIinks.Location = new Point(3, 61);
-		txtLIinks.Name = "txtLIinks";
-		txtLIinks.PlaceholderText = "选择分发目录";
-		txtLIinks.Size = new Size(757, 23);
-		txtLIinks.TabIndex = 2;
+		txtLinks.Location = new Point(3, 61);
+		txtLinks.Name = "txtLinks";
+		txtLinks.PlaceholderText = "选择分发目录";
+		txtLinks.Size = new Size(757, 23);
+		txtLinks.TabIndex = 2;
 		// 
 		// btnSelectLinkFolder
 		// 
@@ -112,8 +112,8 @@ partial class Form1
 		// 
 		panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 		panel1.Controls.Add(txtFsutilPath);
-		panel1.Controls.Add(txtTargets);
-		panel1.Controls.Add(txtLIinks);
+		panel1.Controls.Add(txtSource);
+		panel1.Controls.Add(txtLinks);
 		panel1.Controls.Add(btnCreateLinks);
 		panel1.Controls.Add(btnSelectTool);
 		panel1.Controls.Add(btnSelTargets);
@@ -175,6 +175,8 @@ partial class Form1
 		Controls.Add(txtOutput);
 		Name = "Form1";
 		Text = "Form1";
+		FormClosing += Form1_FormClosing;
+		Load += Form1_Load;
 		panel1.ResumeLayout(false);
 		panel1.PerformLayout();
 		((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
@@ -185,10 +187,10 @@ partial class Form1
 	#endregion
 
 	private OpenFileDialog openFileDialog1;
-  private TextBox txtTargets;
+  private TextBox txtSource;
   private Button btnSelTargets;
   private FolderBrowserDialog folderBrowserDialog1;
-  private TextBox txtLIinks;
+  private TextBox txtLinks;
   private Button btnSelectLinkFolder;
   private Button btnCreateLinks;
   private TextBox txtOutput;

@@ -49,12 +49,24 @@ namespace LinkAllConfig.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string DestinationFolder {
+        public string LinkFolder {
             get {
-                return ((string)(this["DestinationFolder"]));
+                return ((string)(this["LinkFolder"]));
             }
             set {
-                this["DestinationFolder"] = value;
+                this["LinkFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FsuitlPath {
+            get {
+                return ((string)(this["FsuitlPath"]));
+            }
+            set {
+                this["FsuitlPath"] = value;
             }
         }
     }

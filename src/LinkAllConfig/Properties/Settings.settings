@@ -8,7 +8,10 @@
     <Setting Name="SelectedFiles" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="DestinationFolder" Type="System.String" Scope="User">
+    <Setting Name="LinkFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FsuitlPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
