@@ -112,7 +112,7 @@ public partial class Form1 : Form
 
 	private void TxtFsutilPath_Validated(object sender, EventArgs e)
 	{
-		if (string.IsNullOrEmpty(txtFsutilPath.Text) || File.Exists(txtFsutilPath.Text))
+		if (string.IsNullOrEmpty(txtFsutilPath.Text) || !File.Exists(txtFsutilPath.Text))
 		{
 			errorProvider1.SetError(txtFsutilPath, "请指定工具路径");
 		}
