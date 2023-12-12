@@ -2,9 +2,8 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFrameworks>$(TFMS_LIB)</TargetFrameworks>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    
+    
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CliWrap" Version="3.6.5-test" />

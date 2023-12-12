@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>$(TFMS_WEB)</TargetFrameworks>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    
+    
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
   </PropertyGroup>
 

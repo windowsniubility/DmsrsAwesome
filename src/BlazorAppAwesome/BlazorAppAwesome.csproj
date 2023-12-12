@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>$(TFMS_WEB)</TargetFrameworks>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    
+    
     <UserSecretsId>aspnet-BlazorAppAwesome-b8c3f399-405f-4ac1-9d45-bf0366bef8c8</UserSecretsId>
   </PropertyGroup>
 

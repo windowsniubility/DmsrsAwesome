@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>$(TFMS_LIB)</TargetFrameworks>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
+		
+		
 
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>

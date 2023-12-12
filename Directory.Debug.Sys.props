@@ -1,7 +1,7 @@
-﻿<Project>
+<Project>
 	<Target Name="Sysxxxxx" BeforeTargets="Build" Condition="true">
 
-	 
+
 		<Message Text="$(Configuration)	当前项目配置的名称，例如，“调试”。
 		$(DevEnvDir)	Visual Studio 的安装目录（定义为驱动器 + 路径）；包括尾随反斜杠“\”。
 		$(FrameworkDir)	在其中安装了 .NET Framework 的目录。
@@ -34,8 +34,8 @@
 		$(VSInstallDir)	在其中安装了 Visual Studio 的目录。 此属性包含目标 Visual Studio 工具集的版本，它可能与主机 Visual Studio 不同。 例如，当使用 $(PlatformToolset) = v110 进行生成时，$(VSInstallDir) 包含 Visual Studio 2012 安装路径。
 		$(WebDeployPath)	从 Web 部署根到项目输出位置的相对路径。
 		$(WebDeployRoot)	&lt;localhost&gt; 位置的绝对路径。 例如 c:\inetpub\wwwroot。" Importance="high" />
-		 
-		
-		 
+
+
+
 	</Target>
 </Project>

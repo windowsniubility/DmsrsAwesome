@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>$(TFMS_WEB)</TargetFrameworks>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    
+    
     <InvariantGlobalization>true</InvariantGlobalization>
     <UserSecretsId>f612c027-caa4-472b-9018-73388c9c8985</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>

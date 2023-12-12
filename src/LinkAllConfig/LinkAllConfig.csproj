@@ -3,16 +3,11 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFrameworks>$(TFMS_WINDOWS)</TargetFrameworks>
-		<Nullable>enable</Nullable>
+		
 		<UseWindowsForms>true</UseWindowsForms>
-		<ImplicitUsings>enable</ImplicitUsings>
+		
 		<EnablePreviewFeatures>true</EnablePreviewFeatures>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <RootFile Remove="Settings.cs" />
-	</ItemGroup>
-
 
 	<ItemGroup>
 		<EmbeddedResource Include="icon.ico" />

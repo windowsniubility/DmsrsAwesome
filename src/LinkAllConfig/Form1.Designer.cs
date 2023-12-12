@@ -2,23 +2,23 @@ namespace LinkAllConfig;
 
 partial class Form1
 {
-  /// <summary>
-  ///  Required designer variable.
-  /// </summary>
-  private System.ComponentModel.IContainer components = null;
+	/// <summary>
+	///  Required designer variable.
+	/// </summary>
+	private System.ComponentModel.IContainer components = null;
 
-  /// <summary>
-  ///  Clean up any resources being used.
-  /// </summary>
-  /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-  protected override void Dispose(bool disposing)
-  {
-    if (disposing && (components != null))
-    {
-      components.Dispose();
-    }
-    base.Dispose(disposing);
-  }
+	/// <summary>
+	///  Clean up any resources being used.
+	/// </summary>
+	/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+	protected override void Dispose(bool disposing)
+	{
+	if (disposing && (components != null))
+	{
+		components.Dispose();
+	}
+	base.Dispose(disposing);
+	}
 
 	#region Windows Form Designer generated code
 
@@ -177,16 +177,16 @@ partial class Form1
 	#endregion
 
 	private OpenFileDialog openFileDialog1;
-  private TextBox txtSource;
-  private Button btnSelTargets;
-  private FolderBrowserDialog folderBrowserDialog1;
-  private TextBox txtLinks;
-  private Button btnSelectLinkFolder;
-  private Button btnCreateLinks;
-  private TextBox txtOutput;
-  private Panel panel1;
-  private ListView ListTargetFiles;
-  private TextBox txtFsutilPath;
-  private Button btnSelectTool;
-  private ErrorProvider errorProvider1;
+	private TextBox txtSource;
+	private Button btnSelTargets;
+	private FolderBrowserDialog folderBrowserDialog1;
+	private TextBox txtLinks;
+	private Button btnSelectLinkFolder;
+	private Button btnCreateLinks;
+	private TextBox txtOutput;
+	private Panel panel1;
+	private ListView ListTargetFiles;
+	private TextBox txtFsutilPath;
+	private Button btnSelectTool;
+	private ErrorProvider errorProvider1;
 }
