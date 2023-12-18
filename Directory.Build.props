@@ -92,26 +92,33 @@
 	<PropertyGroup Label="ProjectFilePath">
 		<ReadmeInTree>$([MSBuild]::GetPathOfFileAbove('README.md',$(ProjDir)))</ReadmeInTree>
 		<ReadmeInTree Condition="'$(ReadmeInTree)'==''">$(AssertDir)README.md</ReadmeInTree>
+		<ReadmeInTree Condition="!Exists('$(ReadmeInTree)')">__Unfound_.README.md</ReadmeInTree>
 
 		<IconPngInTree>$([MSBuild]::GetPathOfFileAbove('icon.png',$(ProjDir)))</IconPngInTree>
 		<IconPngInTree Condition="'$(IconPngInTree)'==''">$(AssertDir)icon.png</IconPngInTree>
+		<IconPngInTree Condition="!Exists('$(IconPngInTree)')">__Unfound_.icon.png</IconPngInTree>
 
 		<AppIcoInTree>$([MSBuild]::GetPathOfFileAbove('app.ico',$(ProjDir)))</AppIcoInTree>
 		<AppIcoInTree Condition="'$(AppIcoInTree)'==''">$(AssertDir)app.ico</AppIcoInTree>
+		<AppIcoInTree Condition="!Exists('$(AppIcoInTree)')">__Unfound_.app.ico</AppIcoInTree>
 
 		<ThirdPartyNoticesInTree>$([MSBuild]::GetPathOfFileAbove('3rdPartyNotices.txt',$(ProjDir)))</ThirdPartyNoticesInTree>
 		<ThirdPartyNoticesInTree Condition="'$(ThirdPartyNoticesInTree)'==''">$(AssertDir)3rdPartyNotices.txt</ThirdPartyNoticesInTree>
+		<ThirdPartyNoticesInTree Condition="!Exists('$(ThirdPartyNoticesInTree)')">__Unfound_.3rdPartyNotices.txt</ThirdPartyNoticesInTree>
 
 		<ChangeLogInTree>$([MSBuild]::GetPathOfFileAbove('changelog.md',$(ProjDir)))</ChangeLogInTree>
 		<ChangeLogInTree Condition="'$(ChangeLogInTree)'==''">$(AssertDir)changelog.md</ChangeLogInTree>
+		<ChangeLogInTree Condition="!Exists('$(ChangeLogInTree)')">__Unfound_.changelog.md</ChangeLogInTree>
 
 		<DescriptionInTree>$([MSBuild]::GetPathOfFileAbove('description.md',$(ProjDir)))</DescriptionInTree>
 		<DescriptionInTree Condition="'$(DescriptionInTree)'==''">$(AssertDir)description.md</DescriptionInTree>
+		<DescriptionInTree Condition="!Exists('$(DescriptionInTree)')">__Unfound_.description.md</DescriptionInTree>
 
 		<CertificateFileInTree Condition="'$(CertificateFile)'!='' And $([System.IO.Path]::IsPathRooted($(CertificateFile))) And Exists('$(CertificateFile)')">$(CertificateFile)</CertificateFileInTree>
 		<CertificateFile Condition="'$(CertificateFile)'!='' And '$(CertificateFileInTree)'==''">$([System.IO.Path]::GetFileName($(CertificateFile)))</CertificateFile>
 		<CertificateFileInTree Condition="'$(CertificateFile)'!='' And '$(CertificateFileInTree)'==''">$([MSBuild]::GetPathOfFileAbove($(CertificateFile),$(ProjDir)))</CertificateFileInTree>
 		<CertificateFileInTree Condition="'$(CertificateFile)'!='' And '$(CertificateFileInTree)'==''">$(AssertDir)$(CertificateFile)</CertificateFileInTree>
+		<CertificateFileInTree Condition="!Exists('$(CertificateFileInTree)')">__Unfound_.$(CertificateFile)</CertificateFileInTree>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(CertificateFileInTree)'!='' and Exists('$(CertificateFileInTree)')">
@@ -169,7 +176,9 @@
 				<ApplicationIcon>$(AppIcoInTree)</ApplicationIcon>
 			</PropertyGroup>
 			<ItemGroup>
-				<None Include="$(AppIcoInTree)" Pack="True" PackagePath="/" Visible="True" />
+				<!--<None Include="$(AppIcoInTree)" Pack="True" PackagePath="/" Visible="True" />-->
+				<EmbeddedResource Include="$(AppIcoInTree)" />
+				<Content Include="$(AppIcoInTree)" />
 			</ItemGroup>
 		</When>
 	</Choose>

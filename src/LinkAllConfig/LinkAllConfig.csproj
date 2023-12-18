@@ -8,15 +8,12 @@
 		
 		<EnablePreviewFeatures>true</EnablePreviewFeatures>
 		
-		<ApplicationIcon>icon.ico</ApplicationIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Include="icon.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="icon.ico" />
 		<EmbeddedResource Include="info.png" />
 	</ItemGroup>
 

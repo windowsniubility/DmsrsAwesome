@@ -60,11 +60,11 @@
 		<Message Text="	    TargetFrameworkVersion :  $(TargetFrameworkVersion)" Importance="high" />
 	</Target>
 
-	<Target Name="MyPath" BeforeTargets="Build" Condition="false">
+	<Target Name="MyPath" BeforeTargets="Build" Condition="true">
 
 		<Message Text="              ReadmeInTree:  $(ReadmeInTree)" Importance="high" />
 		<Message Text="             IconPngInTree:  $(IconPngInTree)" Importance="high" />
-		<Message Text="              AppIcoInTree:  $(AppIcoInTree)" Importance="high" />
+		<Message Text="              AppIcoInTree:  $(AppIcoInTree)" Importance="high" /><!--
 		<Message Text="           ChangeLogInTree:  $(ChangeLogInTree)" Importance="high" />
 		<Message Text="     CertificateFileInTree:  $(CertificateFileInTree)" Importance="high" />
 
@@ -74,7 +74,7 @@
 		<Message Text="           ApplicationIcon:  $(ApplicationIcon)" Importance="high" />
 
 		<Message Text=" AssemblyOriginatorKeyFile:  $(AssemblyOriginatorKeyFile)" Importance="high" />
-		<Message Text=" PackageCertificateKeyFile:  $(PackageCertificateKeyFile)" Importance="high" />
+		<Message Text=" PackageCertificateKeyFile:  $(PackageCertificateKeyFile)" Importance="high" />-->
 		<!--<Message Text="   IntermediateOutputPath:  $(IntermediateOutputPath)" Importance="high" />-->
 
 		<!--<Message Text="$(ProjDir)" Importance="high" />
