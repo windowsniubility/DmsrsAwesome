@@ -190,7 +190,7 @@
 				<ChangeLogFinalPath>$(ChangeLogInTree)</ChangeLogFinalPath>
 			</PropertyGroup>
 			<ItemGroup>
-				<None Include="$(ChangeLogInTree)" Pack="True" PackagePath="/" Visible="True" />
+				<!--<None Include="$(ChangeLogInTree)" Pack="True" PackagePath="/" Visible="True" />-->
 			</ItemGroup>
 		</When>
 	</Choose>
