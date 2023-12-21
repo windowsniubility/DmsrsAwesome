@@ -58,6 +58,7 @@ partial class Form1
 		txtSource.PlaceholderText = "选择配置目录";
 		txtSource.Size = new Size(840, 23);
 		txtSource.TabIndex = 0;
+		txtSource.Validated += txtSource_Validated;
 		// 
 		// btnSelTargets
 		// 
@@ -76,6 +77,7 @@ partial class Form1
 		txtLinks.PlaceholderText = "选择分发目录";
 		txtLinks.Size = new Size(840, 23);
 		txtLinks.TabIndex = 2;
+		txtLinks.Validated += txtLinks_Validated;
 		// 
 		// btnSelectLinkFolder
 		// 

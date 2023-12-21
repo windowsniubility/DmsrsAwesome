@@ -110,17 +110,7 @@ public partial class Form1 : Form
 		}
 	}
 
-	private void TxtFsutilPath_Validated(object sender, EventArgs e)
-	{
-		if (string.IsNullOrEmpty(txtFsutilPath.Text) || !File.Exists(txtFsutilPath.Text))
-		{
-			errorProvider1.SetError(txtFsutilPath, "请指定工具路径");
-		}
-		else
-		{
-			errorProvider1.SetError(txtFsutilPath, string.Empty);
-		}
-	}
+
 
 	private void button1_Click(object sender, EventArgs e)
 	{
@@ -140,5 +130,41 @@ public partial class Form1 : Form
 		Settings.Default.SourceFolder = txtSource.Text;
 		Settings.Default.LinkFolder = txtLinks.Text;
 		Settings.Default.Save();
+	}
+
+	private void TxtFsutilPath_Validated(object sender, EventArgs e)
+	{
+		if (string.IsNullOrEmpty(txtFsutilPath.Text) || !File.Exists(txtFsutilPath.Text))
+		{
+			errorProvider1.SetError(txtFsutilPath, "请指定工具路径");
+		}
+		else
+		{
+			errorProvider1.SetError(txtFsutilPath, string.Empty);
+		}
+	}
+
+	private void txtSource_Validated(object sender, EventArgs e)
+	{
+		if (string.IsNullOrEmpty(txtSource.Text) || !Directory.Exists(txtSource.Text))
+		{
+			errorProvider1.SetError(txtSource, "请选择有效源路径");
+		}
+		else
+		{
+			errorProvider1.SetError(txtSource, string.Empty);
+		}
+	}
+
+	private void txtLinks_Validated(object sender, EventArgs e)
+	{
+		if (string.IsNullOrEmpty(txtLinks.Text) || !Directory.Exists(txtLinks.Text))
+		{
+			errorProvider1.SetError(txtLinks, "请选择有效目标路径");
+		}
+		else
+		{
+			errorProvider1.SetError(txtLinks, string.Empty);
+		}
 	}
 }
