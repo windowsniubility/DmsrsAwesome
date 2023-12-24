@@ -129,7 +129,8 @@
 	<ItemGroup>
 		<ConfigFile Include="$(PropsDir)**/*.props" Exclude="$(PropsDir)**/*.g.props;$(BuildOutput)/**/*.props" />
 		<ConfigFile Include="$(PropsDir)**/*.targets" Exclude="$(PropsDir)**/*.g.targets" />
-		<RootFile Include="$(PropsDir)*.*" Exclude="$(PropsDir)**/*.props;$(PropsDir)**/*.targets" />
+		<ConfigFile Include="$(PropsDir)**/*.rsp" Exclude="$(PropsDir)**/*.g.rsp" />
+		<RootFile Include="$(PropsDir)*.*" Exclude="$(PropsDir)**/*.props;$(PropsDir)**/*.targets;$(PropsDir)**/*.rsp" />
 		<RootFile Include="$(PropsDir)/.github/**/*.*" Folder=".github" />
 		<RootFile Include="$(PropsDir)/.gitee/**/*.*" Folder=".gitte" />
 		<RootFile Include="$(AssertDir)**/*.*" Folder="$(AssertFolder)" />
