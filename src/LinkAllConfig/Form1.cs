@@ -99,10 +99,10 @@ public partial class Form1 : Form
 
 		var files = Directory.GetFiles(selectedPath);
 
-		this.ListTargetFiles.Items.Clear();
+		ListTargetFiles.Items.Clear();
 		foreach (var file in files)
 		{
-			this.ListTargetFiles.Items.Add(new ListViewItem()
+			ListTargetFiles.Items.Add(new ListViewItem()
 			{
 				Name = file,
 				Text = Path.GetFileName(file),

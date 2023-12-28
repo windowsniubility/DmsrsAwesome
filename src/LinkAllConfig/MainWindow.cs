@@ -8,6 +8,7 @@
 
 using System.Globalization;
 using System.Reflection;
+using System.Text;
 using LinkAllConfig.Properties;
 
 namespace DmsrsAwesome;
@@ -17,6 +18,8 @@ namespace DmsrsAwesome;
 /// </summary>
 public partial class MainWindow : Form
 {
+	private static readonly CompositeFormat AboutDesc = CompositeFormat.Parse(Resources.AboutDescription);
+
 	/// <summary>The tool tip.</summary>
 	private readonly ToolTip toolTip = new();
 
@@ -213,7 +216,7 @@ public partial class MainWindow : Form
 		//  var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
 		//  version = fvi.FileVersion;
 		// }
-		_ = MessageBox.Show(string.Format(CultureInfo.CurrentCulture, Resources.AboutDescription, version), Resources.MessageBoxAboutTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+		_ = MessageBox.Show(string.Format(CultureInfo.CurrentCulture, AboutDesc, version), Resources.MessageBoxAboutTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
 	}
 
 	/// <summary>
