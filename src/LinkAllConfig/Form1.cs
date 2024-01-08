@@ -27,6 +27,26 @@ public partial class Form1 : Form
 		helper = new Helper(txtFsutilPath.Text, output);
 	}
 
+	private void BindFileList(string selectedPath)
+	{
+		if (!Directory.Exists(selectedPath))
+		{
+			return;
+		}
+
+		var files = Directory.GetFiles(selectedPath);
+
+		ListTargetFiles.Items.Clear();
+		foreach (var file in files)
+		{
+			ListTargetFiles.Items.Add(new ListViewItem()
+			{
+				Name = file,
+				Text = Path.GetFileName(file),
+			});
+		}
+	}
+
 	/// <summary>
 	/// btns the create links_ click.
 	/// </summary>
@@ -89,37 +109,10 @@ public partial class Form1 : Form
 				break;
 		}
 	}
-
-	private void BindFileList(string selectedPath)
-	{
-		if (!Directory.Exists(selectedPath))
-		{
-			return;
-		}
-
-		var files = Directory.GetFiles(selectedPath);
-
-		ListTargetFiles.Items.Clear();
-		foreach (var file in files)
-		{
-			ListTargetFiles.Items.Add(new ListViewItem()
-			{
-				Name = file,
-				Text = Path.GetFileName(file),
-			});
-		}
-	}
-
 	private void button1_Click(object sender, EventArgs e)
 	{
 		Settings.Default.SourceFolder = "xxxxx";
 		Settings.Default.Save();
-	}
-
-	private void Form1_Load(object sender, EventArgs e)
-	{
-		txtSource.Text = Settings.Default.SourceFolder;
-		txtLinks.Text = Settings.Default.LinkFolder;
 	}
 
 	private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -130,6 +123,11 @@ public partial class Form1 : Form
 		Settings.Default.Save();
 	}
 
+	private void Form1_Load(object sender, EventArgs e)
+	{
+		txtSource.Text = Settings.Default.SourceFolder;
+		txtLinks.Text = Settings.Default.LinkFolder;
+	}
 	private void TxtFsutilPath_Validated(object sender, EventArgs e)
 	{
 		if (string.IsNullOrEmpty(txtFsutilPath.Text) || !File.Exists(txtFsutilPath.Text))
@@ -142,18 +140,6 @@ public partial class Form1 : Form
 		}
 	}
 
-	private void txtSource_Validated(object sender, EventArgs e)
-	{
-		if (string.IsNullOrEmpty(txtSource.Text) || !Directory.Exists(txtSource.Text))
-		{
-			errorProvider1.SetError(txtSource, "请选择有效源路径");
-		}
-		else
-		{
-			errorProvider1.SetError(txtSource, string.Empty);
-		}
-	}
-
 	private void txtLinks_Validated(object sender, EventArgs e)
 	{
 		if (string.IsNullOrEmpty(txtLinks.Text) || !Directory.Exists(txtLinks.Text))
@@ -163,6 +149,18 @@ public partial class Form1 : Form
 		else
 		{
 			errorProvider1.SetError(txtLinks, string.Empty);
+		}
+	}
+
+	private void txtSource_Validated(object sender, EventArgs e)
+	{
+		if (string.IsNullOrEmpty(txtSource.Text) || !Directory.Exists(txtSource.Text))
+		{
+			errorProvider1.SetError(txtSource, "请选择有效源路径");
+		}
+		else
+		{
+			errorProvider1.SetError(txtSource, string.Empty);
 		}
 	}
 }

@@ -1,27 +1,5 @@
 # 表明是最顶层配置文件，发现设为 true 时，才会停止查找 .editorconfig 文件
 root = true
-[*]
-
-# 缩进样式，可以设置为 tab 或 space 两个值
-indent_style = tab
-
-# 当缩进样式设置为 space 时，用来设置每次缩进相当于多少列
-indent_size = tab
-
-# 当缩进设置为 tab 时，用来设置每次缩进相当于多少列代码
-tab_width = 4
-
-# 定义行末采用什么符号来进行换行，可以选择包括：lf、cr 和 crlf
-end_of_line = crlf
-
-# 编码格式，支持： latin1、utf-8、utf-8-bom、utf-16be 和 utf-16le，不建议使用 utf-8-bom
-charset = utf-8
-
-# 是否除去代码行末的任意空白字符，true 或 false
-trim_trailing_whitespace = true
-
-# 是否以一个空白行结尾文件，true 或 false
-#insert_final_newline = true
 
 [*.{appxmanifest,axml,build,config,csproj,dbml,discomap,dtd,jsproj,lsproj,njsproj,nuspec,proj,props,proto,resw,resx,StyleCop,targets,tasks,vbproj,xml,xsd}]
 indent_style = tab
@@ -33,12 +11,30 @@ indent_style = space
 indent_size = 4
 tab_width = 4
 
-[*.{cs,json,resjson}]
+[*.{json,resjson}]
 indent_style = space
 indent_size = 2
 tab_width = 2
 
 [*]
+
+# 缩进样式，可以设置为 tab 或 space 两个值
+indent_style = tab
+
+# 当缩进样式设置为 space 时，用来设置每次缩进相当于多少列
+indent_size = tab
+
+# 当缩进设置为 tab 时，用来设置每次缩进相当于多少列代码
+tab_width = 4
+
+# 编码格式，支持： latin1、utf-8、utf-8-bom、utf-16be 和 utf-16le，不建议使用 utf-8-bom
+charset = utf-8
+
+# 是否除去代码行末的任意空白字符，true 或 false
+trim_trailing_whitespace = true
+
+# 是否以一个空白行结尾文件，true 或 false
+insert_final_newline = false
 
 # Standard properties
 end_of_line = crlf
@@ -141,6 +137,7 @@ dotnet_diagnostic.SA1649.severity = suggestion
 dotnet_diagnostic.RCS1163.severity = silent
 dotnet_diagnostic.CSIsNull001.severity = warning
 dotnet_diagnostic.CSIsNull002.severity = warning
+csharp_new_line_before_open_brace = all
 
 [*.{cs,vb}]
 #### Naming styles ####
@@ -163,31 +160,31 @@ dotnet_naming_rule.non_field_members_should_be_pascal_case.style = pascal_case
 
 dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
-dotnet_naming_symbols.interface.required_modifiers = 
+dotnet_naming_symbols.interface.required_modifiers =
 
 dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum
 dotnet_naming_symbols.types.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
-dotnet_naming_symbols.types.required_modifiers = 
+dotnet_naming_symbols.types.required_modifiers =
 
 dotnet_naming_symbols.non_field_members.applicable_kinds = property, event, method
 dotnet_naming_symbols.non_field_members.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
-dotnet_naming_symbols.non_field_members.required_modifiers = 
+dotnet_naming_symbols.non_field_members.required_modifiers =
 
 # Naming styles
 
 dotnet_naming_style.begins_with_i.required_prefix = I
-dotnet_naming_style.begins_with_i.required_suffix = 
-dotnet_naming_style.begins_with_i.word_separator = 
+dotnet_naming_style.begins_with_i.required_suffix =
+dotnet_naming_style.begins_with_i.word_separator =
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
-dotnet_naming_style.pascal_case.required_prefix = 
-dotnet_naming_style.pascal_case.required_suffix = 
-dotnet_naming_style.pascal_case.word_separator = 
+dotnet_naming_style.pascal_case.required_prefix =
+dotnet_naming_style.pascal_case.required_suffix =
+dotnet_naming_style.pascal_case.word_separator =
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
-dotnet_naming_style.pascal_case.required_prefix = 
-dotnet_naming_style.pascal_case.required_suffix = 
-dotnet_naming_style.pascal_case.word_separator = 
+dotnet_naming_style.pascal_case.required_prefix =
+dotnet_naming_style.pascal_case.required_suffix =
+dotnet_naming_style.pascal_case.word_separator =
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 tab_width = 4

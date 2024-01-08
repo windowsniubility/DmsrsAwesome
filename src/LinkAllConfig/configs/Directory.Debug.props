@@ -62,6 +62,8 @@
 
 	<Target Name="MyPath" BeforeTargets="Build" Condition="true">
 
+		
+		<Message Text="       Latest LoadingOrder:  $(LoadingOrder)" Importance="high" />
 		<Message Text="              ReadmeInTree:  $(ReadmeInTree)" Importance="high" />
 		<Message Text="             IconPngInTree:  $(IconPngInTree)" Importance="high" />
 		<Message Text="              AppIcoInTree:  $(AppIcoInTree)" Importance="high" /><!--

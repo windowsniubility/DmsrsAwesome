@@ -1,5 +1,9 @@
 <Project>
 
+	<PropertyGroup Label="Generates">
+		<GeneratePackageOnBuild Condition="'$(Configuration)'=='Debug'">true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
 	<PropertyGroup Label="Assemblies">
 		<CertificateFile>dmsrs.snk</CertificateFile>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>

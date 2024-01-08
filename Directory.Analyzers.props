@@ -1,22 +1,5 @@
 <Project>
-	<ItemGroup Label="BeBetter" Condition="true">
-		<!--<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" ExcludeAssets="compile" PrivateAssets="all" />-->
-		<!--<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4" ExcludeAssets="compile" PrivateAssets="all" />-->
-		<PackageReference Include="Microsoft.CodeAnalysis.AnalyzerUtilities" Version="3.3.4" ExcludeAssets="compile" PrivateAssets="all" />
 
-		<!--<PackageReference Include="UnoptimizedAssemblyDetector" Version="0.1.1" ExcludeAssets="compile" PrivateAssets="all" />-->
-		<PackageReference Include="CSharpIsNullAnalyzer" Version="0.1.495" ExcludeAssets="compile" PrivateAssets="all" />
-		<!--<PackageReference Include="DotNetAnalyzers.DocumentationAnalyzers.Unstable" Version="1.0.0.59" ExcludeAssets="compile" PrivateAssets="all" />-->
-
-		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118" ExcludeAssets="compile" PrivateAssets="all" />
-		<PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" ExcludeAssets="compile" PrivateAssets="all" />
-
-		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.7.0" ExcludeAssets="compile" PrivateAssets="all" />
-		<PackageReference Include="Roslynator.Analyzers" Version="4.7.0" ExcludeAssets="compile" PrivateAssets="all" />
-		<PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.7.0" ExcludeAssets="compile" PrivateAssets="all" />
-
-		<PackageReference Include="Microsoft.CST.DevSkim" ExcludeAssets="compile" Version="1.0.27" />
-	</ItemGroup>
 	<PropertyGroup>
 		<NoWarn>NU1605;NU1504;NU5105;1701;1702;1591;8002;$(NoWarn)</NoWarn>
 		<NoWarn>SA1623;SA1028;SA1615;SA1027;SA1037;$(NoWarn)</NoWarn>
@@ -28,14 +11,11 @@
 		<NoWarn>CA1822;CA1852;CA1805;$(NoWarn)</NoWarn>
 		<!--<DisablePublicApiAnalyzer>true</DisablePublicApiAnalyzer>-->
 
-
 		<AnalysisLevel>latest-recommended</AnalysisLevel>
 
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<EnableNETAnalyzers>True</EnableNETAnalyzers>
 		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
-
 	</PropertyGroup>
-
 </Project>

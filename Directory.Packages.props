@@ -1,0 +1,87 @@
+<Project>
+	<PropertyGroup>
+		<LoadingOrder>$(MSBuildThisFile)</LoadingOrder>
+		<ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+		<CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+		<CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
+	</PropertyGroup>
+
+	<ItemGroup Label="Analyzers"
+			   Condition="true">
+
+		<!--<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" ExcludeAssets="compile" PrivateAssets="all" />-->
+		<!--<PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4" ExcludeAssets="compile" PrivateAssets="all" />-->
+		<PackageReference Include="Microsoft.CodeAnalysis.AnalyzerUtilities"
+						  Version="3.3.4"
+						  ExcludeAssets="compile"
+						  PrivateAssets="all" />
+
+		<!--<PackageReference Include="UnoptimizedAssemblyDetector" Version="0.1.1" ExcludeAssets="compile" PrivateAssets="all" />-->
+		<PackageReference Include="CSharpIsNullAnalyzer"
+						  Version="0.1.495"
+						  ExcludeAssets="compile"
+						  PrivateAssets="all" />
+		<!--<PackageReference Include="DotNetAnalyzers.DocumentationAnalyzers.Unstable" Version="1.0.0.59" ExcludeAssets="compile" PrivateAssets="all" />-->
+
+		<PackageReference Include="StyleCop.Analyzers"
+						  Version="1.1.118"
+						  ExcludeAssets="compile"
+						  PrivateAssets="all" />
+		<PackageReference Include="StyleCop.Analyzers.Unstable"
+						  Version="1.2.0.556"
+						  ExcludeAssets="compile"
+						  PrivateAssets="all" />
+
+		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers"
+						  Version="4.8.0"
+						  ExcludeAssets="compile"
+						  PrivateAssets="all" />
+		<PackageReference Include="Roslynator.Analyzers"
+						  Version="4.8.0"
+						  ExcludeAssets="compile"
+						  PrivateAssets="all" />
+		<PackageReference Include="Roslynator.Formatting.Analyzers"
+						  Version="4.8.0"
+						  ExcludeAssets="compile"
+						  PrivateAssets="all" />
+
+		<PackageReference Include="Microsoft.CST.DevSkim"
+						  ExcludeAssets="compile"
+						  Version="1.0.27" />
+
+		<PackageReference Include="AsyncFixer"
+						  ExcludeAssets="compile"
+						  Version="1.6.0" />
+
+		<PackageReference Include="IDisposableAnalyzers"
+						  Version="4.0.7"
+						  PrivateAssets="All"
+						  IncludeAssets="Runtime;Build;Native;contentFiles;Analyzers" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!--Condition="'$(GITHUB_ACTIONS)' == 'true' and '$(IsTestProject)' != 'true'"-->
+		<PackageReference ExcludeAssets="compile"
+						  PrivateAssets="all"
+						  Include="Microsoft.SourceLink.GitHub"
+						  Version="8.0.0" />
+		<PackageReference ExcludeAssets="compile"
+						  PrivateAssets="all"
+						  Include="Nullable"
+						  Version="1.3.1" />
+		<PackageReference ExcludeAssets="compile"
+						  PrivateAssets="all"
+						  Include="Nerdbank.GitVersioning"
+						  Version="3.7.48-alpha"
+						  Condition="!Exists('packages.config')" />
+		<!--<GlobalPackageReference Include="Nerdbank.GitVersioning" />-->
+	</ItemGroup>
+
+	<Target Name="PrepareReleaseNotes"
+			BeforeTargets="GenerateNuspec"
+			DependsOnTargets="GetBuildVersion">
+		<PropertyGroup>
+			<PackageReleaseNotes Condition="'$(PackageProjectUrl)'!=''">$(PackageProjectUrl)/releases/tag/v$(Version)</PackageReleaseNotes>
+		</PropertyGroup>
+	</Target>
+</Project>
