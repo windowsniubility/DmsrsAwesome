@@ -1,5 +1,7 @@
 <Project>
-
+	<PropertyGroup>
+		<LoadingOrder>$(MSBuildThisFileDirectory)$(MSBuildThisFile);$(LoadingOrder)</LoadingOrder>
+	</PropertyGroup>
 	<PropertyGroup Label="Generates">
 		<GeneratePackageOnBuild Condition="'$(Configuration)'=='Debug'">true</GeneratePackageOnBuild>
 	</PropertyGroup>

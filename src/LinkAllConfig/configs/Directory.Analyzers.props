@@ -1,21 +1,6 @@
 <Project>
-
 	<PropertyGroup>
-		<NoWarn>NU1605;NU1504;NU5105;1701;1702;1591;8002;$(NoWarn)</NoWarn>
-		<NoWarn>SA1623;SA1028;SA1615;SA1027;SA1037;$(NoWarn)</NoWarn>
-		<!--
-		SA1615 - Element return value should be documented
-		SA1629 - A section of the Xml header documentation for a C# element does not end with a period (also known as a full stop).
-		-->
-		<NoWarn>SA1600;SA1629;CS1591;SA1615;(NoWarn)</NoWarn>
-		<NoWarn>CA1822;CA1852;CA1805;$(NoWarn)</NoWarn>
-		<!--<DisablePublicApiAnalyzer>true</DisablePublicApiAnalyzer>-->
-
-		<AnalysisLevel>latest-recommended</AnalysisLevel>
-
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<EnableNETAnalyzers>True</EnableNETAnalyzers>
-		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
-		<RunAnalyzersDuringLiveAnalysis>True</RunAnalyzersDuringLiveAnalysis>
+		<LoadingOrder>$(MSBuildThisFileDirectory)$(MSBuildThisFile);$(LoadingOrder)</LoadingOrder>
 	</PropertyGroup>
+	
 </Project>

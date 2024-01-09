@@ -1,8 +1,9 @@
 <Project>
-
+	<PropertyGroup>
+		<LoadingOrder>$(MSBuildThisFileDirectory)$(MSBuildThisFile);$(LoadingOrder)</LoadingOrder>
+	</PropertyGroup>
 	<!--<Import Project="$([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..))" Condition="Exists($([MSBuild]::GetPathOfFileAbove($(MSBuildThisFile), $(MSBuildThisFileDirectory)..)))" />-->
-	<PropertyGroup Label="Config_Default">
-		<LoadingOrder>$(MSBuildThisFile)</LoadingOrder>
+	<PropertyGroup Label="Config_Default">		
 		<AssertFolder>assert</AssertFolder>
 		<ConfigLinkBase>Properties/root</ConfigLinkBase>
 		<CertificateFile>StrongName.snk</CertificateFile>

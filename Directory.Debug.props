@@ -1,9 +1,9 @@
 <Project>
-
+	<PropertyGroup>
+		<LoadingOrder>$(MSBuildThisFileDirectory)$(MSBuildThisFile);$(LoadingOrder)</LoadingOrder>
+	</PropertyGroup>
 	<Target Name="NerdbankGitVersioning" BeforeTargets="Build" Condition="false">
-		<Message
-			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) ======="
-			Importance="high" />
+		<Message Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =======" Importance="high" />
 
 		<Message Text="AssemblyFileVersion :  $(AssemblyFileVersion)" Importance="high" />
 		<Message Text="AssemblyInformationalVersion :  $(AssemblyInformationalVersion)" Importance="high" />
@@ -33,9 +33,7 @@
 	</Target>
 
 	<Target Name="MyOptimize" BeforeTargets="Build" Condition="false">
-		<Message
-			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) ======="
-			Importance="high" />
+		<Message Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =======" Importance="high" />
 
 		<Message Text="       EnableDynamicLoading :  $(EnableDynamicLoading)" Importance="high" />
 		<Message Text="CopyLocalLockFileAssemblies :  $(CopyLocalLockFileAssemblies)" Importance="high" />
@@ -44,9 +42,7 @@
 	</Target>
 
 	<Target Name="MyFFMCheck" BeforeTargets="Build" Condition="false">
-		<Message
-			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) ======="
-			Importance="high" />
+		<Message Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =======" Importance="high" />
 
 		<Message Text="       UsingMicrosoftNETSdk :  $(UsingMicrosoftNETSdk)" Importance="high" />
 		<Message Text="	                IsPackable :  $(IsPackable)" Importance="high" />
@@ -62,11 +58,11 @@
 
 	<Target Name="MyPath" BeforeTargets="Build" Condition="true">
 
-		
 		<Message Text="       Latest LoadingOrder:  $(LoadingOrder)" Importance="high" />
 		<Message Text="              ReadmeInTree:  $(ReadmeInTree)" Importance="high" />
 		<Message Text="             IconPngInTree:  $(IconPngInTree)" Importance="high" />
-		<Message Text="              AppIcoInTree:  $(AppIcoInTree)" Importance="high" /><!--
+<Message Text="              AppIcoInTree:  $(AppIcoInTree)" Importance="high" />
+<!--
 		<Message Text="           ChangeLogInTree:  $(ChangeLogInTree)" Importance="high" />
 		<Message Text="     CertificateFileInTree:  $(CertificateFileInTree)" Importance="high" />
 
@@ -89,16 +85,13 @@
 		<!--<Message Text=" $(DirectoryBuildPropsPath)、$(ImportDirectoryBuildProps)、
 				 $(DirectoryBuildTargetsPath) 和 $(ImportDirectoryBuildTargets)
 				 " Importance="high" />-->
-
-		<Message
-			Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =
+				 <Message Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =
 				AssertDir - $(AssertDir)
 				PropsDir- $(PropsDir)
 				PropsTopDir-  $(PropsTopDir)
 				PropsDir- $(PropsDir)
 
 				CertificateFileInTree - $(CertificateFileInTree)
-				 "
-			Importance="high" />
+" Importance="high" />
 	</Target>
 </Project>
