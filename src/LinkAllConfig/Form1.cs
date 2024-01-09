@@ -1,5 +1,6 @@
 using LinkAllConfig.Properties;
 using LinkAllConfig.Utils;
+using System.Linq.Expressions;
 
 namespace LinkAllConfig;
 
@@ -47,6 +48,8 @@ public partial class Form1 : Form
 		}
 	}
 
+	private readonly CancellationTokenSource cts = new();
+
 	/// <summary>
 	/// btns the create links_ click.
 	/// </summary>
@@ -54,7 +57,19 @@ public partial class Form1 : Form
 	/// <param name="e">The e.</param>
 	private async void BtnCreateLinks_ClickAsync(object sender, EventArgs e)
 	{
-		await helper.MakeFileHardLinksAsync(txtLinks.Text, txtSource.Text).ConfigureAwait(false);
+		if (btnCreateLinks.Text != "Stop")
+		{
+			btnCreateLinks.Text = "Stop";
+			if (cts.TryReset())
+			{
+				await helper.MakeFileHardLinksAsync(txtLinks.Text, txtSource.Text, cts.Token);
+			}
+		}
+		else
+		{
+			btnCreateLinks.Text = "Create";
+			await cts.CancelAsync();
+		}
 	}
 
 	/// <summary>

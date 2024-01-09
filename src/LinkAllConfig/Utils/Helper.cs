@@ -41,20 +41,31 @@ internal sealed class Helper(string targetPath, Action<string> output)
 	/// <returns>A Task.</returns>
 	public async Task MakeFileHardLinksAsync(string linkFolder, string targetsParent, CancellationToken signal = default)
 	{
-		var outputPipe = PipeTarget.ToDelegate(Output);
+		var outputPipe = PipeTarget.ToDelegate(s => Output(s.PadLeft(50)));
 		foreach (var target in Directory.EnumerateFiles(targetsParent))
 		{
 			if (signal.IsCancellationRequested)
 			{
+				Output("Stop");
 				break;
+			}
+			else
+			{
+				Output(target);
 			}
 
 			foreach (var link in from folder in Directory.EnumerateDirectories(linkFolder) select Path.Combine(folder, Path.GetFileName(target)))
 			{
 				if (signal.IsCancellationRequested)
 				{
+					Output("Stop");
 					break;
 				}
+				else
+				{
+					Output(link.PadLeft(30));
+				}
+
 
 				if (File.Exists(link))
 				{
