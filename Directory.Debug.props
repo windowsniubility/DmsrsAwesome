@@ -61,8 +61,8 @@
 		<Message Text="       Latest LoadingOrder:  $(LoadingOrder)" Importance="high" />
 		<Message Text="              ReadmeInTree:  $(ReadmeInTree)" Importance="high" />
 		<Message Text="             IconPngInTree:  $(IconPngInTree)" Importance="high" />
-<Message Text="              AppIcoInTree:  $(AppIcoInTree)" Importance="high" />
-<!--
+		<Message Text="              AppIcoInTree:  $(AppIcoInTree)" Importance="high" />
+		<!--
 		<Message Text="           ChangeLogInTree:  $(ChangeLogInTree)" Importance="high" />
 		<Message Text="     CertificateFileInTree:  $(CertificateFileInTree)" Importance="high" />
 
@@ -85,7 +85,7 @@
 		<!--<Message Text=" $(DirectoryBuildPropsPath)、$(ImportDirectoryBuildProps)、
 				 $(DirectoryBuildTargetsPath) 和 $(ImportDirectoryBuildTargets)
 				 " Importance="high" />-->
-				 <Message Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =
+		<Message Text="=======$(MSBuildProjectName) - $(Configuration) -$(TargetFrameworkIdentifier)-$(TargetFramework)-$(TargetFrameworkVersion) - $(MSBuildThisFileDirectory) =
 				AssertDir - $(AssertDir)
 				PropsDir- $(PropsDir)
 				PropsTopDir-  $(PropsTopDir)

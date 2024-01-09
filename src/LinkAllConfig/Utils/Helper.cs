@@ -2,7 +2,7 @@ namespace LinkAllConfig.Utils;
 
 /// <summary> The helper. </summary>
 /// <remarks>
-/// <para>Initializes a new instance of the <see cref="Helper"/> class.</para>
+///     <para>Initializes a new instance of the <see cref="Helper" /> class.</para>
 /// </remarks>
 /// <param name="targetPath">The target path.</param>
 /// <param name="output">The output.</param>
@@ -33,7 +33,7 @@ internal sealed class Helper(string targetPath, Action<string> output)
 	}
 
 	/// <summary>
-	/// Makes the file hard links.
+	///     Makes the file hard links.
 	/// </summary>
 	/// <param name="linkFolder">The link folder.</param>
 	/// <param name="targetsParent">The targets parent.</param>
@@ -41,31 +41,29 @@ internal sealed class Helper(string targetPath, Action<string> output)
 	/// <returns>A Task.</returns>
 	public async Task MakeFileHardLinksAsync(string linkFolder, string targetsParent, CancellationToken signal = default)
 	{
-		var outputPipe = PipeTarget.ToDelegate(s => Output(s.PadLeft(50)));
+		var outputPipe = PipeTarget.ToDelegate(s => Output(s.PadLeft(50,'-')));
+
 		foreach (var target in Directory.EnumerateFiles(targetsParent))
 		{
 			if (signal.IsCancellationRequested)
 			{
 				Output("Stop");
+
 				break;
 			}
-			else
-			{
-				Output(target);
-			}
+
+			Output(target);
 
 			foreach (var link in from folder in Directory.EnumerateDirectories(linkFolder) select Path.Combine(folder, Path.GetFileName(target)))
 			{
 				if (signal.IsCancellationRequested)
 				{
 					Output("Stop");
+
 					break;
 				}
-				else
-				{
-					Output(link.PadLeft(30));
-				}
 
+				Output(link.PadLeft(30,'-'));
 
 				if (File.Exists(link))
 				{
@@ -75,13 +73,14 @@ internal sealed class Helper(string targetPath, Action<string> output)
 				try
 				{
 					var cmd = Cli.Wrap(targetFilePath)
-						.WithArguments(args => args.Add("hardlink").Add("create").Add(link).Add(target))
-						.WithStandardOutputPipe(outputPipe)
-						.WithStandardErrorPipe(outputPipe)
+							.WithArguments(args => args.Add("hardlink").Add("create").Add(link).Add(target))
+							.WithStandardOutputPipe(outputPipe)
+							.WithStandardErrorPipe(outputPipe)
 
-				// .WithValidation(CommandResultValidation.None)
-				;
-					_ = await cmd.ExecuteBufferedAsync(cancellationToken: signal);
+						// .WithValidation(CommandResultValidation.None)
+						;
+
+					_ = await cmd.ExecuteBufferedAsync(signal);
 				}
 				catch (Exception ex)
 				{

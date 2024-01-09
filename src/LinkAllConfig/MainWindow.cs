@@ -56,15 +56,13 @@ public partial class MainWindow : Form
 	///     This Method lets you select the type of link you want to create.
 	/// </summary>
 	/// <returns>String with the type of link to create.</returns>
-	private string ComboBoxSelection()
-	{
-		return linkTypeComboBox.SelectedIndex switch
+	private string ComboBoxSelection() =>
+		linkTypeComboBox.SelectedIndex switch
 		{
 			1 => "/H ",
 			2 => "/J ",
-			_ => string.Empty,
+			_ => string.Empty
 		};
-	}
 
 	/// <summary>
 	///     Creates the link if the conditions are met.
@@ -158,10 +156,7 @@ public partial class MainWindow : Form
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
-	private void CreateLinkClick(object sender, EventArgs e)
-	{
-		CreateLink();
-	}
+	private void CreateLinkClick(object sender, EventArgs e) => CreateLink();
 
 	/// <summary>
 	///     Explores the button1 click.
@@ -269,7 +264,7 @@ public partial class MainWindow : Form
 				UseShellExecute = false,
 				CreateNoWindow = true,
 				RedirectStandardError = true,
-				RedirectStandardOutput = true,
+				RedirectStandardOutput = true
 			};
 
 			var process = new Process { StartInfo = processStartInfo, EnableRaisingEvents = true };
@@ -371,8 +366,5 @@ public partial class MainWindow : Form
 	/// <summary>The type selector_ selected index changed.</summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
-	private void TypeSelectorSelectedIndexChanged(object sender, EventArgs e)
-	{
-		Switcher();
-	}
+	private void TypeSelectorSelectedIndexChanged(object sender, EventArgs e) => Switcher();
 }

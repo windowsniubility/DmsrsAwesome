@@ -1,14 +1,12 @@
-using Microsoft.Extensions.Options;
-
 namespace LinkAllConfig;
 
 /// <summary>
-/// The program.
+///     The program.
 /// </summary>
 internal static class Program
 {
 	/// <summary>
-	///  The main entry point for the application.
+	///     The main entry point for the application.
 	/// </summary>
 	[STAThread]
 	private static void Main()

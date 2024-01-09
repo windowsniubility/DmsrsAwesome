@@ -1,29 +1,32 @@
 using LinkAllConfig.Properties;
 using LinkAllConfig.Utils;
-using System.Linq.Expressions;
 
 namespace LinkAllConfig;
 
 /// <summary> The form1. </summary>
 public partial class Form1 : Form
 {
+	private readonly CancellationTokenSource cts = new();
 	private readonly Action<string> output;
 	private Helper helper;
 
-	/// <summary> Initializes a new instance of the <see cref="Form1"/> class. </summary>
+	/// <summary> Initializes a new instance of the <see cref="Form1" /> class. </summary>
 	public Form1()
 	{
 		InitializeComponent();
+
 		output = s =>
 		{
 			Debug.WriteLine(s);
 
-			Invoke(() =>
-		{
-			txtOutput.AppendText(s);
-			txtOutput.AppendText(Environment.NewLine);
-		});
+			Invoke(
+				() =>
+				{
+					txtOutput.AppendText(s);
+					txtOutput.AppendText(Environment.NewLine);
+				});
 		};
+
 		txtFsutilPath.Text = string.IsNullOrWhiteSpace(Settings.Default.FsuitlPath) || !File.Exists(Settings.Default.FsuitlPath) ? @"C:\Windows\System32\fsutil.exe" : Settings.Default.FsuitlPath;
 		helper = new Helper(txtFsutilPath.Text, output);
 	}
@@ -38,20 +41,15 @@ public partial class Form1 : Form
 		var files = Directory.GetFiles(selectedPath);
 
 		ListTargetFiles.Items.Clear();
+
 		foreach (var file in files)
 		{
-			ListTargetFiles.Items.Add(new ListViewItem()
-			{
-				Name = file,
-				Text = Path.GetFileName(file),
-			});
+			ListTargetFiles.Items.Add(new ListViewItem { Name = file, Text = Path.GetFileName(file) });
 		}
 	}
 
-	private readonly CancellationTokenSource cts = new();
-
 	/// <summary>
-	/// btns the create links_ click.
+	///     btns the create links_ click.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
@@ -60,6 +58,7 @@ public partial class Form1 : Form
 		if (btnCreateLinks.Text != "Stop")
 		{
 			btnCreateLinks.Text = "Stop";
+
 			if (cts.TryReset())
 			{
 				await helper.MakeFileHardLinksAsync(txtLinks.Text, txtSource.Text, cts.Token);
@@ -73,7 +72,7 @@ public partial class Form1 : Form
 	}
 
 	/// <summary>
-	/// btns the select link folder_ click.
+	///     btns the select link folder_ click.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
@@ -85,7 +84,7 @@ public partial class Form1 : Form
 	}
 
 	/// <summary>
-	/// btns the select tool_ click.
+	///     btns the select tool_ click.
 	/// </summary>
 	/// <param name="sender">The sender.</param>
 	/// <param name="e">The e.</param>
@@ -93,11 +92,13 @@ public partial class Form1 : Form
 	{
 		openFileDialog1.InitialDirectory = Path.GetDirectoryName(txtFsutilPath.Text);
 		openFileDialog1.FileName = Path.GetFileName(txtFsutilPath.Text);
+
 		switch (openFileDialog1.ShowDialog(this))
 		{
 			case DialogResult.OK:
 				txtFsutilPath.Text = openFileDialog1.FileName;
 				helper = new Helper(txtFsutilPath.Text, output);
+
 				break;
 			case DialogResult.Abort:
 
@@ -110,6 +111,7 @@ public partial class Form1 : Form
 	private void BtnSelTargets_Click(object sender, EventArgs e)
 	{
 		folderBrowserDialog1.SelectedPath = txtSource.Text;
+
 		switch (folderBrowserDialog1.ShowDialog(this))
 		{
 			case DialogResult.OK:
@@ -124,6 +126,7 @@ public partial class Form1 : Form
 				break;
 		}
 	}
+
 	private void button1_Click(object sender, EventArgs e)
 	{
 		Settings.Default.SourceFolder = "xxxxx";
@@ -143,6 +146,7 @@ public partial class Form1 : Form
 		txtSource.Text = Settings.Default.SourceFolder;
 		txtLinks.Text = Settings.Default.LinkFolder;
 	}
+
 	private void TxtFsutilPath_Validated(object sender, EventArgs e)
 	{
 		if (string.IsNullOrEmpty(txtFsutilPath.Text) || !File.Exists(txtFsutilPath.Text))
