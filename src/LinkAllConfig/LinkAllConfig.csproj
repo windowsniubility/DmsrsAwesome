@@ -11,6 +11,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <RootFile Remove="Form2.cs" />
+	  <RootFile Remove="Form2.Designer.cs" />
+	  <RootFile Remove="Form2.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<EmbeddedResource Include="info.png" />
 	</ItemGroup>
 
