@@ -1,4 +1,4 @@
-﻿namespace LinkAllConfig;
+namespace LinkAllConfig;
 
 partial class Form2
 {
@@ -28,24 +28,46 @@ partial class Form2
 	/// </summary>
 	private void InitializeComponent()
 	{
-		button1 = new Button();
+		btnStartStop = new Button();
+		btnPauseContinue = new Button();
+		progressBar = new ProgressBar();
 		SuspendLayout();
 		// 
-		// button1
+		// btnStartStop
 		// 
-		button1.Location = new Point(474, 83);
-		button1.Name = "button1";
-		button1.Size = new Size(75, 23);
-		button1.TabIndex = 0;
-		button1.Text = "button1";
-		button1.UseVisualStyleBackColor = true;
+		btnStartStop.Location = new Point(89, 64);
+		btnStartStop.Name = "btnStartStop";
+		btnStartStop.Size = new Size(192, 23);
+		btnStartStop.TabIndex = 0;
+		btnStartStop.Text = "btnStartStop";
+		btnStartStop.UseVisualStyleBackColor = true;
+		btnStartStop.Click += btnStartStop_ClickAsync;
+		// 
+		// btnPauseContinue
+		// 
+		btnPauseContinue.Location = new Point(89, 120);
+		btnPauseContinue.Name = "btnPauseContinue";
+		btnPauseContinue.Size = new Size(192, 23);
+		btnPauseContinue.TabIndex = 0;
+		btnPauseContinue.Text = "btnPauseContinue";
+		btnPauseContinue.UseVisualStyleBackColor = true;
+		btnPauseContinue.Click += BtnPauseContinue_ClickAsync;
+		// 
+		// progressBar
+		// 
+		progressBar.Location = new Point(12, 415);
+		progressBar.Name = "progressBar";
+		progressBar.Size = new Size(776, 23);
+		progressBar.TabIndex = 1;
 		// 
 		// Form2
 		// 
 		AutoScaleDimensions = new SizeF(7F, 15F);
 		AutoScaleMode = AutoScaleMode.Font;
 		ClientSize = new Size(800, 450);
-		Controls.Add(button1);
+		Controls.Add(progressBar);
+		Controls.Add(btnPauseContinue);
+		Controls.Add(btnStartStop);
 		Name = "Form2";
 		Text = "Form2";
 		Load += Form2_Load;
@@ -54,5 +76,7 @@ partial class Form2
 
 	#endregion
 
-	private Button button1;
+	private Button btnStartStop;
+	private Button btnPauseContinue;
+	private ProgressBar progressBar;
 }

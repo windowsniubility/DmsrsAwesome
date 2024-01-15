@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplicationApiAwesome.Controllers;
 
+/// <summary>
+/// The weather forecast controller.
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
@@ -11,13 +14,21 @@ public class WeatherForecastController : ControllerBase
 		"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 	};
 
-	private readonly ILogger<WeatherForecastController> _logger;
+	private readonly ILogger<WeatherForecastController> logger;
 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="WeatherForecastController"/> class.
+	/// </summary>
+	/// <param name="logger">The logger.</param>
 	public WeatherForecastController(ILogger<WeatherForecastController> logger)
 	{
-		_logger = logger;
+		this.logger = logger;
 	}
 
+	/// <summary>
+	/// Gets a list of weatherforecasts.
+	/// </summary>
+	/// <returns>A list of weatherforecasts.</returns>
 	[HttpGet(Name = "GetWeatherForecast")]
 	public IEnumerable<WeatherForecast> Get()
 	{
