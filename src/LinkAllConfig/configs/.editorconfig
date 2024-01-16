@@ -283,3 +283,9 @@ dotnet_diagnostic.PropertyDocumentationHeader.severity = silent
 dotnet_diagnostic.ConstFieldDocumentationHeader.severity = silent
 dotnet_diagnostic.MethodDocumentationHeader.severity = silent
 dotnet_diagnostic.ConstructorDocumentationHeader.severity = silent
+
+# SA1413: Use trailing comma in multi-line initializers
+dotnet_diagnostic.SA1413.severity = silent
+
+# SA1514: Element documentation header should be preceded by blank line
+dotnet_diagnostic.SA1514.severity = silent

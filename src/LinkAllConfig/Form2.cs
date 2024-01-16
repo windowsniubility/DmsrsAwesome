@@ -52,14 +52,17 @@ public partial class Form2 : Form
 			cts = new CancellationTokenSource();
 			isPaused = false;
 			btnStartStop.Text = "停止";
-			btnStartStop.Enabled = false;
+			btnStartStop.Enabled = true;
 			btnPauseContinue.Enabled = true;
 			await ExecuteTaskAsync(cts.Token);
 		}
 		else
 		{
 			// 停止并退出任务
-			await cts?.CancelAsync();
+			if (cts is not null)
+			{
+				await cts.CancelAsync();
+			}
 		}
 	}
 
@@ -103,6 +106,11 @@ public partial class Form2 : Form
 
 	private Task ContinueTaskAsync()
 	{
+		if (cts is null)
+		{
+			cts = new CancellationTokenSource();
+		}
+
 		// 假设我们有一个方法可以恢复暂停的任务
 		return Task.Run(() => ResumeLongRunningWork(), cts.Token);
 	}

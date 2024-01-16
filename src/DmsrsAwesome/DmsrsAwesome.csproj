@@ -6,7 +6,7 @@
     
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="CliWrap" Version="3.6.5-test" />
-    <PackageReference Include="MessagePack" Version="2.5.140" />
+    <PackageReference Include="CliWrap" Version="3.6.5" />
+    <PackageReference Include="MessagePack" Version="2.6.100-alpha" />
   </ItemGroup>
 </Project>
