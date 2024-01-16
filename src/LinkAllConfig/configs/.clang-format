@@ -1,7 +1,0 @@
----
-Language: JavaScript
-BasedOnStyle: LLVM
-ColumnLimit: 1200
-IndentWidth: 4
-TabWidth: 4
-...

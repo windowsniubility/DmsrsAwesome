@@ -67,9 +67,9 @@ internal sealed class MakeLinkHelper(string targetPath, Action<string> output)
 	/// <returns>A Task.</returns>
 	public async Task MakeFileHardLinksAsync(string linkBaseFolder, string targetParentFolder, CancellationToken signal = default)
 	{
-		var outputPipe = PipeTarget.ToDelegate(s => Output(s.PadLeft(50, '-')));
+		var outputPipe = PipeTarget.ToDelegate(s => Output(s.Insert(0, new string(' ', 8))));
 
-		foreach (var tar in FileNames.Select(fileName => new { fileName, target = Path.Combine(targetParentFolder, fileName) })
+		foreach (var tar in FileNames.Select(fileName => new { fileName, folder = targetParentFolder, target = Path.Combine(targetParentFolder, fileName) })
 			.Where(t => File.Exists(t.target)))
 		{
 			if (signal.IsCancellationRequested)
@@ -81,16 +81,21 @@ internal sealed class MakeLinkHelper(string targetPath, Action<string> output)
 
 			Output(tar.fileName);
 
-			foreach (var link in Directory.EnumerateDirectories(linkBaseFolder).Select(folder => Path.Combine(folder, tar.fileName)))
+			foreach (var lnk in Directory.EnumerateDirectories(linkBaseFolder).Select(folder => new { folder, linkFile = Path.Combine(folder, tar.fileName) }))
 			{
+				if (tar.folder == lnk.folder)
+				{
+					continue;
+				}
+
 				if (signal.IsCancellationRequested)
 				{
 					Output("Stop");
-
 					break;
 				}
 
-				Output(link.PadLeft(30, '-'));
+				var link = lnk.linkFile;
+				Output(lnk.folder.Insert(0, new string(' ', 4)));
 
 				if (File.Exists(link))
 				{
