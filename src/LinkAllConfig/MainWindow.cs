@@ -266,16 +266,16 @@ public partial class MainWindow : Form
 				RedirectStandardError = true,
 				RedirectStandardOutput = true
 			};
-
-			var process = new Process { StartInfo = processStartInfo, EnableRaisingEvents = true };
-			process.ErrorDataReceived += Process_ErrorDataReceived;
-			process.OutputDataReceived += Process_OutputDataReceived;
-			_ = process.Start();
-			process.BeginOutputReadLine();
-			process.BeginErrorReadLine();
-			process.WaitForExit();
-			process.Close();
-			process.Dispose();
+			using (var process = new Process { StartInfo = processStartInfo, EnableRaisingEvents = true })
+			{
+				process.ErrorDataReceived += Process_ErrorDataReceived;
+				process.OutputDataReceived += Process_OutputDataReceived;
+				_ = process.Start();
+				process.BeginOutputReadLine();
+				process.BeginErrorReadLine();
+				process.WaitForExit();
+				process.Close();
+			}
 		}
 		catch (Exception)
 		{

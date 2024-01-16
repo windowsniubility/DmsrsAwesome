@@ -283,3 +283,18 @@ dotnet_diagnostic.PropertyDocumentationHeader.severity = silent
 dotnet_diagnostic.ConstFieldDocumentationHeader.severity = silent
 dotnet_diagnostic.MethodDocumentationHeader.severity = silent
 dotnet_diagnostic.ConstructorDocumentationHeader.severity = silent
+
+# SA1413: Use trailing comma in multi-line initializers
+dotnet_diagnostic.SA1413.severity = suggestion
+
+# SA1518: Use line endings correctly at end of file
+dotnet_diagnostic.SA1518.severity = silent
+
+# SA1512: Single-line comments should not be followed by blank line
+dotnet_diagnostic.SA1512.severity = silent
+
+# SA1515: Single-line comment should be preceded by blank line
+dotnet_diagnostic.SA1515.severity = silent
+
+# SA1516: Elements should be separated by blank line
+dotnet_diagnostic.SA1516.severity = suggestion

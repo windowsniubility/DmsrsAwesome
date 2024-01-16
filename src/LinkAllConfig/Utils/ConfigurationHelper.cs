@@ -6,7 +6,7 @@ internal sealed class ConfigurationHelper
 {
 	public Conifg GetConfig()
 	{
-		IConfigurationManager cfgmgr = new ConfigurationManager();
+		using var cfgmgr = new ConfigurationManager();
 		cfgmgr.AddIniFile("xx.json");
 		cfgmgr.GetValue<Conifg>("ss");
 

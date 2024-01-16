@@ -8,7 +8,7 @@ public partial class Form1 : Form
 {
 	private readonly CancellationTokenSource cts = new();
 	private readonly Action<string> output;
-	private Helper helper;
+	private MakeLinkHelper helper;
 
 	/// <summary> Initializes a new instance of the <see cref="Form1" /> class. </summary>
 	public Form1()
@@ -28,7 +28,7 @@ public partial class Form1 : Form
 		};
 
 		txtFsutilPath.Text = string.IsNullOrWhiteSpace(Settings.Default.FsuitlPath) || !File.Exists(Settings.Default.FsuitlPath) ? @"C:\Windows\System32\fsutil.exe" : Settings.Default.FsuitlPath;
-		helper = new Helper(txtFsutilPath.Text, output);
+		helper = new MakeLinkHelper(txtFsutilPath.Text, output);
 	}
 
 	private void BindFileList(string selectedPath)
@@ -97,7 +97,7 @@ public partial class Form1 : Form
 		{
 			case DialogResult.OK:
 				txtFsutilPath.Text = openFileDialog1.FileName;
-				helper = new Helper(txtFsutilPath.Text, output);
+				helper = new MakeLinkHelper(txtFsutilPath.Text, output);
 
 				break;
 			case DialogResult.Abort:
